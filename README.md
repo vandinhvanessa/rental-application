@@ -24,7 +24,7 @@
 | Justin Lau        | ------------------------ | JustinLauSFSU   | Frontend Lead
 | Jonathan Tsegaye  | ------------------------ | jontseg         | Backend Lead |
 | Camilla Alcartado | calcartado@mail.sfsu.edu | calcartado      | GitHub Master|
-| Wilson Wu         | ------------------------ | Kwu10           | Scrum Master |
+| Wilson Wu         | kwu10@mail.sfsu.edu | Kwu10           | Scrum Master |
 
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
