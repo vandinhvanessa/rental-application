@@ -21,7 +21,7 @@
 | ----------------- | ------------------------ | --------------- | -------------------------- |
 | Vanessa Van Dinh  | vvandinh@mail.sfsu.edu   | vandinhvanessa  | Team Leader, Frontend Lead |
 | Alan Lo           | alo2@mail.sfsu.edu       | loalan0         | Frontend Lead |
-| Justin Lau        | ------------------------ | JustinLauSFSU   | Frontend Lead
+| Justin Lau        | jlau13@mail.sfsu.edu | JustinLauSFSU   | Frontend Lead
 | Jonathan Tsegaye  | jtsegaye@mail.sfsu.edu   | jontseg         |        Backend Lead        |
 | Camilla Alcartado | calcartado@mail.sfsu.edu | calcartado      | GitHub Master|
 | Wilson Wu         | kwu10@mail.sfsu.edu | Kwu10           | Scrum Master |
