@@ -1,7 +1,7 @@
 # CSC648-spring22-04-Team06 Repository
 
 ## Application URL: 
-
+https://rentto.me
 
 ## Please do the following steps before completing Milestone 0.
 1. Change the name of the repository of csc648-spring22-SectionName-teamNN. 
