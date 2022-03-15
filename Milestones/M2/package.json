@@ -1,5 +1,20 @@
 {
   "dependencies": {
+    "@progress/kendo-data-query": "^1.5.6",
+    "@progress/kendo-drawing": "^1.16.3",
+    "@progress/kendo-licensing": "^1.2.2",
+    "@progress/kendo-react-animation": "^5.1.0",
+    "@progress/kendo-react-buttons": "^5.1.0",
+    "@progress/kendo-react-common": "^5.1.0",
+    "@progress/kendo-react-data-tools": "^5.1.0",
+    "@progress/kendo-react-dateinputs": "^5.1.0",
+    "@progress/kendo-react-dropdowns": "^5.1.0",
+    "@progress/kendo-react-inputs": "^5.1.0",
+    "@progress/kendo-react-intl": "^5.1.0",
+    "@progress/kendo-react-treeview": "^5.1.0",
+    "@progress/kendo-theme-default": "^5.2.0",
+    "install": "^0.13.0",
+    "npm": "^8.5.4",
     "sequelize": "^6.16.0",
     "sequelize-cli": "^6.4.1"
   }

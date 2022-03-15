@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        rentalTool:{
+        category:{
             type: DataTypes.STRING,
             allowNull: false
         },
