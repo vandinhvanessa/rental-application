@@ -3,7 +3,11 @@ import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
-
+import Home from './Home';
+import { DropDownList } from "@progress/kendo-react-dropdowns";
+import '@progress/kendo-theme-default/dist/all.css';  
+import {useState} from 'react';
+const categories = ["all", "recipe", "video", "article"];
 function CreatePost() {
     let history = useNavigate();
     
@@ -17,14 +21,15 @@ function CreatePost() {
       title: "",
       postText: "",
       username: "",
-      rentalTool: "",
+      category: "",
     };
     const validationSchema = Yup.object().shape({
         title: Yup.string().required(),
         postText: Yup.string().required(),
         username: Yup.string().min(3).max(20).required(),
-        rentalTool: Yup.string().required(),
+        category: Yup.string().required(),
     });
+    const {category, setCategory} = useState('');
   return (
     <div className="createPostPage">
       <Formik 
@@ -53,13 +58,9 @@ function CreatePost() {
             name="username" 
             placeholder="(Ex....John123)"
             />
-            <label>Rental Tool: </label>
-            <ErrorMessage name="rentalTool" component="span" />
-            <Field 
-            id="inputCreatePost" 
-            name="rentalTool" 
-            placeholder="(Ex....Hammer)"
-            />
+            <label>Category: </label>
+            <ErrorMessage name="category" component="span" />
+            <DropDownList className='Dropdown' data={categories} onChange={event => setCategory(event.value)} />
             <button type="submit">
                 Create A Post
             </button>

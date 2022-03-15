@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "goodgrade",
-    "database": "TutorialDB",
+    "password": "soccer",
+    "database": "classdb",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }, 

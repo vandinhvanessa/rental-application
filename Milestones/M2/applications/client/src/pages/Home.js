@@ -2,10 +2,15 @@ import React from 'react'
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
+import { DropDownList } from "@progress/kendo-react-dropdowns";
+import '@progress/kendo-theme-default/dist/all.css';  
 
-
+const categories = ["all", "recipe", "video", "article"];
 function Home() {
     const [listOfPosts, setListOfPosts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [categoryTerm, setCategory] = useState('');
+      
     let navigate = useNavigate();
   useEffect(() => {
     axios.get("http://localhost:3001/posts").then((response) => {
@@ -14,8 +19,19 @@ function Home() {
   }, []);
 
   return (
-    <div>
-      {listOfPosts.map((value, key) => {
+    <div className="App">
+      <input type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
+      <DropDownList className='Dropdown' data={categories} onChange={event => setCategory(event.value)} />
+      
+      {listOfPosts.filter((value) => {
+        if (searchTerm == "" && categoryTerm == "") {
+          return value;
+        } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && categoryTerm == "") {
+          return value;
+        } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && value.category.toLowerCase().includes(categoryTerm.toLowerCase())) {
+          return value;
+        }
+      }).map((value, key) => {
         return (
           <div className="post" onClick={() => {
               navigate(`/post/${value.id}`, { replace: true })

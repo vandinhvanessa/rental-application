@@ -45,7 +45,9 @@ function App() {
     });
   };
 
+
   return (
+    
     <div className="App">
       <AuthContext.Provider value={{authState, setAuthState}}>
       <Router>
