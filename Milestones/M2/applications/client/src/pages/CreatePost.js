@@ -29,7 +29,7 @@ function CreatePost() {
         username: Yup.string().min(3).max(20).required(),
         category: Yup.string().required(),
     });
-    const {category, setCategory} = useState('');
+    const [category, setCategory] = useState("");
   return (
     <div className="createPostPage">
       <Formik 
@@ -60,7 +60,22 @@ function CreatePost() {
             />
             <label>Category: </label>
             <ErrorMessage name="category" component="span" />
-            <DropDownList className='Dropdown' data={categories} onChange={event => setCategory(event.value)} />
+            
+            <Field 
+            id="inputCreatePost" 
+            name="category" 
+            as="Select"
+            >
+              <option value="" selected disabled>Please Select</option>
+              <option value="All">All</option>
+              <option value="Tools">Tools</option>
+              <option value="Hiking Gear">Hiking Gear</option>
+              <option value="Bicycle Gear">Bicycle Gear</option>
+              <option value="Snow Gear">Snow Gear</option>
+              <option value="Climbing Gear">Climbing Gear</option>
+              <option value="Silverware">Silverware</option>
+              <option value="Other">Other</option>
+            </Field>
             <button type="submit">
                 Create A Post
             </button>

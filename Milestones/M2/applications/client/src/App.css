@@ -3,13 +3,19 @@
   height: auto;
   display: flex;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 0px;
   flex-direction: column;
 }
 
 body {
   margin: 0;
   padding: 0;
+}
+
+.App .SearchBar{
+  width: 200px;
+  height: 30px;
+  margin-top: -36px;
 }
 
 .post {
@@ -254,3 +260,8 @@ button {
 }
 
 /* Dropdown menu */
+
+.App .Dropdown {
+  width: 25vw;
+  font-size: large;
+}

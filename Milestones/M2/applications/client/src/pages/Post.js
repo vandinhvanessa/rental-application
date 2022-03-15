@@ -63,7 +63,7 @@ function Post() {
                     {postObject.postText}
                 </div>
                 <div className='rentType'>
-                    {postObject.rentalTool}
+                    {postObject.category}
                 </div>
                 <div className='footer'>
                     {postObject.username}
