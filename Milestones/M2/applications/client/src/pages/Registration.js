@@ -3,6 +3,7 @@ import * as Yup from 'yup'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
+import {hostname} from  '../App.js' 
 function Registration() {
     const initialValues = {
         username: "",
@@ -13,7 +14,7 @@ function Registration() {
           password: Yup.string().min(4).max(20).required(),
     });
     const onSubmit = (data) => {
-        axios.post("http://localhost:3001/auth", data).then(() => {
+        axios.post("http://" + hostname + "/auth", data).then(() => {
             console.log(data);
         })
     }

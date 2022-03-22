@@ -9,6 +9,7 @@ import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
+export const hostname = "rentto.me";
 function App() {
   const [authState, setAuthState] = useState({
     username: "", 
@@ -17,7 +18,7 @@ function App() {
   });
 
   useEffect(() => {
-    axios.get('http://localhost:3001/auth/auth', { 
+    axios.get('http://' + hostname + '/auth/auth', { 
       headers: {
         accessToken: localStorage.getItem('accessToken'),
       }

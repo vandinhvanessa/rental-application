@@ -7,12 +7,14 @@ import Home from './Home';
 import { DropDownList } from "@progress/kendo-react-dropdowns";
 import '@progress/kendo-theme-default/dist/all.css';  
 import {useState} from 'react';
+import {hostname} from  '../App.js' 
+
 const categories = ["all", "recipe", "video", "article"];
 function CreatePost() {
     let history = useNavigate();
     
     const onSubmit = (data) => {
-        axios.post("http://localhost:3001/posts", data).then((response) => {
+        axios.post("http://" + hostname+ "/posts", data).then((response) => {
             //setListOfPosts(response.data);
             history('/', {replace: true});
         });

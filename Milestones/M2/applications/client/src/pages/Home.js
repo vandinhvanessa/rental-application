@@ -3,7 +3,8 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import { DropDownList } from "@progress/kendo-react-dropdowns";
-import '@progress/kendo-theme-default/dist/all.css';  
+import '@progress/kendo-theme-default/dist/all.css';
+import {hostname} from  '../App.js' 
 
 const categories = ["All", "Tools", "Hiking Gear", "Bicycle Gear", "Snow Gear", "Climbing Gear", "Silverware", "Other"];
 function Home() {
@@ -13,7 +14,7 @@ function Home() {
       
     let navigate = useNavigate();
   useEffect(() => {
-    axios.get("http://localhost:3001/posts").then((response) => {
+    axios.get("http://" + hostname + "/posts").then((response) => {
       setListOfPosts(response.data);
     });
   }, []);
