@@ -9,7 +9,7 @@ import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-export const hostname = "rentto.me";
+export const hostname = "rentto.me:3001";
 function App() {
   const [authState, setAuthState] = useState({
     username: "", 
