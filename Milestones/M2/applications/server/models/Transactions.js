@@ -14,15 +14,15 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         transactionBegin: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false,
         },
         transactionEnd: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false,
         },
         active: {
-            type: DataTypes.BOOL,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
         },
         cost: {
