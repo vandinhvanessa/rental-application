@@ -5,6 +5,8 @@
   align-items: center;
   padding-top: 0px;
   flex-direction: column;
+  background-image: linear-gradient( 109.6deg,  rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1% );
+  cursor: url('./helpers/blue-wrench.png'), auto;
 }
 
 body {
@@ -14,31 +16,53 @@ body {
 
 .App .SearchBar{
   width: 200px;
-  height: 30px;
-  margin-top: -36px;
+  height: 40px;
+  font-size: medium;
+  margin-top: -75px;
+  cursor: url('./helpers/blue-wrench.png'), auto;
+}
+
+.App .Dropdown{
+  margin-top: 29px;
+  cursor: url('./helpers/blue-wrench.png'), auto;
+}
+
+.rentLogo {
+  font-size: 100px;
+  padding-left: 2cm;
+  align-self: center;
+  color: white;
+  font-family:  "Courier New", monospace;
+}
+
+.usernameLogin {
+  font-size: 20px;
+  align-self: right;
 }
 
 .post {
-  width: 400px;
-  height: 300px;
+  width: 550px;
+  height: 450px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-
+  
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .post:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  cursor: pointer;
+  cursor: url('./helpers/blue-wrench.png'), auto;
 }
 .post .title {
   flex: 25%;
   border-bottom: 1px solid lightgray;
-  background-color: dodgerblue;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  
   display: grid;
   place-content: center;
   color: white;
@@ -48,6 +72,7 @@ body {
   flex: 60%;
   display: grid;
   place-content: center;
+  background-color: white;
 }
 
 .post .footer {
@@ -56,7 +81,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 15px;
-  background-color: rgba(128, 233, 236, 0.644);
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -66,6 +91,7 @@ body {
   display: grid;
   align-items: flex-end;
   padding-left: 15px;
+  background-color: white;
 }
 
 
@@ -85,9 +111,13 @@ body {
   justify-content: center;
   width: 500px;
   height: auto;
-  padding: 20px;
-  border: 5px solid dodgerblue;
+  padding: 50px;
+ 
   border-radius: 5px;
+
+  background-color: #0093E9;
+  background-image: linear-gradient(152deg, #0093E9 0%, #80D0C7 56%, #ffffff 100%);
+
 }
 
 .formContainer #inputCreatePost {
@@ -97,21 +127,22 @@ body {
   border: 2px solid grey;
   border-radius: 5px;
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .formContainer button {
   margin-top: 15px;
   height: 40px;
   border: none;
-  background-color: lightskyblue;
+  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
   border-radius: 5px;
   color: white;
+  
 }
 
 .formContainer button:hover {
-  cursor: pointer;
-  background-color: dodgerblue;
+  cursor: url('./helpers/blue-wrench.png'), auto;
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
 span {
@@ -122,23 +153,29 @@ span {
 
 .navbar {
   width: 100%;
-  height: 70px;
-  background-color: dodgerblue;
+  height: 260px;
   display: flex;
   align-items: center;
+  padding-inline-start: 0cm;
+  padding-top: 0.5cm;
+  align-items: baseline;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
 }
 
 .navbar a {
   margin-left: 20px;
   text-decoration: none;
   color: white;
+  cursor: url('./helpers/blue-wrench.png'), auto;
 }
 
 .navbar button {
   width: 150px;
   height: 40px;
-  cursor: pointer;
+  cursor: url('./helpers/blue-wrench.png'), auto;
 }
 
 /* INDIVIDUAL POST */
@@ -147,6 +184,7 @@ span {
   flex-direction: row;
   width: 100%;
   height: 100%;
+  
 }
 
 .leftSide {
@@ -224,10 +262,12 @@ button {
   place-content: center;
   align-content: center;
   padding-left: 10px;
+  background-color: white;
 }
 
 #individual .rentType {
   font-size: 25px;
+  background-color: white;
 }
 
 /* LOGIN */
@@ -251,12 +291,17 @@ button {
 }
 
 .loginContainer button {
-  background-color: dodgerblue;
+  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
   color: white;
 }
 
 .loginContainer input {
   border: 2px solid dodgerblue;
+}
+
+.loginContainer button:hover{
+  cursor: url('./helpers/blue-wrench.png'), auto;
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
 /* Dropdown menu */

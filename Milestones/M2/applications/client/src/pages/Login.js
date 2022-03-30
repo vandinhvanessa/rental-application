@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {AuthContext} from '../helpers/AuthContext';
-
+import {hostname} from  '../App.js' 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ function Login() {
 
     const login = () => {
         const data = {username: username, password: password}
-        axios.post("http://localhost:3001/auth/login", data).then((response) => {
+        axios.post("http://" + hostname + "/auth/login", data).then((response) => {
             if(response.data.error){
                 alert(response.data.error);
             }

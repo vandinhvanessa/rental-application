@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext} from 'react'
 import {useParams} from 'react-router-dom';
 import axios from "axios";
 import {AuthContext} from '../helpers/AuthContext';
-
+import {hostname} from  '../App.js' 
 function Post() {
     let {id} = useParams();
     const [postObject, setPostObject] = useState({});
@@ -11,17 +11,17 @@ function Post() {
     const { authState} = useContext(AuthContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+        axios.get(`http://` + hostname + `/posts/byId/${id}`).then((response) => {
             setPostObject(response.data);
         });
-        axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+        axios.get(`http://` + hostname + `/comments/${id}`).then((response) => {
             setComments(response.data);
         });
     }, []);
    
     const addComment = (() => {
         axios
-        .post("http://localhost:3001/comments", {commentBody: newComment, PostId: id},
+        .post("http://" + hostname + "/comments", {commentBody: newComment, PostId: id},
         {
             headers: {
                 accessToken: localStorage.getItem("accessToken")
@@ -41,7 +41,7 @@ function Post() {
     });
 
     const deleteComment = (id) => {
-        axios.delete(`http://localhost:3001/comments/${id}`, {
+        axios.delete(`http://` + hostname + `/comments/${id}`, {
             headers: { accessToken: localStorage.getItem('accessToken') },
         }).then(() => {
             setComments(
