@@ -14,7 +14,7 @@ function CreatePost() {
     let history = useNavigate();
     
     const onSubmit = (data) => {
-        axios.post("http://" + hostname+ "/posts", data).then((response) => {
+        axios.post("http://" + hostname + "/posts", data).then((response) => {
             //setListOfPosts(response.data);
             history('/', {replace: true});
         });
