@@ -64,7 +64,8 @@ function App() {
         ) : (
           <button onClick={logout}> Logout</button>
         )}
-        <h1>{authState.username}</h1>
+        <h1 className="usernameLogin">{authState.username}</h1>
+        <h2 className="rentLogo"> Rentto.me </h2>
       </div>
         <Routes>
           <Route path="/" element={<Home/>}/>
