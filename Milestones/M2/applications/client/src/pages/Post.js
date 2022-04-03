@@ -74,6 +74,11 @@ function Post() {
         </div>
 
         <div className='rightSide'>
+            <div className='postBuyButtons'>
+                <button>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+            
             <div className="addCommentContainer">
                 <input 
                 type="text" 

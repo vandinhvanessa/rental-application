@@ -159,6 +159,11 @@ body {
 span {
   color: red;
 }
+/* Post buy buttons */
+
+.postBuyButtons {
+  padding: 25px;
+}
 
 /* NAVBAR */
 

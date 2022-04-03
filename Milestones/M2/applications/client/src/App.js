@@ -56,7 +56,7 @@ function App() {
       <div className="rentLogo"> Rentto.me </div>
       <div className="navbar">
         <Link to="/"> Home Page</Link>
-        
+        <button>Cart</button>
 
         {!authState.status ? (
           <>
@@ -66,6 +66,7 @@ function App() {
           </>
         ) : (
           <><Link to="/createpost"> Create A Post</Link>
+          
           <button onClick={logout}> Logout</button>
           </>
         )}
