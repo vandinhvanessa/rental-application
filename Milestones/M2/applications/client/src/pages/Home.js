@@ -1,18 +1,10 @@
 import React from 'react'
 import axios from "axios";
-<<<<<<< HEAD
 import {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 // import { DropDownList } from "@progress/kendo-react-dropdowns";
 // import '@progress/kendo-theme-default/dist/all.css';
 import {hostname} from  '../App.js' 
-=======
-import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { DropDownList } from "@progress/kendo-react-dropdowns";
-import '@progress/kendo-theme-default/dist/all.css';
-import { hostname } from '../App.js'
->>>>>>> origin/master
 
 const categories = ["All", "Tools", "Hiking Gear", "Bicycle Gear", "Snow Gear", "Climbing Gear", "Silverware", "Other"];
 function Home() {
@@ -29,15 +21,9 @@ function Home() {
 
   return (
     <div className="App">
-<<<<<<< HEAD
       <input className="SearchBar" type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
       {/* <DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} /> */}
       
-=======
-      <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
-      <DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />
-
->>>>>>> origin/master
       {listOfPosts.filter((value) => {
         if (searchTerm == "" && categoryTerm == "") {
           return value;
