@@ -1,8 +1,13 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "soccer",
     "database": "classdb",
+=======
+    "password": "1234",
+    "database": "TutorialDB",
+>>>>>>> origin/master
     "host": "127.0.0.1",
     "dialect": "mysql"
   }, 
