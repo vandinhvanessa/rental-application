@@ -13,7 +13,7 @@ export const hostname = "rentto.me:3001";
 // export const hostname = "localhost:3001";
 function App() {
   const [authState, setAuthState] = useState({
-    username: "", 
+    username: "",
     id: 0, 
     status: false,
   });
