@@ -8,9 +8,10 @@ import Registration from './pages/Registration';
 import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import React from 'react'
 
-export const hostname = "rentto.me:3001";
-// export const hostname = "localhost:3001";
+// export const hostname = "rentto.me:3001";
+export const hostname = "localhost:3001";
 function App() {
   const [authState, setAuthState] = useState({
     username: "",

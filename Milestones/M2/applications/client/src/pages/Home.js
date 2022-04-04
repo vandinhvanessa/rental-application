@@ -2,8 +2,8 @@ import React from 'react'
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
-import { DropDownList } from "@progress/kendo-react-dropdowns";
-import '@progress/kendo-theme-default/dist/all.css';
+// import { DropDownList } from "@progress/kendo-react-dropdowns";
+// import '@progress/kendo-theme-default/dist/all.css';
 import {hostname} from  '../App.js' 
 
 const categories = ["All", "Tools", "Hiking Gear", "Bicycle Gear", "Snow Gear", "Climbing Gear", "Silverware", "Other"];
@@ -22,7 +22,7 @@ function Home() {
   return (
     <div className="App">
       <input className="SearchBar" type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
-      <DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />
+      {/* <DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} /> */}
       
       {listOfPosts.filter((value) => {
         if (searchTerm == "" && categoryTerm == "") {

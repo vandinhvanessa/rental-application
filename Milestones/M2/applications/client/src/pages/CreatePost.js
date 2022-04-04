@@ -4,8 +4,8 @@ import * as Yup from 'yup'
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
 import Home from './Home';
-import { DropDownList } from "@progress/kendo-react-dropdowns";
-import '@progress/kendo-theme-default/dist/all.css';  
+// import { DropDownList } from "@progress/kendo-react-dropdowns";
+// import '@progress/kendo-theme-default/dist/all.css';  
 import {useState} from 'react';
 import {hostname} from  '../App.js' 
 
