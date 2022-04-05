@@ -4,17 +4,24 @@ import * as Yup from 'yup'
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
 import Home from './Home';
-import { DropDownList } from "@progress/kendo-react-dropdowns";
+//import { DropDownList } from "@progress/kendo-react-dropdowns";
 import '@progress/kendo-theme-default/dist/all.css';  
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {hostname} from  '../App.js' 
 
 const categories = ["all", "recipe", "video", "article"];
 function CreatePost() {
     let history = useNavigate();
-    
+
+    useEffect(() => {
+      if (!localStorage.getItem("accessToken")) {
+        history("/login", {replace: true});
+      }
+    }, []);
     const onSubmit = (data) => {
-        axios.post("http://" + hostname + "/posts", data).then((response) => {
+        axios.post("http://" + hostname + "/posts", data, {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }).then((response) => {
             //setListOfPosts(response.data);
             history('/', {replace: true});
         });
@@ -22,13 +29,11 @@ function CreatePost() {
     const initialValues = {
       title: "",
       postText: "",
-      username: "",
       category: "",
     };
     const validationSchema = Yup.object().shape({
         title: Yup.string().required(),
         postText: Yup.string().required(),
-        username: Yup.string().min(3).max(20).required(),
         category: Yup.string().required(),
     });
     const [category, setCategory] = useState("");
@@ -53,13 +58,7 @@ function CreatePost() {
             name="postText" 
             placeholder="(Ex....Post)"
             />
-            <label>Username: </label>
-            <ErrorMessage name="username" component="span" />
-            <Field 
-            id="inputCreatePost" 
-            name="username" 
-            placeholder="(Ex....John123)"
-            />
+            
             <label>Category: </label>
             <ErrorMessage name="category" component="span" />
             

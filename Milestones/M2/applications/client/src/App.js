@@ -8,10 +8,12 @@ import Registration from './pages/Registration';
 import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import Profile from './pages/Profile';
 
-export const hostname = "rentto.me:3001";
-// export const hostname = "localhost:3001";
+//export const hostname = "rentto.me:3001";
+ export const hostname = "localhost:3001";
 function App() {
+  
   const [authState, setAuthState] = useState({
     username: "", 
     id: 0, 
@@ -35,7 +37,8 @@ function App() {
           status: true,
         });
       }
-    });   
+    });
+       
   }, []);
 
   const logout = () => {
@@ -53,7 +56,11 @@ function App() {
     <div className="App">
       <AuthContext.Provider value={{authState, setAuthState}}>
       <Router>
-      <div className="rentLogo"> Rentto.me </div>
+      <div className="rentLogo"> 
+      
+      <a className="rentLogo" href="/"> Rentto.me</a> 
+
+      </div>
       <div className="navbar">
         <Link to="/"> Home Page</Link>
         <button>Cart</button>
@@ -70,8 +77,8 @@ function App() {
           <button onClick={logout}> Logout</button>
           </>
         )}
-        
-        <h1 className="usernameLogin">{authState.username}</h1>
+        <Link to={`/profile/${authState.id}`}>{authState.username}</Link>
+        {/*<h1 className="usernameLogin">{authState.username}</h1>*/}
         
       </div>
       
@@ -80,6 +87,7 @@ function App() {
           <Route path="/createpost" element={<CreatePost/>}/>
           <Route path="/post/:id" element={<Post/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/profile/:id" exact element={<Profile/>}/>
           <Route path="/registration" element={<Registration/>}/>
         </Routes>
       </Router>
