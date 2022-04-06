@@ -73,7 +73,7 @@ body {
   border-bottom: 1px solid lightgray;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-
+  font-size: larger;
   display: grid;
   place-content: center;
   color: white;
@@ -92,14 +92,27 @@ body {
   display: flex;
   align-items: center;
   padding-left: 15px;
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
+  
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.post .footer .buyButton {
-  margin-left: 255px;
+.post .footer .buyButton{
+  margin-left: 60px;
+}
+
+.post .footer .pricePerDay{
+  padding-left: 20px;
+}
+
+.post .footer .depositFee{
+  padding-left: 50px;
+}
+
+.post .footer .shippingFee{
+  padding-left: 20px;
 }
 
 .post .rentType {
@@ -111,12 +124,14 @@ body {
 }
 
 
+
+
 /* CREATE POST PAGE CSS */
 
 .createPostPage {
   font-family: Arial, Helvetica, sans-serif;
   width: 100vw;
-  height: 70vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,14 +177,21 @@ body {
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
+
 span {
   color: red;
 }
 
 /* Post buy buttons */
 
-.postBuyButtons {
-  padding: 25px;
+.postBuyButtons button{
+  padding: 20px;
+  padding-bottom: 30px;
+  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.postBuyButtons button:hover{
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
 /* NAVBAR */
@@ -226,6 +248,7 @@ span {
   place-items: center;
   display: flex;
   flex-direction: column;
+  padding-top: 0.5cm;
 }
 
 .rightSide .addCommentContainer {
@@ -245,8 +268,12 @@ button {
 }
 
 .addCommentContainer button {
-  background-color: dodgerblue;
+  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
   color: white;
+}
+
+.addCommentContainer button:hover {
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
 .addCommentContainer input {
@@ -260,6 +287,19 @@ button {
   flex-direction: column;
   align-items: center;
 }
+
+.rightSide .postInfo{
+  place-items: left;
+  padding-right: 20px;
+  padding-left: 50px;
+  padding-top: 1.5cm;
+  font-size: larger;
+}
+
+.rightSide .postInfo .otherInfo{
+  padding-right: 12cm;
+}
+
 
 .listOfComments .comment {
   width: 70%;
@@ -276,7 +316,11 @@ button {
   width: 600px;
 }
 
-#individual .title,
+#individual .title{
+  flex: 25%;
+  font-size: 30px;
+}
+
 #individual .footer {
   flex: 25%;
   font-size: 30px;
@@ -295,6 +339,9 @@ button {
   background-color: white;
 }
 
+#individual .pricePerDay{
+  padding-left: 4cm;
+}
 /* LOGIN */
 
 .loginContainer {

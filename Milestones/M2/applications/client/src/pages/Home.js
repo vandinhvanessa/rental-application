@@ -57,9 +57,12 @@ function Home() {
               {value.postText} 
             </div>
             <div className="rentType"> {value.category} </div>
+
             <div className="footer"> 
               <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
-              
+              <div className="depositFee">Deposit Fee: {value.depositFee}</div>
+              <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
+              <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
               <button className='buyButton' type='submit'>Buy Now</button>
               
             </div>
