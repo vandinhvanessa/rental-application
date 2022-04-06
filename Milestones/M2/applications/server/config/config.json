@@ -1,11 +1,11 @@
 {
   "development": {
     "username": "root",
-    "password": "goodgrade",
-    "database": "classdb",
+    "password": "1234",
+    "database": "TutorialDB",
     "host": "localhost",
     "dialect": "mysql"
-  }, 
+  },
   "test": {
     "username": "root",
     "password": null,

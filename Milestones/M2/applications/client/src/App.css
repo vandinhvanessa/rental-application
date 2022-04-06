@@ -5,7 +5,7 @@
   align-items: center;
   padding-top: 0px;
   flex-direction: column;
-  background-image: linear-gradient( 109.6deg,  rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1% );
+  background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
   cursor: url('./helpers/blue-wrench.png'), auto;
 }
 
@@ -14,14 +14,14 @@ body {
   padding: 0;
 }
 
-.App .SearchBar{
+.App .SearchBar {
   width: 24.5vw;
   height: 40px;
   font-size: large;
   cursor: url('./helpers/blue-wrench.png'), auto;
 }
 
-.App .Dropdown{
+.App .Dropdown {
   cursor: url('./helpers/blue-wrench.png'), auto;
 }
 
@@ -31,16 +31,16 @@ body {
   padding: 10px;
   align-self: center;
   color: white;
-  font-family:  "Courier New", monospace;
+  font-family: "Courier New", monospace;
   text-align: center;
   display: flex;
   justify-content: center;
-  background-color:#0093E9;
+  background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 
 }
 
-.rentLogo .a{
+.rentLogo .a {
   color: white;
 }
 
@@ -58,7 +58,7 @@ body {
   margin-top: 50px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-  
+
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -67,12 +67,13 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: url('./helpers/blue-wrench.png'), auto;
 }
+
 .post .title {
   flex: 25%;
   border-bottom: 1px solid lightgray;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-  
+
   display: grid;
   place-content: center;
   color: white;
@@ -91,13 +92,13 @@ body {
   display: flex;
   align-items: center;
   padding-left: 15px;
-  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.post .footer .buyButton{
+.post .footer .buyButton {
   margin-left: 255px;
 }
 
@@ -120,6 +121,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -127,7 +129,7 @@ body {
   width: 500px;
   height: auto;
   padding: 50px;
- 
+
   border-radius: 5px;
 
   background-color: #0093E9;
@@ -152,7 +154,7 @@ body {
   background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
   border-radius: 5px;
   color: white;
-  
+
 }
 
 .formContainer button:hover {
@@ -163,6 +165,7 @@ body {
 span {
   color: red;
 }
+
 /* Post buy buttons */
 
 .postBuyButtons {
@@ -206,7 +209,7 @@ span {
   flex-direction: row;
   width: 100%;
   height: 100%;
-  
+
 }
 
 .leftSide {
@@ -321,7 +324,7 @@ button {
   border: 2px solid dodgerblue;
 }
 
-.loginContainer button:hover{
+.loginContainer button:hover {
   cursor: url('./helpers/blue-wrench.png'), auto;
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
