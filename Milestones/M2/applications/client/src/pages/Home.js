@@ -5,9 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 //import { DropDownList } from "@progress/kendo-react-dropdowns";
 import '@progress/kendo-theme-default/dist/all.css';
 import { hostname } from '../App.js'
+import Select from 'react-select';
 
 
-const categories = ["All", "Tools", "Hiking Gear", "Bicycle Gear", "Snow Gear", "Climbing Gear", "Silverware", "Other"];
+const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
+{ value: "Bicycle Gear", label: "Bicycle Gear" }, { value: "Snow Gear", label: "Snow Gear" },
+{ value: "Climbing Gear", label: "Climbing Gear" }, { value: "Silverware", label: "Silverware" }, { value: "Other", label: "Other" }];
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,7 +33,7 @@ function Home() {
     <div className="App">
       <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
       {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
-
+      <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
       {listOfPosts.filter((value) => {
         if (searchTerm == "" && categoryTerm == "") {
           return value;

@@ -1,6 +1,7 @@
 import React, { useEffect , useState} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import Select from 'react-select';
 
 
 function Profile() {
@@ -10,6 +11,9 @@ function Profile() {
     let navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
     const [categoryTerm, setCategory] = useState('');
+    const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
+    { value: "Bicycle Gear", label: "Bicycle Gear" }, { value: "Snow Gear", label: "Snow Gear" },
+    { value: "Climbing Gear", label: "Climbing Gear" }, { value: "Silverware", label: "Silverware" }, { value: "Other", label: "Other" }];
     useEffect(() => {
         axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
             setUsername(response.data.username)
@@ -28,6 +32,7 @@ function Profile() {
       </div>
       <div className="listOfPosts">
       <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
+      <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
       {listOfPosts.filter((value) => {
         if (searchTerm == "" && categoryTerm == "") {
           return value;
