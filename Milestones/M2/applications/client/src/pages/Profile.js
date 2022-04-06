@@ -51,8 +51,10 @@ function Profile() {
             <div className="body"> {value.postText} </div>
             <div className="rentType"> {value.category} </div>
             <div className="footer"> {value.username}
-              
-              <button className='buyButton' type='submit'>Buy Now</button>
+                <div className="depositFee">Deposit Fee: {value.depositFee}</div>
+                <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
+                <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
+                <button className='buyButton' type='submit'>Buy Now</button>
               
             </div>
 

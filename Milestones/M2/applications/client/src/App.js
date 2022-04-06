@@ -75,9 +75,10 @@ function App() {
           <><Link to="/createpost"> Create A Post</Link>
           
           <button onClick={logout}> Logout</button>
+          <Link to={`/profile/${authState.id}`}>{authState.username}</Link>
           </>
         )}
-        <Link to={`/profile/${authState.id}`}>{authState.username}</Link>
+        
         {/*<h1 className="usernameLogin">{authState.username}</h1>*/}
         
       </div>
