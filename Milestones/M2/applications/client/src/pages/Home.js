@@ -30,7 +30,7 @@ function Home() {
     <div className="App">
       <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
       {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
-
+      
       {listOfPosts.filter((value) => {
         if (searchTerm == "" && categoryTerm == "") {
           return value;
