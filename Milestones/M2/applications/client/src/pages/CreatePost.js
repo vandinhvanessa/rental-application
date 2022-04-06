@@ -30,11 +30,17 @@ function CreatePost() {
       title: "",
       postText: "",
       category: "",
+      depositFee: "",
+      shippingFee: "",
+      pricePerDay: "",
     };
     const validationSchema = Yup.object().shape({
         title: Yup.string().required(),
         postText: Yup.string().required(),
         category: Yup.string().required(),
+        depositFee: Yup.number().required(),
+        shippingFee: Yup.number().required(),
+        pricePerDay: Yup.number().required(),
     });
     const [category, setCategory] = useState("");
   return (
@@ -77,6 +83,29 @@ function CreatePost() {
               <option value="Silverware">Silverware</option>
               <option value="Other">Other</option>
             </Field>
+
+            <label>Deposit Fee: $ </label>
+            <ErrorMessage name="depositFee" component="span" />
+            <Field 
+            id="inputCreatePost" 
+            name="depositFee" 
+            placeholder="$2..."
+            />
+            <label>Shipping Fee: $ </label>
+            <ErrorMessage name="shippingFee" component="span" />
+            <Field 
+            id="inputCreatePost" 
+            name="shippingFee" 
+            placeholder="$10..."
+            />
+            <label>Price Per Day: $/Day </label>
+            <ErrorMessage name="pricePerDay" component="span" />
+            <Field 
+            id="inputCreatePost" 
+            name="pricePerDay" 
+            placeholder="$2/day"
+            />
+            
             <button type="submit">
                 Create A Post
             </button>

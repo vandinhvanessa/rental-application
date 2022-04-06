@@ -63,8 +63,9 @@ function Post() {
                     {postObject.postText}
                 </div>
                 <div className='rentType'>
-                    {postObject.category}
+                        Category: {postObject.category}
                 </div>
+                
                 <div className='footer'>
                     {postObject.username}
                 </div>
@@ -78,7 +79,28 @@ function Post() {
                 <button>Add to Cart</button>
                 <button>Buy Now</button>
             </div>
+            <div className="postInfo">
+                <div className="otherInfo">
+                    <div className="postCategory">
+                        Category: {postObject.category}
+                    </div>
+                    <div className='depositFee'>
+                        Deposit Fee: {postObject.depositFee}
+                    </div>
+                    <div className='shippingFee'>
+                        Shipping Fee: {postObject.shippingFee}
+                    </div>
+                    <div className='pricePerDay'>
+                        $/Day: {postObject.pricePerDay}
+                    </div>
+                </div>
+           
+            <div className="postDescription">
+                Description: {postObject.postText}
+            </div>
+            </div>
             
+                    
             <div className="addCommentContainer">
                 <input 
                 type="text" 
@@ -95,10 +117,12 @@ function Post() {
                 {comments.map((comment, key) => {
                     return (
                     <div key={key} className="comment"> 
-                        {comment.commentBody}
+                        
                         <label>
                             Username: {comment.username}
                         </label>
+                        
+                        {comment.commentBody}
                         {authState.username === comment.username && <button onClick={() => {deleteComment(comment.id)}}> X </button>}
                     </div>);
                 })}
