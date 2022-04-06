@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "goodgrade",
-    "database": "classdb",
+    "password": null,
+    "database": "CSC648db",
     "host": "localhost",
     "dialect": "mysql"
   }, 
