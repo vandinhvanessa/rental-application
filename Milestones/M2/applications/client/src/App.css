@@ -40,6 +40,10 @@ body {
 
 }
 
+.rentLogo .a{
+  color: white;
+}
+
 .usernameLogin {
   font-size: 20px;
   align-self: right;
