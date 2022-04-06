@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 //import { DropDownList } from "@progress/kendo-react-dropdowns";
 import '@progress/kendo-theme-default/dist/all.css';
 import { hostname } from '../App.js'
-
+import {Image} from 'cloudinary-react'
 
 const categories = ["All", "Tools", "Hiking Gear", "Bicycle Gear", "Snow Gear", "Climbing Gear", "Silverware", "Other"];
 function Home() {
@@ -56,6 +56,11 @@ function Home() {
             }}> 
               {value.postText} 
             </div>
+            <Image
+              style = {{width: 200}}
+              cloudName = "ditub0apw"
+              publicId = {value.image}
+              />
             <div className="rentType"> {value.category} </div>
 
             <div className="footer"> 
@@ -66,7 +71,7 @@ function Home() {
               <button className='buyButton' type='submit'>Buy Now</button>
               
             </div>
-
+            
           </div>
         );
       })}

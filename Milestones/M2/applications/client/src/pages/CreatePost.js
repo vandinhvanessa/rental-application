@@ -8,11 +8,13 @@ import Home from './Home';
 // import '@progress/kendo-theme-default/dist/all.css';  
 import {useState, useEffect} from 'react';
 import {hostname} from  '../App.js';
+import {Image} from 'cloudinary-react'
 
 // const categories = ["all", "recipe", "video", "article"];
 function CreatePost() {
     let history = useNavigate();
-
+    const [imageSelected, setImageSelected] = useState("");
+    const [imageLink, setImageLink] = useState("");
     useEffect(() => {
       if (!localStorage.getItem("accessToken")) {
         history("/login", {replace: true});
@@ -33,6 +35,7 @@ function CreatePost() {
       depositFee: "",
       shippingFee: "",
       pricePerDay: "",
+      image: ""
     };
     const validationSchema = Yup.object().shape({
         title: Yup.string().required(),
@@ -43,8 +46,26 @@ function CreatePost() {
         pricePerDay: Yup.number().required(),
     });
     const [category, setCategory] = useState("");
+
+    const uploadImage = () => {
+      // Constructing the formData that we are passing to cloudinary
+      const formData = new FormData()
+      formData.append("file",imageSelected)
+      // Passing the upload preset
+      formData.append("upload_preset", "oqlvocmd")
+
+      
+      // Sending formData to route
+      axios.post("https://api.cloudinary.com/v1_1/ditub0apw/image/upload"
+      , formData).then((response) =>  {
+        console.log(response)
+        console.log(response.data.public_id)
+        setImageLink("https://res.cloudinary.com/ditub0apw/image/upload/v1649281497/" + response.data.public_id)
+        // console.log(imageLink)
+      })
+    };
   return (
-    <div className="createPostPage">
+    <div className="createPostPage" class="btn-group">
       <Formik 
       initialValues={initialValues} 
       onSubmit={onSubmit} 
@@ -105,10 +126,22 @@ function CreatePost() {
             name="pricePerDay" 
             placeholder="$2/day"
             />
-            
+            <input
+             type ="file"
+             onChange = {(event) => {
+               setImageSelected(event.target.files[0]);
+              }}
+             />
+            <button type="button" onClick={uploadImage}>
+                Upload Image
+            </button>
             <button type="submit">
                 Create A Post
             </button>
+            {/* <Image cloudName="ditub0apw"
+            style={width: 200;}
+            publicId = ""
+            /> */}
         </Form>
       </Formik>
     </div>
