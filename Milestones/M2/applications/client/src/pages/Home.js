@@ -5,12 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 //import { DropDownList } from "@progress/kendo-react-dropdowns";
 import '@progress/kendo-theme-default/dist/all.css';
 import { hostname } from '../App.js'
-<<<<<<< HEAD
 import {Image} from 'cloudinary-react'
-=======
 import Select from 'react-select';
 
->>>>>>> 1ccbc9f608750604212a66f6e61814b441c39add
 
 const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
 { value: "Bicycle Gear", label: "Bicycle Gear" }, { value: "Snow Gear", label: "Snow Gear" },
