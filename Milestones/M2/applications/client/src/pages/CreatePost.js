@@ -21,12 +21,18 @@ function CreatePost() {
       }
     }, []);
     const onSubmit = (data) => {
+
+        data.image = imageLink
+        // console.log(data)
         axios.post("http://" + hostname + "/posts", data, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         }).then((response) => {
             //setListOfPosts(response.data);
+            // redirect to homepage
+            console.log(data)
             history('/', {replace: true});
         });
+        
     };
     const initialValues = {
       title: "",
@@ -58,7 +64,7 @@ function CreatePost() {
       // Sending formData to route
       axios.post("https://api.cloudinary.com/v1_1/ditub0apw/image/upload"
       , formData).then((response) =>  {
-        console.log(response)
+        // console.log(response)
         console.log(response.data.public_id)
         setImageLink("https://res.cloudinary.com/ditub0apw/image/upload/v1649281497/" + response.data.public_id)
         // console.log(imageLink)
@@ -126,8 +132,10 @@ function CreatePost() {
             name="pricePerDay" 
             placeholder="$2/day"
             />
+            
             <input
              type ="file"
+             name="image"
              onChange = {(event) => {
                setImageSelected(event.target.files[0]);
               }}
