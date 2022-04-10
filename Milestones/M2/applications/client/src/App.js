@@ -9,6 +9,7 @@ import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Profile from './pages/Profile';
+import rentLogo from './helpers/renttome_logo.png';
 
 //export const hostname = "rentto.me:3001";
  export const hostname = "localhost:3001";
@@ -58,7 +59,10 @@ function App() {
       <Router>
       <div className="rentLogo"> 
       
-      <a className="rentLogo" href="/"> Rentto.me</a> 
+      <a href="/">
+      <img src={rentLogo}></img>
+      </a> 
+      
 
       </div>
       <div className="navbar">
