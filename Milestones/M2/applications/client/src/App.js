@@ -9,6 +9,7 @@ import { AuthContext } from './helpers/AuthContext';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Profile from './pages/Profile';
+import rentLogo from './helpers/renttome_logo.png';
 
 //export const hostname = "rentto.me:3001";
 export const hostname = "localhost:3001";
@@ -17,7 +18,7 @@ function App() {
 
   const [authState, setAuthState] = useState({
     username: "",
-    id: 0,
+    id: 0, 
     status: false,
   });
 
@@ -56,14 +57,14 @@ function App() {
   return (
 
     <div className="App">
-      <AuthContext.Provider value={{ authState, setAuthState }}>
-        <Router>
-          <div className="rentBackground">
-            <h1>
-              <a className='rentlogo' href="/">
-                
-              </a>
-            </h1>
+      <AuthContext.Provider value={{authState, setAuthState}}>
+      <Router>
+      <div className="rentLogo"> 
+      
+      <a href="/">
+      <img src={rentLogo}></img>
+      </a> 
+      
 
           </div>
 

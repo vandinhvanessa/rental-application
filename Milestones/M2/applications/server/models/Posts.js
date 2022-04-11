@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: false
         },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
     });
     Posts.associate = (models) => {
         Posts.hasMany(models.Comments, {

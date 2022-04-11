@@ -31,13 +31,9 @@ body {
   text-align: center;
   display: flex;
   justify-content: center;
-  background-color: #0093E9;
-  background-image:  url(./helpers/renttomelogo.png),linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-  background-repeat: no-repeat;
-}
-.rentLogo {
-  display: block;
-  background-image:  url(./helpers/renttomelogo.png);
+  background-color:#0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  
 }
 
 .rentLogo a {
@@ -172,6 +168,8 @@ body {
   color: white;
 
 }
+
+
 
 .formContainer button:hover {
   cursor: url('./helpers/blue-wrench.png'), auto;
