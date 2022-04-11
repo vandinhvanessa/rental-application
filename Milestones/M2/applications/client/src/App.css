@@ -6,7 +6,7 @@
   padding-top: 0px;
   flex-direction: column;
   background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
-  cursor: url('./helpers/blue-wrench.png'), auto;
+  
 }
 
 body {
@@ -18,17 +18,13 @@ body {
   width: 24.5vw;
   height: 40px;
   font-size: large;
-  cursor: url('./helpers/blue-wrench.png'), auto;
 }
 
-.App .Dropdown {
-  cursor: url('./helpers/blue-wrench.png'), auto;
-}
-
-.rentLogo {
+/* Rent logo */
+.rentBackground{
   font-size: 100px;
   width: 100%;
-  padding: 10px;
+  height: 200px;
   align-self: center;
   color: white;
   font-family: "Courier New", monospace;
@@ -36,11 +32,15 @@ body {
   display: flex;
   justify-content: center;
   background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-
+  background-image:  url(./helpers/renttomelogo.png),linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  background-repeat: no-repeat;
+}
+.rentLogo {
+  display: block;
+  background-image:  url(./helpers/renttomelogo.png);
 }
 
-.rentLogo .a {
+.rentLogo a {
   color: white;
 }
 
@@ -50,6 +50,7 @@ body {
 }
 
 .post {
+
   width: 550px;
   height: 450px;
   border-radius: 10px;
@@ -198,31 +199,37 @@ span {
 
 .navbar {
   width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding-inline-start: 0cm;
-  padding: 10px;
-  align-items: baseline;
+  height: auto;
+  display:block;
+  position: sticky;
+  justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  text-decoration: none;
 }
 
 .navbar a {
+  margin-top: 10px;
+  justify-content: center;
   border: 1px solid white;
-  padding: 14px;
-  align-items: center;
-  margin-left: 10px;
-  text-decoration: none;
+  padding: 15px;
+  margin: 5px;
   color: white;
-  cursor: url('./helpers/blue-wrench.png'), auto;
+  text-decoration: none;
 }
 
 .navbar button {
-  width: 150px;
-  height: 40px;
-  cursor: url('./helpers/blue-wrench.png'), auto;
+  position:relative; 
+  width: 100px;
+  padding: 15px;
+  color: white;
+  font-size: 16px;
+  border-radius: 0px;
+  border: 1px solid white;
+  display: inline-block;
+  background-color: transparent;
+
 }
 
 /* INDIVIDUAL POST */
@@ -231,7 +238,6 @@ span {
   flex-direction: row;
   width: 100%;
   height: 100%;
-
 }
 
 .leftSide {
@@ -379,6 +385,6 @@ button {
 /* Dropdown menu */
 
 .App .Dropdown {
-  width: 25vw;
+  width: 24vw;
   font-size: large;
 }

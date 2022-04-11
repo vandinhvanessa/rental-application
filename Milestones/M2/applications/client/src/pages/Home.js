@@ -15,18 +15,18 @@ function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryTerm, setCategory] = useState('');
-  
+
   let navigate = useNavigate();
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      navigate("/login", {replace: true});
+      navigate("/login", { replace: true });
     } else {
-    axios.get("http://" + hostname + "/posts", {
-      headers: { accessToken: localStorage.getItem("accessToken") },
-    }).then((response) => {
-      setListOfPosts(response.data);
-    });
-  }
+      axios.get("http://" + hostname + "/posts", {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      }).then((response) => {
+        setListOfPosts(response.data);
+      });
+    }
   }, []);
   //console.log(listOfPosts);
   return (
@@ -34,6 +34,8 @@ function Home() {
       <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
       {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
       <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
+      
+
       {listOfPosts.filter((value) => {
         if (searchTerm == "" && categoryTerm == "") {
           return value;
@@ -56,18 +58,18 @@ function Home() {
             }}> {value.title} </div>
             <div className="body" onClick={() => {
               navigate(`/post/${value.id}`, { replace: true })
-            }}> 
-              {value.postText} 
+            }}>
+              {value.postText}
             </div>
             <div className="rentType"> {value.category} </div>
 
-            <div className="footer"> 
+            <div className="footer">
               <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
               <div className="depositFee">Deposit Fee: {value.depositFee}</div>
               <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
               <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
               <button className='buyButton' type='submit'>Buy Now</button>
-              
+
             </div>
 
           </div>
