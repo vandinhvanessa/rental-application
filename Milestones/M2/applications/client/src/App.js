@@ -9,7 +9,7 @@ import { AuthContext } from './helpers/AuthContext';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Profile from './pages/Profile';
-import rentLogo from './helpers/renttome_logo.png';
+import rentLogo from './helpers/renttomelogo.png';
 
 //export const hostname = "rentto.me:3001";
 export const hostname = "localhost:3001";
@@ -60,7 +60,6 @@ function App() {
       <AuthContext.Provider value={{authState, setAuthState}}>
       <Router>
       <div className="rentLogo"> 
-      
       <a href="/">
       <img src={rentLogo}></img>
       </a> 
