@@ -2,10 +2,10 @@
   "development": {
     "username": "root",
     "password": "goodgrade",
-    "database": "classdb",
+    "database": "TutorialDB",
     "host": "localhost",
     "dialect": "mysql"
-  }, 
+  },
   "test": {
     "username": "root",
     "password": null,
