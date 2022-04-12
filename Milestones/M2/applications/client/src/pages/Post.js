@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { AuthContext } from '../helpers/AuthContext';
 import { hostname } from '../App.js';
-import {Image} from 'cloudinary-react'
+import { Image } from 'cloudinary-react'
 function Post() {
     let { id } = useParams();
     const [postObject, setPostObject] = useState({});
@@ -61,14 +61,14 @@ function Post() {
                         {postObject.title}
                     </div>
                     <div className='body'>
-                        
+
                         <Image
                             style={{ width: 500 }}
                             cloudName="ditub0apw"
                             publicId={postObject.image}
                         />
                     </div>
-                    
+
 
                     <div className='footer'>
                         {postObject.username}

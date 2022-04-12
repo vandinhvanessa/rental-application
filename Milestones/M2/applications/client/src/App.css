@@ -15,24 +15,19 @@ body {
   padding: 0;
 }
 
-.App .SearchBar{
+.App .SearchBar {
   width: 24.5vw;
   height: 40px;
   font-size: large;
-  cursor: url('./helpers/blue-wrench.png'), auto;
 }
 
-.App .Dropdown{
-  cursor: url('./helpers/blue-wrench.png'), auto;
-}
-
-.rentLogo {
+/* Rent logo */
+.rentLogo{
   font-size: 100px;
   width: 100%;
-  padding: 10px;
   align-self: center;
   color: white;
-  font-family:  "Courier New", monospace;
+  font-family: "Courier New", monospace;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -41,7 +36,7 @@ body {
   
 }
 
-.rentLogo .a{
+.rentLogo a {
   color: white;
 }
 
@@ -51,6 +46,7 @@ body {
 }
 
 .post {
+
   width: 550px;
   height: 450px;
   border-radius: 10px;
@@ -59,7 +55,7 @@ body {
   margin-top: 50px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-  
+
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -68,6 +64,7 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: url('./helpers/blue-wrench.png'), auto;
 }
+
 .post .title {
   flex: 25%;
   border-bottom: 1px solid lightgray;
@@ -140,6 +137,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -147,7 +145,7 @@ body {
   width: 500px;
   height: auto;
   padding: 50px;
- 
+
   border-radius: 5px;
 
   background-color: #0093E9;
@@ -172,7 +170,7 @@ body {
   background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
   border-radius: 5px;
   color: white;
-  
+
 }
 
 
@@ -186,6 +184,7 @@ body {
 span {
   color: red;
 }
+
 /* Post buy buttons */
 
 .postBuyButtons button{
@@ -202,33 +201,37 @@ span {
 
 .navbar {
   width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding-inline-start: 0cm;
-  padding: 10px;
-  align-items: baseline;
+  height: auto;
+  display:block;
+  position: sticky;
+  justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-  
-
+  text-decoration: none;
 }
 
 .navbar a {
+  margin-top: 10px;
+  justify-content: center;
   border: 1px solid white;
-  padding: 14px;
-  align-items: center;
-  margin-left: 10px;
-  text-decoration: none;
+  padding: 15px;
+  margin: 5px;
   color: white;
-  cursor: url('./helpers/blue-wrench.png'), auto;
+  text-decoration: none;
 }
 
 .navbar button {
-  width: 150px;
-  height: 40px;
-  cursor: url('./helpers/blue-wrench.png'), auto;
+  position:relative; 
+  width: 100px;
+  padding: 15px;
+  color: white;
+  font-size: 16px;
+  border-radius: 0px;
+  border: 1px solid white;
+  display: inline-block;
+  background-color: transparent;
+
 }
 
 /* INDIVIDUAL POST */
@@ -237,7 +240,6 @@ span {
   flex-direction: row;
   width: 100%;
   height: 100%;
-  
 }
 
 .leftSide {
@@ -377,7 +379,7 @@ button {
   border: 2px solid dodgerblue;
 }
 
-.loginContainer button:hover{
+.loginContainer button:hover {
   cursor: url('./helpers/blue-wrench.png'), auto;
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
@@ -385,6 +387,16 @@ button {
 /* Dropdown menu */
 
 .App .Dropdown {
-  width: 25vw;
+  width: 24vw;
   font-size: large;
+}
+
+/* Profile Page */
+
+.profilePageContainer{
+  display: grid;
+  width: 95%;
+  grid-template-columns: [r1] 1fr [r2] 2fr [r3] 2fr;
+  grid-template-rows: repeat(3, 1fr);
+  
 }

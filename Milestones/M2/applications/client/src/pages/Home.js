@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 //import { DropDownList } from "@progress/kendo-react-dropdowns";
 import '@progress/kendo-theme-default/dist/all.css';
 import { hostname } from '../App.js'
-import {Image} from 'cloudinary-react'
+import { Image } from 'cloudinary-react'
 import Select from 'react-select';
 
 
@@ -16,18 +16,18 @@ function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryTerm, setCategory] = useState('');
-  
+
   let navigate = useNavigate();
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      navigate("/login", {replace: true});
+      navigate("/login", { replace: true });
     } else {
-    axios.get("http://" + hostname + "/posts", {
-      headers: { accessToken: localStorage.getItem("accessToken") },
-    }).then((response) => {
-      setListOfPosts(response.data);
-    });
-  }
+      axios.get("http://" + hostname + "/posts", {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      }).then((response) => {
+        setListOfPosts(response.data);
+      });
+    }
   }, []);
   //console.log(listOfPosts);
   return (
@@ -35,6 +35,8 @@ function Home() {
       <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
       {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
       <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
+
+
       {listOfPosts.filter((value) => {
         if (searchTerm == "" && categoryTerm == "") {
           return value;
@@ -55,27 +57,27 @@ function Home() {
             <div className="title" onClick={() => {
               navigate(`/post/${value.id}`, { replace: true })
             }}> {value.title} </div>
-           
+
             <Image
               className="postImage"
-              style = {{width: 450}}
-              cloudName = "ditub0apw"
-              publicId = {value.image}
+              style={{ width: 450 }}
+              cloudName="ditub0apw"
+              publicId={value.image}
               onClick={() => {
                 navigate(`/post/${value.id}`, { replace: true })
               }}
-              />
-            
+            />
 
-            <div className="footer"> 
+
+            <div className="footer">
               <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
               <div className="depositFee">Deposit Fee: {value.depositFee}</div>
               <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
               <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
               <button className='buyButton' type='submit'>Buy Now</button>
-              
+
             </div>
-            
+
           </div>
         );
       })}
