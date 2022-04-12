@@ -19,7 +19,7 @@ function App() {
 
   const [authState, setAuthState] = useState({
     username: "",
-    id: 0, 
+    id: 0,
     status: false,
   });
 
@@ -58,16 +58,13 @@ function App() {
   return (
 
     <div className="App">
-      <AuthContext.Provider value={{authState, setAuthState}}>
-      <Router>
-      <div className="rentLogo"> 
-      <a href="/">
-      <img src={rentLogo}></img>
-      </a> 
-      
-
+      <AuthContext.Provider value={{ authState, setAuthState }}>
+        <Router>
+          <div className="rentLogo">
+            <a href="/">
+              <img src={rentLogo}></img>
+            </a>
           </div>
-
           {!authState.status ? (
             <div className="navbar">
               <Link to="/"> Home Page</Link>
@@ -96,7 +93,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/profile/:id" exact element={<Profile />} />
             <Route path="/registration" element={<Registration />} />
-            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/cart' element={<Cart />} />
           </Routes>
         </Router>
       </AuthContext.Provider>
