@@ -57,17 +57,17 @@ function Home() {
             <div className="title" onClick={() => {
               navigate(`/post/${value.id}`, { replace: true })
             }}> {value.title} </div>
-            <div className="body" onClick={() => {
-              navigate(`/post/${value.id}`, { replace: true })
-            }}>
-              {value.postText}
-            </div>
+
             <Image
-              style={{ width: 200 }}
+              className="postImage"
+              style={{ width: 450 }}
               cloudName="ditub0apw"
               publicId={value.image}
+              onClick={() => {
+                navigate(`/post/${value.id}`, { replace: true })
+              }}
             />
-            <div className="rentType"> {value.category} </div>
+
 
             <div className="footer">
               <Link to={`/profile/${value.UserId}`}>{value.username}</Link>

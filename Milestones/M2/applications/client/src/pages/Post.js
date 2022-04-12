@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { AuthContext } from '../helpers/AuthContext';
-import { hostname } from '../App.js'
-
+import { hostname } from '../App.js';
+import { Image } from 'cloudinary-react'
 function Post() {
     let { id } = useParams();
     const [postObject, setPostObject] = useState({});
@@ -61,25 +61,19 @@ function Post() {
                         {postObject.title}
                     </div>
                     <div className='body'>
-                        {postObject.postText}
+
+                        <Image
+                            style={{ width: 500 }}
+                            cloudName="ditub0apw"
+                            publicId={postObject.image}
+                        />
                     </div>
-                    <div className='rentType'>
-                        {postObject.category}
-                    </div>
+
+
                     <div className='footer'>
                         {postObject.username}
                     </div>
 
-                </div>
-                <div className='body'>
-                    {postObject.postText}
-                </div>
-                <div className='rentType'>
-                    Category: {postObject.category}
-                </div>
-
-                <div className='footer'>
-                    {postObject.username}
                 </div>
 
             </div>

@@ -65,6 +65,7 @@ function App() {
               <img src={rentLogo}></img>
             </a>
           </div>
+
           {!authState.status ? (
             <div className="navbar">
               <Link to="/"> Home Page</Link>
@@ -94,10 +95,10 @@ function App() {
             <Route path="/profile/:id" exact element={<Profile />} />
             <Route path="/registration" element={<Registration />} />
             <Route path='/cart' element={<Cart />} />
-          </Routes>
-        </Router>
-      </AuthContext.Provider>
-    </div>
+          </Routes >
+        </Router >
+      </AuthContext.Provider >
+    </div >
   );
 }
 
