@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Profile from './pages/Profile';
 import rentLogo from './helpers/renttomelogo.png';
+import Cart from './pages/Cart';
 
 //export const hostname = "rentto.me:3001";
 export const hostname = "localhost:3001";
@@ -70,7 +71,7 @@ function App() {
           {!authState.status ? (
             <div className="navbar">
               <Link to="/"> Home Page</Link>
-              <button>Cart</button>
+              <Link to="/cart">Cart</Link>
               <Link to="/login"> Login</Link>
               <Link to="/registration"> Registration</Link>
             </div>
@@ -79,7 +80,7 @@ function App() {
             <div className="navbar">
               <Link to="/"> Home Page</Link>
               <Link to="/createpost"> Create A Post</Link>
-              <button>Cart</button>
+              <Link to="/cart">Cart</Link>
               <Link to={`/profile/${authState.id}`}>{authState.username}</Link>
               <button onClick={logout}> Logout</button>
 
@@ -95,6 +96,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/profile/:id" exact element={<Profile />} />
             <Route path="/registration" element={<Registration />} />
+            <Route path='/cart' element={<Cart/>}/>
           </Routes>
         </Router>
       </AuthContext.Provider>

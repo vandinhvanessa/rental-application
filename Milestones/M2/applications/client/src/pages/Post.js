@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { AuthContext } from '../helpers/AuthContext';
 import { hostname } from '../App.js'
+
 function Post() {
     let { id } = useParams();
     const [postObject, setPostObject] = useState({});
