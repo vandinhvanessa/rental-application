@@ -81,7 +81,6 @@ function App() {
               <Link to="/cart">Cart</Link>
               <Link to={`/profile/${authState.id}`}>{authState.username}</Link>
               <button onClick={logout}> Logout</button>
-
             </div>
           )}
 

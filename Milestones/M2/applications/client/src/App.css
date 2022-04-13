@@ -1,12 +1,11 @@
 .App {
-  width: 100vw;
+  width: auto;
   height: auto;
   display: flex;
   align-items: center;
   padding-top: 0px;
   flex-direction: column;
   background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
-
 }
 
 body {
@@ -28,7 +27,6 @@ body {
   color: white;
   font-family: "Courier New", monospace;
   text-align: center;
-  display: flex;
   justify-content: center;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
@@ -199,18 +197,18 @@ span {
 /* NAVBAR */
 
 .navbar {
+  display: flex;
   width: 100%;
-  display: block;
   margin-bottom: 20px;
-  position: sticky;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-  text-decoration: none;
+  align-items: baseline;
+  justify-content: flex-end;
 }
 
 .navbar a {
-  justify-content: baseline;
+  font-size: 16px;
   border: 1px solid white;
   padding: 15px;
   margin: 5px;
@@ -221,12 +219,10 @@ span {
 .navbar button {
   position: relative;
   width: 100px;
-  padding: 15px;
   color: white;
   font-size: 16px;
   border-radius: 0px;
   border: 1px solid white;
-  display: inline-block;
   background-color: transparent;
 }
 
