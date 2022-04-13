@@ -19,6 +19,7 @@ body {
   font-size: large;
 }
 
+
 /* Rent logo */
 .rentLogo {
   font-size: 100px;
@@ -44,15 +45,13 @@ body {
 
 .post {
 
-  width: 550px;
+  width: auto;
   height: 450px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -121,9 +120,6 @@ body {
   background-color: white;
 }
 
-
-
-
 /* CREATE POST PAGE CSS */
 
 .createPostPage {
@@ -170,13 +166,10 @@ body {
 
 }
 
-
-
 .formContainer button:hover {
   cursor: url('./helpers/blue-wrench.png'), auto;
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
-
 
 span {
   color: red;
@@ -421,4 +414,24 @@ button {
   border: solid #000000;
   font-size: large;
   font-weight: 600;
+}
+
+/* Hompage */
+
+.homepage-grid{
+  display: grid;
+  width: 95%;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: max-content;
+  grid-template-areas:
+    "filter post post"
+    "filter post post"
+    "filter post post";
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+  gap: 10px;
+}
+
+.homefilters{
+  grid-area: filter;
 }

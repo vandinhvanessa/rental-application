@@ -31,11 +31,12 @@ function Home() {
   }, []);
   //console.log(listOfPosts);
   return (
-    <div className="App">
-      <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
-      {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
-      <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
-
+    <div className="homepage-grid">
+      <div className='homefilters'>
+        <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
+        {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
+        <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
+      </div>
 
       {listOfPosts.filter((value) => {
         if (searchTerm == "" && categoryTerm == "") {
@@ -67,7 +68,6 @@ function Home() {
                 navigate(`/post/${value.id}`, { replace: true })
               }}
             />
-
 
             <div className="footer">
               <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
