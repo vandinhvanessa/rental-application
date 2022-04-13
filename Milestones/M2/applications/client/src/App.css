@@ -200,10 +200,11 @@ span {
 
 .navbar {
   width: 100%;
-  height: auto;
+  padding: 24px;
   display:block;
   position: sticky;
-  justify-content: center;
+  align-items: baseline;
+  justify-content: baseline;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
@@ -211,8 +212,7 @@ span {
 }
 
 .navbar a {
-  margin-top: 10px;
-  justify-content: center;
+  justify-content: baseline;
   border: 1px solid white;
   padding: 15px;
   margin: 5px;
@@ -230,7 +230,6 @@ span {
   border: 1px solid white;
   display: inline-block;
   background-color: transparent;
-
 }
 
 /* INDIVIDUAL POST */
