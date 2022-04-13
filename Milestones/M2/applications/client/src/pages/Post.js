@@ -10,6 +10,7 @@ function Post() {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
     const { authState } = useContext(AuthContext);
+    //let history = useNavigate();
 
     useEffect(() => {
         axios.get(`http://` + hostname + `/posts/byId/${id}`).then((response) => {

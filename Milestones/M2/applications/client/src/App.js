@@ -10,7 +10,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Profile from './pages/Profile';
 import rentLogo from './helpers/renttomelogo.png';
-import Cart from './pages/Cart';
 
 //export const hostname = "rentto.me:3001";
 export const hostname = "localhost:3001";
@@ -96,7 +95,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/profile/:id" exact element={<Profile />} />
             <Route path="/registration" element={<Registration />} />
-            <Route path='/cart' element={<Cart/>}/>
+            
           </Routes>
         </Router>
       </AuthContext.Provider>
