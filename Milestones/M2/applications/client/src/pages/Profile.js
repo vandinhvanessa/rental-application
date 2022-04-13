@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Select from 'react-select';
-
+import { Image } from 'cloudinary-react';
 
 function Profile() {
   let { id } = useParams("");
@@ -54,6 +54,15 @@ function Profile() {
             navigate(`/post/${value.id}`, { replace: true })
           }}>
             <div className="userTitle"> {value.title} </div>
+            <Image
+              className="postImage"
+              style={{ width: 450 }}
+              cloudName="ditub0apw"
+              publicId={value.image}
+              onClick={() => {
+                navigate(`/post/${value.id}`, { replace: true })
+              }}
+            />
             <div className="userBody"> {value.postText} </div>
             <div className="userRentType"> {value.category} </div>
             <div className="userFooter"> {value.username}
