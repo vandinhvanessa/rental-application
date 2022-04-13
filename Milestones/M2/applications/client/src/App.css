@@ -394,7 +394,7 @@ button {
   display: grid;
   width: 95%;
   grid-template-columns: 1fr 2fr 2fr;
-  grid-template-rows: 1fr repeat(2, 3fr);
+  grid-template-rows: max-content;
   grid-template-areas:
     "header header header"
     "filter post post"
