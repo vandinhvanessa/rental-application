@@ -50,7 +50,7 @@ function Profile() {
         }
       }).map((value, key) => {
         return (
-          <div className="post" onClick={() => {
+          <div className="userPost" onClick={() => {
             navigate(`/post/${value.id}`, { replace: true })
           }}>
             <div className="userTitle"> {value.title} </div>

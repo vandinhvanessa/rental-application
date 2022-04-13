@@ -392,6 +392,33 @@ button {
 .profilePageContainer{
   display: grid;
   width: 95%;
-  grid-template-columns: [r1] 1fr [r2] 2fr [r3] 2fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns:  1fr  2fr  2fr;
+  grid-template-rows: 1fr repeat(2, 3fr);
+  grid-template-areas: 
+  "header header header"
+  "filter post post"
+  "filter post post"
+  "filter post post";
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+  gap: 10px;
+
+}
+
+.basicinfo{
+  grid-area: header;
+}
+
+.filters{
+  grid-area: filter;
+}
+
+.userPost{
+  display: grid;
+
+}
+.userTitle{
+  padding: 10px;
+  border-radius: 1px white;
+  border:solid #000000;
 }
