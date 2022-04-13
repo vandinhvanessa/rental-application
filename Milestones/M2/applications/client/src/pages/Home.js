@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 //import { DropDownList } from "@progress/kendo-react-dropdowns";
 import '@progress/kendo-theme-default/dist/all.css';
-import { hostname } from '../App.js'
-import { Image } from 'cloudinary-react'
+import { hostname } from '../App.js';
+import { Image } from 'cloudinary-react';
 import Select from 'react-select';
 
 

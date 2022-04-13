@@ -1,13 +1,11 @@
 .App {
-  width: 100vw;
+  width: auto;
   height: auto;
   display: flex;
   align-items: center;
   padding-top: 0px;
   flex-direction: column;
-  background-image: linear-gradient( 109.6deg,  rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1% );
-  cursor: url('./helpers/blue-wrench.png'), auto;
-  
+  background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
 }
 
 body {
@@ -22,18 +20,17 @@ body {
 }
 
 /* Rent logo */
-.rentLogo{
+.rentLogo {
   font-size: 100px;
   width: 100%;
   align-self: center;
   color: white;
   font-family: "Courier New", monospace;
   text-align: center;
-  display: flex;
   justify-content: center;
-  background-color:#0093E9;
+  background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-  
+
 }
 
 .rentLogo a {
@@ -83,7 +80,7 @@ body {
   background-color: white;
 }
 
-.post .postImage{
+.post .postImage {
   align-self: center;
 }
 
@@ -93,26 +90,26 @@ body {
   display: flex;
   align-items: center;
   padding-left: 15px;
-  
-  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );
+
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.post .footer .buyButton{
+.post .footer .buyButton {
   margin-left: 60px;
 }
 
-.post .footer .pricePerDay{
+.post .footer .pricePerDay {
   padding-left: 20px;
 }
 
-.post .footer .depositFee{
+.post .footer .depositFee {
   padding-left: 50px;
 }
 
-.post .footer .shippingFee{
+.post .footer .shippingFee {
   padding-left: 20px;
 }
 
@@ -187,33 +184,31 @@ span {
 
 /* Post buy buttons */
 
-.postBuyButtons button{
+.postBuyButtons button {
   padding: 20px;
   padding-bottom: 30px;
   background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
 }
 
-.postBuyButtons button:hover{
+.postBuyButtons button:hover {
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
 /* NAVBAR */
 
 .navbar {
+  display: flex;
   width: 100%;
-  height: auto;
-  display:block;
-  position: sticky;
-  justify-content: center;
+  margin-bottom: 20px;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-  text-decoration: none;
+  align-items: baseline;
+  justify-content: flex-end;
 }
 
 .navbar a {
-  margin-top: 10px;
-  justify-content: center;
+  font-size: 16px;
   border: 1px solid white;
   padding: 15px;
   margin: 5px;
@@ -222,16 +217,13 @@ span {
 }
 
 .navbar button {
-  position:relative; 
+  position: relative;
   width: 100px;
-  padding: 15px;
   color: white;
   font-size: 16px;
   border-radius: 0px;
   border: 1px solid white;
-  display: inline-block;
   background-color: transparent;
-
 }
 
 /* INDIVIDUAL POST */
@@ -296,7 +288,7 @@ button {
   align-items: center;
 }
 
-.rightSide .postInfo{
+.rightSide .postInfo {
   place-items: left;
   padding-right: 20px;
   padding-left: 50px;
@@ -304,7 +296,7 @@ button {
   font-size: larger;
 }
 
-.rightSide .postInfo .otherInfo{
+.rightSide .postInfo .otherInfo {
   padding-right: 12cm;
 }
 
@@ -324,7 +316,7 @@ button {
   width: 600px;
 }
 
-#individual .title{
+#individual .title {
   flex: 25%;
   font-size: 30px;
 }
@@ -347,9 +339,10 @@ button {
   background-color: white;
 }
 
-#individual .pricePerDay{
+#individual .pricePerDay {
   padding-left: 4cm;
 }
+
 /* LOGIN */
 
 .loginContainer {
@@ -393,10 +386,40 @@ button {
 
 /* Profile Page */
 
-.profilePageContainer{
+.profilePageContainer {
   display: grid;
   width: 95%;
-  grid-template-columns: [r1] 1fr [r2] 2fr [r3] 2fr;
-  grid-template-rows: repeat(3, 1fr);
-  
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: max-content;
+  grid-template-areas:
+    "header header header"
+    "filter post post"
+    "filter post post"
+    "filter post post";
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+  gap: 10px;
+
+}
+
+.basicinfo {
+  grid-area: header;
+}
+
+.filters {
+  grid-area: filter;
+}
+
+.userPost {
+  display: grid;
+
+}
+
+.userTitle {
+  padding: 10px;
+  border-radius: 1px white;
+  border: solid #000000;
+  font-size: large;
+  font-weight: 600;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }

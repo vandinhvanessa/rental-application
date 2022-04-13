@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Profile from './pages/Profile';
 import rentLogo from './helpers/renttomelogo.png';
-
+import Cart from './pages/Cart';
 //export const hostname = "rentto.me:3001";
 export const hostname = "localhost:3001";
 
@@ -18,7 +18,7 @@ function App() {
 
   const [authState, setAuthState] = useState({
     username: "",
-    id: 0, 
+    id: 0,
     status: false,
   });
 
@@ -57,14 +57,12 @@ function App() {
   return (
 
     <div className="App">
-      <AuthContext.Provider value={{authState, setAuthState}}>
-      <Router>
-      <div className="rentLogo"> 
-      <a href="/">
-      <img src={rentLogo}></img>
-      </a> 
-      
-
+      <AuthContext.Provider value={{ authState, setAuthState }}>
+        <Router>
+          <div className="rentLogo">
+            <a href="/">
+              <img src={rentLogo}></img>
+            </a>
           </div>
 
           {!authState.status ? (
@@ -82,7 +80,6 @@ function App() {
               <Link to="/cart">Cart</Link>
               <Link to={`/profile/${authState.id}`}>{authState.username}</Link>
               <button onClick={logout}> Logout</button>
-
             </div>
           )}
 
@@ -95,11 +92,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/profile/:id" exact element={<Profile />} />
             <Route path="/registration" element={<Registration />} />
-            
-          </Routes>
-        </Router>
-      </AuthContext.Provider>
-    </div>
+            <Route path='/cart' element={<Cart />} />
+          </Routes >
+        </Router >
+      </AuthContext.Provider >
+    </div >
   );
 }
 
