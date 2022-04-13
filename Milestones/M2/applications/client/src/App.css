@@ -395,6 +395,23 @@ button {
 
 }
 
+@media screen and (max-width: 1000px) {
+  .profilePageContainer {
+    display: grid;
+    width: 95%;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: max-content;
+    grid-template-areas:
+      "header header"
+      "filter post"
+      "filter post"
+      "filter post";
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 10px;
+  }
+}
+
 .basicinfo {
   grid-area: header;
 }
@@ -418,7 +435,7 @@ button {
 
 /* Hompage */
 
-.homepage-grid{
+.homepage-grid {
   display: grid;
   width: 95%;
   grid-template-columns: 1fr 2fr 2fr;
@@ -432,6 +449,23 @@ button {
   gap: 10px;
 }
 
-.homefilters{
+@media screen and (max-width: 1000px) {
+  .homepage-grid {
+    display: grid;
+    width: 95%;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: max-content;
+    grid-template-areas:
+      "filter post"
+      "filter post"
+      "filter post";
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.homefilters {
   grid-area: filter;
 }
+
