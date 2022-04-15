@@ -422,6 +422,14 @@ button {
 
 .userPost {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "title title category"
+    "image image image"
+    "deposit ship perday"
+    "description description description"
+    "edit blank remove";
+    justify-items: center;
 }
 
 .userTitle {
@@ -430,8 +438,41 @@ button {
   border: solid #000000;
   font-size: large;
   font-weight: 600;
+  grid-area: title;
+  
 }
 
+.userRentType{
+  grid-area: category;
+}
+
+.userBody{
+  grid-area: description;
+}
+
+.userPostImage{
+  grid-area: image;
+}
+
+.userDepositFee{
+  grid-area: deposit;
+}
+
+.userShippingFee{
+  grid-area: ship;
+}
+
+.userPricePerDay{
+  grid-area: perday;
+}
+
+.editButton{
+  grid-area: edit;
+}
+
+.removeButton{
+  grid-area: remove;
+}
 /* Hompage */
 
 .homepage-grid {

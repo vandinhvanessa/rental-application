@@ -55,7 +55,7 @@ function Profile() {
           }}>
             <div className="userTitle"> {value.title} </div>
             <Image
-              className="postImage"
+              className="userPostImage"
               style={{ width: 450 }}
               cloudName="ditub0apw"
               publicId={value.image}
@@ -65,13 +65,13 @@ function Profile() {
             />
             <div className="userBody"> {value.postText} </div>
             <div className="userRentType"> {value.category} </div>
-            <div className="userFooter"> {value.username}
-              <div className="userDepositFee">Deposit Fee: {value.depositFee}</div>
-              <div className="userShippingFee">Shipping Fee: {value.shippingFee}</div>
-              <div className="userPricePerDay">$/Day: {value.pricePerDay}</div>
-              <button className='editButton' type='submit'>Edit</button>
-              <button className='removeButton' type='submit'>Remove</button>
-            </div>
+
+            <div className="userDepositFee">Deposit Fee: {value.depositFee}</div>
+            <div className="userShippingFee">Shipping Fee: {value.shippingFee}</div>
+            <div className="userPricePerDay">$/Day: {value.pricePerDay}</div>
+            <button className='editButton' type='submit'>Edit</button>
+            <button className='removeButton' type='submit'>Remove</button>
+
           </div>
         );
       })}
