@@ -83,6 +83,8 @@ body {
 
 .post .postImage {
   align-self: center;
+  width: auto;
+  height: auto;
 }
 
 .post .footer {
@@ -469,5 +471,6 @@ button {
 
 .homefilters {
   grid-area: filter;
+  
 }
 
