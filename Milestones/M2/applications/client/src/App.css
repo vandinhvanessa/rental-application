@@ -422,7 +422,6 @@ button {
 
 .userPost {
   display: grid;
-
 }
 
 .userTitle {
@@ -463,9 +462,5 @@ button {
     grid-auto-columns: 1fr;
     gap: 10px;
   }
-}
-
-.homefilters {
-  grid-area: filter;
 }
 

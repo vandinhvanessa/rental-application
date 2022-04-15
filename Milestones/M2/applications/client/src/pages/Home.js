@@ -32,7 +32,7 @@ function Home() {
   //console.log(listOfPosts);
   return (
     <div className="homepage-grid">
-      <div className='homefilters'>
+      <div className='filters'>
         <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
         {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
         <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
