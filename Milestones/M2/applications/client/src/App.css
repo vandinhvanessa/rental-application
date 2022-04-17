@@ -11,6 +11,8 @@
 body {
   margin: 0;
   padding: 0;
+  background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
+  height: 100%;
 }
 
 .App .SearchBar {
@@ -321,6 +323,7 @@ button {
   border: 1px solid lightgray;
   border-radius: 10px;
   margin-top: 5px;
+  
 }
 
 .listOfComments .comment button{
@@ -328,7 +331,13 @@ button {
   margin-left: 290px;
 }
 
-
+.commentBody{
+  width: 300px;
+  height: 50px;
+  
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 
 #individual {
   height: 500px;

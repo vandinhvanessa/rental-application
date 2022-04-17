@@ -131,9 +131,10 @@ function Post() {
                                     Username: {comment.username}
                                     {authState.username === comment.username && <button className="commentDelete" onClick={() => { deleteComment(comment.id) }}> X </button>}
                                 </label>
-                                <label>
+                                
+                                <div className="commentBody">
                                     {comment.commentBody}
-                                </label>
+                                </div>
 
 
                             </div>);
