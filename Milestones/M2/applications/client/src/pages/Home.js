@@ -81,9 +81,7 @@ function Home() {
               <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
               <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
               <button className='buyButton' type='submit'>Buy Now</button>
-
             </div>
-
           </div>
         );
       })}
