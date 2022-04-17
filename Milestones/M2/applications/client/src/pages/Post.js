@@ -101,7 +101,10 @@ function Post() {
                     </div>
 
                     <div className="postDescription">
-                        Description: {postObject.postText}
+                        Description: 
+                    </div>
+                    <div className="postDescription">
+                        {postObject.postText}
                     </div>
                 </div>
 
