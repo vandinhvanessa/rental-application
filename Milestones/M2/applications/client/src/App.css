@@ -34,8 +34,8 @@ body {
   justify-content: center;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-  
-  
+
+
 }
 
 .rentLogo a {
@@ -216,7 +216,7 @@ span {
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
 
-.navbar a:hover{
+.navbar a:hover {
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
@@ -230,7 +230,7 @@ span {
   background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
 }
 
-.navbar button:hover{
+.navbar button:hover {
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
@@ -445,53 +445,62 @@ button {
     "deposit ship perday"
     "description description description"
     "edit blank remove";
-    background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
+  text-align: center;
 }
 
 .userPost .userTitle {
   padding: 10px;
-  border-radius: 1px white;
-  border: solid #000000;
+  border-radius: 3px;
+  border: 1px solid #000000;
   font-size: large;
   font-weight: 600;
   grid-area: title;
   
 }
 
-.userPost .userRentType{
+.userPost .userRentType {
   grid-area: category;
   padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #000000;
+  
 }
 
-.userPost .userBody{
+.userPost .userBody {
   grid-area: description;
+  padding-top: 10px;
 }
 
-.userPost .userPostImage{
+.userPost .userPostImage {
   grid-area: image;
   justify-self: center;
   border: 1px solid black;
 }
 
-.userPost .userDepositFee{
+.userPost .userDepositFee {
   grid-area: deposit;
+  padding: 10px;
 }
 
-.userPost .userShippingFee{
+.userPost .userShippingFee {
   grid-area: ship;
+  padding: 10px;
 }
 
-.userPost .userPricePerDay{
+.userPost .userPricePerDay {
   grid-area: perday;
+  padding: 10px;
 }
 
-.userPost .editButton{
+.userPost .editButton {
   grid-area: edit;
 }
 
-.userPost .removeButton{
+.userPost .removeButton {
   grid-area: remove;
 }
+
 /* Hompage */
 
 .homepage-grid {
@@ -544,7 +553,7 @@ button {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -566,4 +575,3 @@ button {
 .dropdown:hover .dropbtn {
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
-

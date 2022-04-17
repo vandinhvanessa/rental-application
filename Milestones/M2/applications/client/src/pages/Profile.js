@@ -67,7 +67,7 @@ function Profile() {
               }}
             />
             <div className="userBody"> {value.postText} </div>
-            <div className="userRentType"> {value.category} </div>
+            <div className="userRentType">Category: {value.category} </div>
 
             <div className="userDepositFee">Deposit Fee: {value.depositFee}</div>
             <div className="userShippingFee">Shipping Fee: {value.shippingFee}</div>
