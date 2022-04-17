@@ -6,29 +6,32 @@ import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import Cart from './pages/Cart'
 import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Profile from './pages/Profile';
+import CartContext from './pages/User/Cart';
 
 //export const hostname = "rentto.me:3001";
  export const hostname = "localhost:3001";
+
 function App() {
   
-  const {products} = listOfPosts;
+  // const {products} = listOfPosts;
   
 
-  const [cartItems, setCartItems] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  const onAdd = (product) => {
-    const exist = cartItems.find(x => x.id === product.id);
-    if (exist) {
-      setCartItems(cartItems.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1} : x))
-    }
-    else {
-      setCartItems([...cartItems, {...products, qty: 1}])
-    }
-  }
+  // const onAdd = (product) => {
+  //   const exist = cartItems.find(x => x.id === product.id);
+  //   if (exist) {
+  //     setCartItems(cartItems.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1} : x))
+  //   }
+  //   else {
+  //     setCartItems([...cartItems, {...products, qty: 1}])
+  //   }
+  // }
 
   const [authState, setAuthState] = useState({
     username: "",
@@ -71,6 +74,7 @@ function App() {
     
     <div className="App">
       <AuthContext.Provider value={{authState, setAuthState}}>
+      <CartContext.Provider value={{cart,setCart}}>
       <Router>
       <div className="rentLogo"> 
       
@@ -94,7 +98,8 @@ function App() {
           <Link to={`/profile/${authState.id}`}>{authState.username}</Link>
           </>
         )}
-        <button>Cart</button>
+        <Link to={`/cart`}>Cart</Link>
+        {/* <button >Cart</button> */}
         
         {/*<h1 className="usernameLogin">{authState.username}</h1>*/}
         
@@ -107,8 +112,10 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/profile/:id" exact element={<Profile/>}/>
           <Route path="/registration" element={<Registration/>}/>
+          <Route path="/cart" element={<Cart/>}/>
         </Routes>
       </Router>
+      </CartContext.Provider>
       </AuthContext.Provider>
     </div>
   );

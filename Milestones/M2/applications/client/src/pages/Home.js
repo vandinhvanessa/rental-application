@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,6 +7,8 @@ import '@progress/kendo-theme-default/dist/all.css';
 import { hostname } from '../App.js'
 import {Image} from 'cloudinary-react'
 import Select from 'react-select';
+import CartContext from './User/Cart';
+
 
 
 const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
@@ -16,9 +18,9 @@ function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryTerm, setCategory] = useState('');
-  const [cart, setCart] = useState([]);
+  const {cart, setCart} = useContext(CartContext)
   const addToCart = (product) => {
-    console.log(product)
+    // console.log(product)
     setCart([...cart, product]);
     console.log(cart)
   }
