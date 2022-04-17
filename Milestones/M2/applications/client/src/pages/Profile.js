@@ -56,7 +56,7 @@ function Profile() {
           <div className="userPost" onClick={() => {
             navigate(`/post/${value.id}`, { replace: true })
           }}>
-            <div className="userTitle"> {value.title} </div>
+            <div className="userTitle">Title: {value.title} </div>
             <Image
               className="userPostImage"
               style={{ width: 450 }}
