@@ -8,7 +8,6 @@ import { hostname } from '../App.js';
 import { Image } from 'cloudinary-react';
 import Select from 'react-select';
 
-
 //const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
 //{ value: "Bicycle Gear", label: "Bicycle Gear" }, { value: "Snow Gear", label: "Snow Gear" },
 //{ value: "Climbing Gear", label: "Climbing Gear" }, { value: "Silverware", label: "Silverware" }, { value: "Other", label: "Other" }];

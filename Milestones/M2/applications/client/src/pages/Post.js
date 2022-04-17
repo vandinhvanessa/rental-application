@@ -80,28 +80,32 @@ function Post() {
             </div>
 
             <div className='rightSide'>
-                <div className='postBuyButtons'>
-                    <button>Add to Cart</button>
-                    <button>Buy Now</button>
-                </div>
+
                 <div className="postInfo">
+                    <div className='postBuyButtons'>
+                        <button>Add to Cart</button>
+                        <button>Buy Now</button>
+                    </div>
                     <div className="otherInfo">
                         <div className="postCategory">
                             Category: {postObject.category}
                         </div>
                         <div className='depositFee'>
-                            Deposit Fee: {postObject.depositFee}
+                            Deposit Fee: ${postObject.depositFee}
                         </div>
                         <div className='shippingFee'>
-                            Shipping Fee: {postObject.shippingFee}
+                            Shipping Fee: ${postObject.shippingFee}
                         </div>
                         <div className='pricePerDay'>
-                            $/Day: {postObject.pricePerDay}
+                            $/Day: ${postObject.pricePerDay}
                         </div>
                     </div>
 
                     <div className="postDescription">
-                        Description: {postObject.postText}
+                        Description:
+                    </div>
+                    <div className="postDescription">
+                        {postObject.postText}
                     </div>
                 </div>
 
@@ -125,10 +129,14 @@ function Post() {
 
                                 <label>
                                     Username: {comment.username}
+                                    {authState.username === comment.username && <button className="commentDelete" onClick={() => { deleteComment(comment.id) }}> X </button>}
                                 </label>
+                                
+                                <div className="commentBody">
+                                    {comment.commentBody}
+                                </div>
 
-                                {comment.commentBody}
-                                {authState.username === comment.username && <button onClick={() => { deleteComment(comment.id) }}> X </button>}
+
                             </div>);
                     })}
                 </div>

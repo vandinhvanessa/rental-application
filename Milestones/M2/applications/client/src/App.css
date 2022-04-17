@@ -1,19 +1,18 @@
 .App {
   width: auto;
-  height: auto;
+  height: 100%;
   display: flex;
   align-items: center;
   padding-top: 0px;
   flex-direction: column;
   background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
-
 }
 
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
   background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
+  height: 100%;
 }
 
 .App .SearchBar {
@@ -48,7 +47,6 @@ body {
 }
 
 .post {
-
   width: auto;
   height: 450px;
   border-radius: 10px;
@@ -68,6 +66,7 @@ body {
 .post .title {
   flex: 25%;
   border-bottom: 1px solid lightgray;
+  border-radius: 10px;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   font-size: larger;
@@ -87,6 +86,8 @@ body {
   align-self: center;
   width: auto;
   height: auto;
+  max-width: 450px;
+  max-height: 320px;
 }
 
 .post .footer {
@@ -143,7 +144,7 @@ body {
   justify-content: center;
   width: 500px;
   height: auto;
-  padding: 50px;
+  padding: 70px;
 
   border-radius: 5px;
 
@@ -186,11 +187,11 @@ span {
 .postBuyButtons button {
   padding: 20px;
   padding-bottom: 30px;
-  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
+  background-color: white;
 }
 
 .postBuyButtons button:hover {
-  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
+  background-color: #f1f1f1;
 }
 
 /* NAVBAR */
@@ -247,6 +248,7 @@ span {
   height: calc(100vh - 70px);
   display: grid;
   place-items: center;
+  align-content: flex-start;
 }
 
 .rightSide {
@@ -256,7 +258,7 @@ span {
   place-items: center;
   display: flex;
   flex-direction: column;
-  padding-top: 0.5cm;
+  
 }
 
 .rightSide .addCommentContainer {
@@ -298,26 +300,44 @@ button {
 
 .rightSide .postInfo {
   place-items: left;
-  padding-right: 20px;
+  
   padding-left: 50px;
-  padding-top: 1.5cm;
+  padding-top: 1cm;
+  padding-bottom: 1cm;
   font-size: larger;
+  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
+  border: 2px solid black;
+  border-radius: 10px ;
 }
 
 .rightSide .postInfo .otherInfo {
   padding-right: 12cm;
+  padding-bottom: 10px;
 }
 
 
 .listOfComments .comment {
   width: 70%;
-  height: auto;
-  padding: 30px;
+  height: 35%;
+  padding-left: 15px;
   border: 1px solid lightgray;
-  border-radius: 5px;
-  margin-top: 20px;
+  border-radius: 10px;
+  margin-top: 5px;
+  
 }
 
+.listOfComments .comment button{
+  width: 75px;
+  margin-left: 290px;
+}
+
+.commentBody{
+  width: 300px;
+  height: 50px;
+  
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 
 #individual {
   height: 500px;
