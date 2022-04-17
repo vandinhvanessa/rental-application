@@ -6,7 +6,6 @@ import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
-<<<<<<< HEAD
 import Cart from './pages/Cart'
 import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
@@ -33,18 +32,6 @@ function App() {
   //     setCartItems([...cartItems, {...products, qty: 1}])
   //   }
   // }
-=======
-import { AuthContext } from './helpers/AuthContext';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import Profile from './pages/Profile';
-import rentLogo from './helpers/renttomelogo.png';
-import Cart from './pages/Cart';
-//export const hostname = "rentto.me:3001";
-export const hostname = "localhost:3001";
-
-function App() {
->>>>>>> db353b04060bac046e5081200449f2ff154af07e
 
   const [authState, setAuthState] = useState({
     username: "",
@@ -87,7 +74,6 @@ function App() {
   return (
 
     <div className="App">
-<<<<<<< HEAD
       <AuthContext.Provider value={{authState, setAuthState}}>
       <CartContext.Provider value={{cart,setCart}}>
       <Router>
@@ -133,59 +119,6 @@ function App() {
       </CartContext.Provider>
       </AuthContext.Provider>
     </div>
-=======
-      <AuthContext.Provider value={{ authState, setAuthState }}>
-        <Router>
-          <div className="rentLogo">
-            <a href="/">
-              <img src={rentLogo}></img>
-            </a>
-          </div>
-
-          {!authState.status ? (
-            <div className="navbar">
-              <Link to="/"> Home Page</Link>
-              <Link to="/cart">Cart</Link>
-              <Link to="/login"> Login</Link>
-              <Link to="/registration"> Registration</Link>
-            </div>
-          ) : (
-
-            <div className="navbar">
-              <Link to="/"> Home Page</Link>
-              <Link to="/createpost"> Create A Post</Link>
-              <Link to="/cart">Cart</Link>
-              <div className="dropdown">
-                <button className="dropbtn">{authState.username}</button>
-                <div className="dropdown-content">
-                  <Link to={`/profile/${authState.id}`}>Profile</Link>
-                  <p>Reviews</p>
-                  <p>Purchase History</p>
-                  <p>View History</p>
-                  <p>Settings</p>
-                </div>
-              </div>
-              
-
-              <button onClick={logout}> Logout</button>
-            </div>
-          )}
-
-          {/*<h1 className="usernameLogin">{authState.username}</h1>*/}
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/createpost" element={<CreatePost />} />
-            <Route path="/post/:id" element={<Post />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/profile/:id" exact element={<Profile />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path='/cart' element={<Cart />} />
-          </Routes >
-        </Router >
-      </AuthContext.Provider >
-    </div >
->>>>>>> db353b04060bac046e5081200449f2ff154af07e
   );
 }
 

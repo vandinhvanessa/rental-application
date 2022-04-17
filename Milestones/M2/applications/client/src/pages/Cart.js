@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect , useState, useContext} from 'react';
 import {Link, useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
@@ -10,16 +9,17 @@ function Cart(){
     let navigate = useNavigate();
     const {cart, setCart} = useContext(CartContext)
     // console.log(cart)
-    // const removeFromCart = (product) => {
-    //     // console.log(product)
-    //     setCart([...cart, product]);
-    //     // console.log(cart)
-    //   }
+    const removeFromCart = (id) => {
+        console.log("removed from cart")
+        const newCart = cart.filter((product) => product.id !== id);
+        
+        setCart(newCart);
+      }
     return(
         <div>
             {cart.map((value, key) => {
         return (
-          <div className="post" key ={key}>
+          <div className="post" key ={value.id}>
             <div className="title" onClick={() => {
               navigate(`/post/${value.id}`, { replace: true })
             }}> {value.title} </div>
@@ -40,7 +40,7 @@ function Cart(){
               <div className="depositFee">Deposit Fee: {value.depositFee}</div>
               <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
               <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
-              <button className='buyButton' /*onClick={() => addToCart(value)}*/ >Remove from Cart</button>
+              <button className='buyButton' onClick={() => removeFromCart(value)} >Remove from Cart</button>
               
             </div>
             
@@ -50,16 +50,6 @@ function Cart(){
       })}
         </div>
         
-=======
-import React, { useEffect , useState} from 'react';
-import {useParams, useNavigate} from 'react-router-dom';
-import axios from 'axios';
-import Select from 'react-select';
-
-function Cart(){
-    return(
-        <div>hello</div>
->>>>>>> db353b04060bac046e5081200449f2ff154af07e
     )
 }
 
