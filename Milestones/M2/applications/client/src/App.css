@@ -493,7 +493,7 @@ button {
 
 .homepage-grid {
   display: grid;
-  width: auto;
+  width: 90%;
   grid-template-columns: 1fr 2fr 2fr;
   grid-template-rows: max-content;
   grid-template-areas:
