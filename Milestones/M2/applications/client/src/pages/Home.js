@@ -16,6 +16,12 @@ function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryTerm, setCategory] = useState('');
+  const [cart, setCart] = useState([]);
+  const addToCart = (product) => {
+    console.log(product)
+    setCart([...cart, product]);
+    console.log(cart)
+  }
   
   let navigate = useNavigate();
   useEffect(() => {
@@ -51,7 +57,7 @@ function Home() {
         }
       }).map((value, key) => {
         return (
-          <div className="post" >
+          <div className="post" key ={key}>
             <div className="title" onClick={() => {
               navigate(`/post/${value.id}`, { replace: true })
             }}> {value.title} </div>
@@ -72,11 +78,12 @@ function Home() {
               <div className="depositFee">Deposit Fee: {value.depositFee}</div>
               <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
               <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
-              <button className='buyButton' type='submit'>Buy Now</button>
+              <button className='buyButton' onClick={() => addToCart(value)} >Add To Cart</button>
               
             </div>
             
           </div>
+          
         );
       })}
     </div>

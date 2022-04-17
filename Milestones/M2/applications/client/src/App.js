@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import Home from './pages/Home';
+import listOfPosts from './pages/Home'
 import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 import Login from './pages/Login';
@@ -14,6 +15,21 @@ import Profile from './pages/Profile';
  export const hostname = "localhost:3001";
 function App() {
   
+  const {products} = listOfPosts;
+  
+
+  const [cartItems, setCartItems] = useState([]);
+
+  const onAdd = (product) => {
+    const exist = cartItems.find(x => x.id === product.id);
+    if (exist) {
+      setCartItems(cartItems.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1} : x))
+    }
+    else {
+      setCartItems([...cartItems, {...products, qty: 1}])
+    }
+  }
+
   const [authState, setAuthState] = useState({
     username: "",
     id: 0, 
@@ -63,7 +79,7 @@ function App() {
       </div>
       <div className="navbar">
         <Link to="/"> Home Page</Link>
-        <button>Cart</button>
+        
 
         {!authState.status ? (
           <>
@@ -78,6 +94,7 @@ function App() {
           <Link to={`/profile/${authState.id}`}>{authState.username}</Link>
           </>
         )}
+        <button>Cart</button>
         
         {/*<h1 className="usernameLogin">{authState.username}</h1>*/}
         
