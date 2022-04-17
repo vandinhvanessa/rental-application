@@ -46,7 +46,6 @@ body {
 }
 
 .post {
-
   width: auto;
   height: 450px;
   border-radius: 10px;
@@ -66,6 +65,7 @@ body {
 .post .title {
   flex: 25%;
   border-bottom: 1px solid lightgray;
+  border-radius: 10px;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   font-size: larger;
@@ -85,6 +85,8 @@ body {
   align-self: center;
   width: auto;
   height: auto;
+  max-width: 450px;
+  max-height: 320px;
 }
 
 .post .footer {
@@ -184,11 +186,11 @@ span {
 .postBuyButtons button {
   padding: 20px;
   padding-bottom: 30px;
-  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
+  background-color: white;
 }
 
 .postBuyButtons button:hover {
-  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
+  background-color: #f1f1f1;
 }
 
 /* NAVBAR */
@@ -296,7 +298,7 @@ button {
 
 .rightSide .postInfo {
   place-items: left;
-  padding-right: 20px;
+  
   padding-left: 50px;
   padding-top: 1cm;
   padding-bottom: 1cm;
@@ -314,12 +316,18 @@ button {
 
 .listOfComments .comment {
   width: 70%;
-  height: auto;
-  padding: 30px;
+  height: 35%;
+  padding-left: 15px;
   border: 1px solid lightgray;
-  border-radius: 5px;
-  margin-top: 20px;
+  border-radius: 10px;
+  margin-top: 5px;
 }
+
+.listOfComments .comment button{
+  width: 75px;
+  margin-left: 290px;
+}
+
 
 
 #individual {
