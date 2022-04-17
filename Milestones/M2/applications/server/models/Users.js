@@ -9,6 +9,30 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        email:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        address:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        city:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        state:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        zipCode:{
+            type: DataTypes.STRING,
+            allowNull: false
+        }, 
+        country:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
     });
     Users.associate = (models) => {
         Users.hasMany(models.Posts, {

@@ -56,7 +56,7 @@ function Profile() {
           <div className="userPost" onClick={() => {
             navigate(`/post/${value.id}`, { replace: true })
           }}>
-            <div className="userTitle"> {value.title} </div>
+            <div className="userTitle">Title: {value.title} </div>
             <Image
               className="userPostImage"
               style={{ width: 450 }}
@@ -67,7 +67,7 @@ function Profile() {
               }}
             />
             <div className="userBody"> {value.postText} </div>
-            <div className="userRentType"> {value.category} </div>
+            <div className="userRentType">Category: {value.category} </div>
 
             <div className="userDepositFee">Deposit Fee: {value.depositFee}</div>
             <div className="userShippingFee">Shipping Fee: {value.shippingFee}</div>
