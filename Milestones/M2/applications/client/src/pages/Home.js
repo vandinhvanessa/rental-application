@@ -9,9 +9,16 @@ import { Image } from 'cloudinary-react';
 import Select from 'react-select';
 
 
-const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
-{ value: "Bicycle Gear", label: "Bicycle Gear" }, { value: "Snow Gear", label: "Snow Gear" },
-{ value: "Climbing Gear", label: "Climbing Gear" }, { value: "Silverware", label: "Silverware" }, { value: "Other", label: "Other" }];
+//const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
+//{ value: "Bicycle Gear", label: "Bicycle Gear" }, { value: "Snow Gear", label: "Snow Gear" },
+//{ value: "Climbing Gear", label: "Climbing Gear" }, { value: "Silverware", label: "Silverware" }, { value: "Other", label: "Other" }];
+
+const categories = [{ value: "All", label: "All"}, {value: "Bicycle Gear", label: "Bicycle Gear"}, 
+{value: "Climbing Gear", label: "Climbing Gear"}, {value: "Electronics", label: "Electronics"}, {value: "Garden", label: "Garden"}, 
+{value: "Hiking Gear", label: "Hiking Gear"}, {value: "Home", label: "Home"}, {value: "Industrial", label: "Industrial"}, 
+{value: "Outdoors", label: "Outdoors"}, {value: "Pet Supplies", label: "Pet Supplies"}, {value: "Scientific", label: "Scientific"} , 
+{value: "Silverware", label: "Silverware"}, {value: "Snow Gear", label: "Snow Gear"}, {value: "Tools", label: "Tools"}, 
+{value: "Toys", label: "Toys"}, {value: "Other", label: "Other"}];
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');

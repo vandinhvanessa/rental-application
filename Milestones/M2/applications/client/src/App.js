@@ -78,7 +78,18 @@ function App() {
               <Link to="/"> Home Page</Link>
               <Link to="/createpost"> Create A Post</Link>
               <Link to="/cart">Cart</Link>
-              <Link to={`/profile/${authState.id}`}>{authState.username}</Link>
+              <div className="dropdown">
+                <button className="dropbtn">{authState.username}</button>
+                <div className="dropdown-content">
+                  <Link to={`/profile/${authState.id}`}>Profile</Link>
+                  <p>Reviews</p>
+                  <p>Purchase History</p>
+                  <p>View History</p>
+                  <p>Settings</p>
+                </div>
+              </div>
+              
+
               <button onClick={logout}> Logout</button>
             </div>
           )}

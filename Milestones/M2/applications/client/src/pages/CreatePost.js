@@ -102,12 +102,20 @@ function CreatePost() {
           >
             <option value="" selected disabled>Please Select</option>
             <option value="All">All</option>
-            <option value="Tools">Tools</option>
-            <option value="Hiking Gear">Hiking Gear</option>
             <option value="Bicycle Gear">Bicycle Gear</option>
-            <option value="Snow Gear">Snow Gear</option>
             <option value="Climbing Gear">Climbing Gear</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Garden">Garden</option>
+            <option value="Hiking Gear">Hiking Gear</option>
+            <option value="Home">Home</option>
+            <option value="Industrial">Industrial</option>
+            <option value="Outdoors">Outdoors</option>
+            <option value="Pet Supplies">Pet Supplies</option>
+            <option value="Scientific">Scientific</option>
             <option value="Silverware">Silverware</option>
+            <option value="Snow Gear">Snow Gear</option>
+            <option value="Tools">Tools</option>
+            <option value="Toys">Toys</option>
             <option value="Other">Other</option>
           </Field>
 
