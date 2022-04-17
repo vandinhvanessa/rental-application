@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect , useState, useContext} from 'react';
 import {Link, useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
@@ -49,6 +50,16 @@ function Cart(){
       })}
         </div>
         
+=======
+import React, { useEffect , useState} from 'react';
+import {useParams, useNavigate} from 'react-router-dom';
+import axios from 'axios';
+import Select from 'react-select';
+
+function Cart(){
+    return(
+        <div>hello</div>
+>>>>>>> db353b04060bac046e5081200449f2ff154af07e
     )
 }
 
