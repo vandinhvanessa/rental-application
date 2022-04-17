@@ -490,6 +490,8 @@ button {
 .userPost .userBody {
   grid-area: description;
   padding-top: 10px;
+  border-radius: 3px;
+  border: 1px solid #000000;
 }
 
 .userPost .userPostImage {
