@@ -490,6 +490,8 @@ button {
 .userPost .userBody {
   grid-area: description;
   padding-top: 10px;
+  border-radius: 3px;
+  border: 1px solid #000000;
 }
 
 .userPost .userPostImage {
@@ -513,8 +515,80 @@ button {
   padding: 10px;
 }
 
+.dropdown .dropbtn {
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid white;
+}
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
+}
+
+/* Hompage */
+
+.homepage-grid {
+  display: grid;
+  width: auto;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: max-content;
+  grid-template-areas:
+    "filter post post"
+    "filter post post"
+    "filter post post";
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+  gap: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .homepage-grid {
+    display: grid;
+    width: 95%;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: max-content;
+    grid-template-areas:
+      "filter post"
+      "filter post"
+      "filter post";
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 10px;
+  }
+}
 /* cart*/
 
 h1,
