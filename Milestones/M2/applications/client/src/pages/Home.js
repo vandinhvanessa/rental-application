@@ -3,45 +3,39 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { hostname } from '../App.js'
-import {Image} from 'cloudinary-react'
+import { Image } from 'cloudinary-react'
 import Select from 'react-select';
 import CartContext from './User/Cart';
 
-<<<<<<< HEAD
-=======
-//const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
-//{ value: "Bicycle Gear", label: "Bicycle Gear" }, { value: "Snow Gear", label: "Snow Gear" },
-//{ value: "Climbing Gear", label: "Climbing Gear" }, { value: "Silverware", label: "Silverware" }, { value: "Other", label: "Other" }];
->>>>>>> 89ef11b9fcddbda7e1188136a2dd71e42e768e48
 
-const categories = [{ value: "All", label: "All"}, {value: "Bicycle Gear", label: "Bicycle Gear"}, 
-{value: "Climbing Gear", label: "Climbing Gear"}, {value: "Electronics", label: "Electronics"}, {value: "Garden", label: "Garden"}, 
-{value: "Hiking Gear", label: "Hiking Gear"}, {value: "Home", label: "Home"}, {value: "Industrial", label: "Industrial"}, 
-{value: "Outdoors", label: "Outdoors"}, {value: "Pet Supplies", label: "Pet Supplies"}, {value: "Scientific", label: "Scientific"} , 
-{value: "Silverware", label: "Silverware"}, {value: "Snow Gear", label: "Snow Gear"}, {value: "Tools", label: "Tools"}, 
-{value: "Toys", label: "Toys"}, {value: "Other", label: "Other"}];
+const categories = [{ value: "All", label: "All" }, { value: "Bicycle Gear", label: "Bicycle Gear" },
+{ value: "Climbing Gear", label: "Climbing Gear" }, { value: "Electronics", label: "Electronics" }, { value: "Garden", label: "Garden" },
+{ value: "Hiking Gear", label: "Hiking Gear" }, { value: "Home", label: "Home" }, { value: "Industrial", label: "Industrial" },
+{ value: "Outdoors", label: "Outdoors" }, { value: "Pet Supplies", label: "Pet Supplies" }, { value: "Scientific", label: "Scientific" },
+{ value: "Silverware", label: "Silverware" }, { value: "Snow Gear", label: "Snow Gear" }, { value: "Tools", label: "Tools" },
+{ value: "Toys", label: "Toys" }, { value: "Other", label: "Other" }];
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryTerm, setCategory] = useState('');
-  const {cart, setCart} = useContext(CartContext)
+  const { cart, setCart } = useContext(CartContext)
   const addToCart = (product) => {
     setCart([...cart, product]);
   }
-  
+
   let navigate = useNavigate();
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      navigate("/login", {replace: true});
+      navigate("/login", { replace: true });
     } else {
-    axios.get("http://" + hostname + "/posts", {
-      headers: { accessToken: localStorage.getItem("accessToken") },
-    }).then((response) => {
-      setListOfPosts(response.data);
-    });
-  }
+      axios.get("http://" + hostname + "/posts", {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      }).then((response) => {
+        setListOfPosts(response.data);
+      });
+    }
   }, []);
-  
+
   return (
     <div className="homepage-grid">
       <div className='filters'>
@@ -89,11 +83,7 @@ function Home() {
               <button className='buyButton' onClick={() => addToCart(value)} >Add To Cart</button>
 
             </div>
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> 89ef11b9fcddbda7e1188136a2dd71e42e768e48
           </div>
         );
       })}
