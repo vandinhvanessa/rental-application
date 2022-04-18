@@ -11,10 +11,9 @@ function Cart(){
     let navigate = useNavigate();
     const {cart, setCart} = useContext(CartContext)
     // console.log(cart)
-    const removeFromCart = (id) => {
+    const removeFromCart = (productToDelete) => {
         console.log("removed from cart")
-        const newCart = cart.filter((product) => product.id !== id);
-        
+        const newCart = cart.filter((product) => product.id !== productToDelete.id);        
         setCart(newCart);
       }
     return(

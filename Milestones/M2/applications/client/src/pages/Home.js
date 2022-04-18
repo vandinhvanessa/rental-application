@@ -7,13 +7,6 @@ import {Image} from 'cloudinary-react'
 import Select from 'react-select';
 import CartContext from './User/Cart';
 
-<<<<<<< HEAD
-
-=======
-//const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
-//{ value: "Bicycle Gear", label: "Bicycle Gear" }, { value: "Snow Gear", label: "Snow Gear" },
-//{ value: "Climbing Gear", label: "Climbing Gear" }, { value: "Silverware", label: "Silverware" }, { value: "Other", label: "Other" }];
->>>>>>> b7546ec5cfb49e2f4bbb91616793fe38ae68c006
 
 const categories = [{ value: "All", label: "All" }, { value: "Tools", label: "Tools" }, { value: "Hiking Gear", label: "Hiking Gear" },
 { value: "Bicycle Gear", label: "Bicycle Gear" }, { value: "Snow Gear", label: "Snow Gear" },
@@ -82,15 +75,10 @@ function Home() {
               <div className="depositFee">Deposit Fee: {value.depositFee}</div>
               <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
               <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
-<<<<<<< HEAD
               <button className='buyButton' onClick={() => addToCart(value)} >Add To Cart</button>
               
             </div>
             
-=======
-              <button className='buyButton' type='submit'>Buy Now</button>
-            </div>
->>>>>>> b7546ec5cfb49e2f4bbb91616793fe38ae68c006
           </div>
           
         );
