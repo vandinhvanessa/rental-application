@@ -35,7 +35,7 @@ function Home() {
       });
     }
   }, []);
-  //console.log(listOfPosts);
+  
   return (
     <div className="homepage-grid">
       <div className='filters'>
