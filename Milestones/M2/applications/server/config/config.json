@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "soccer",
-=======
     "password": "goodgrade",
->>>>>>> alan
     "database": "classdb",
     "host": "localhost",
     "dialect": "mysql"
