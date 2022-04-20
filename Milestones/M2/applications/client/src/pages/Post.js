@@ -64,6 +64,7 @@ function Post() {
                     <div className='body'>
 
                         <Image
+                            className="postImage"
                             style={{ width: 500 }}
                             cloudName="ditub0apw"
                             publicId={postObject.image}

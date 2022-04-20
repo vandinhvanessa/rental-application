@@ -362,6 +362,10 @@ button {
   background-color: white;
 }
 
+#individual .body .postImage{
+  max-height: 350px;
+}
+
 #individual .rentType {
   font-size: 25px;
   background-color: white;
