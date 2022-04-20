@@ -639,3 +639,32 @@ a {
 .row.center {
   align-items: center;
 }
+
+.listing{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  left: 0px;
+}
+
+.listing .listingLeft .postImage{
+  max-height: 280px;
+  max-width: 400px;
+  border: 2px solid gray;
+  
+}
+
+.listing .listingLeft{
+  flex: 50%;
+ 
+  display: grid;
+  place-items: center;
+  align-content: flex-start;
+}
+
+.listing .listingRight{
+  padding-left: 20px;
+  font-size: large;
+}
