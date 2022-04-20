@@ -13,12 +13,7 @@ function Cart() {
     // console.log(cart)
     const removeFromCart = (productToDelete) => {
         console.log("removed from cart")
-<<<<<<< HEAD
         const newCart = cart.filter((product) => product.id !== productToDelete.id);        
-=======
-        const newCart = cart.filter((product) => product.id !== productToDelete.id);
-
->>>>>>> b7233347ed1d25d0918e06197822b942220e01ca
         setCart(newCart);
     }
     return (
