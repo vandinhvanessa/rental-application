@@ -13,19 +13,15 @@ function Cart() {
     // console.log(cart)
     const removeFromCart = (productToDelete) => {
         console.log("removed from cart")
-<<<<<<< HEAD
-        const newCart = cart.filter((product) => product.id !== productToDelete.id);        
-=======
-        const newCart = cart.filter((product) => product.id !== id);
+        const newCart = cart.filter((product) => product.id !== productToDelete.id);
 
->>>>>>> 89ef11b9fcddbda7e1188136a2dd71e42e768e48
         setCart(newCart);
     }
     return (
         <div>
             {cart.map((value, key) => {
                 return (
-                    <div className="post" >
+                    /*<div className="post" >
                         <div className="title" onClick={() => {
                             navigate(`/post/${value.id}`, { replace: true })
                         }}> {value.title} </div>
@@ -45,9 +41,29 @@ function Cart() {
                             <div className="depositFee">Deposit Fee: {value.depositFee}</div>
                             <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
                             <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
-
+                            <button className='buyButton' onClick={() => removeFromCart(value)} >Remove from Cart</button>
                         </div>
 
+                    </div>*/
+                    <div className="listing">
+                        <div className="listingLeft">
+                            <Image
+                                className="postImage"
+                                style={{ width: 450 }}
+                                cloudName="ditub0apw"
+                                publicId={value.image}
+                                onClick={() => {
+                                    navigate(`/post/${value.id}`, { replace: true })
+                                }}
+                            />
+                        </div>
+                        <div className="listingRight">
+                            <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
+                            <div className="depositFee">Deposit Fee: {value.depositFee}</div>
+                            <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
+                            <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
+                            <button className='buyButton' onClick={() => removeFromCart(value)} >Remove from Cart</button>
+                        </div>
                     </div>
 
                 );

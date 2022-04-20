@@ -80,7 +80,7 @@ function App() {
           <Router>
             <div className="rentLogo">
               <a href="/">
-                <img src={rentLogo}></img>
+                <img style={{ width: 250 }} src={rentLogo}></img>
               </a>
             </div>
             {!authState.status ? (
