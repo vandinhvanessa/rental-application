@@ -21,7 +21,13 @@ function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryTerm, setCategory] = useState('');
-  const {cart, setCart} = useContext(CartContext)
+  const {cart, setCart} = useContext(CartContext);
+
+  const [selectedPrice, setSelectedPrice] = useState([0, 1000]);
+  const handleChangePrice = (event, value) => {
+    setSelectedPrice(value);
+  };
+
   const addToCart = (product) => {
     setCart([...cart, product]);
   }
@@ -45,6 +51,7 @@ function Home() {
         <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
         {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
         <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
+        
       </div>
 
       {listOfPosts.filter((value) => {

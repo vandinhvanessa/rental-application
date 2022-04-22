@@ -64,6 +64,7 @@ function Cart() {
                             <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
                             <button className='buyButton' onClick={() => removeFromCart(value)} >Remove from Cart</button>
                         </div>
+                        
                     </div>
 
                 );
