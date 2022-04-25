@@ -21,11 +21,27 @@ router.get('/:transactionId', async (req, res) => {
 //         active: "",
 //         cost: ""
 router.post("/", validateToken, async (req, res) => {
-    const transaction = req.body;
-    const username = req.user.username;
-    console.log(req.body)
-    transaction.renter =  username;
-    await Transaction.create(transaction);
+    console.log("in post")
+    const transaction = {
+        postID: "",
+        itemDescription: "",
+        lender: "",
+        renter: "",
+        transactionBegin: "",
+        transactionEnd: "",
+        active: "",
+        cost: ""
+    }
+    transaction.postID = req.body.id
+    transaction.itemDescription = req.body.postText
+    transaction.lender = req.body.username
+    transaction.renter = "placeholder"
+    transaction.transactionBegin = req.body.startDate
+    transaction.transactionEnd = req.body.endDate
+    transaction.active = true
+    transaction.cost = req.body.subTotal
+    console.log(transaction)
+    await Transactions.create(transaction);
     res.json(transaction);
 })
 

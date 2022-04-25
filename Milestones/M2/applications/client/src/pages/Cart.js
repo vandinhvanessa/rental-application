@@ -24,7 +24,8 @@ function Cart() {
           }).then((response) => {
             //setListOfPosts(response.data);
             // redirect to homepage
-            // navigate('/', { replace: true });
+            // console.log(response)
+            navigate('/transations', { replace: true });
           });
         // after completing transaction remove item from cart
         // const newCart = cart.filter((product) => product.id !== productToPurchase.id);        

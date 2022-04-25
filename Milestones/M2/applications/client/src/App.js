@@ -7,6 +7,7 @@ import Post from './pages/Post';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Cart from './pages/Cart'
+import Transaction from './pages/Transaction';
 import { AuthContext } from './helpers/AuthContext';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -120,6 +121,7 @@ function App() {
               <Route path="/profile/:id" exact element={<Profile />} />
               <Route path="/registration" element={<Registration />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/transactions" element={<Transaction />} />
             </Routes>
           </Router>
         </CartContext.Provider>

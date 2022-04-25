@@ -6,7 +6,7 @@ import Select from 'react-select';
 import CartContext from './User/Cart';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
-function Checkout(product){
+function Transaction(product){
     let navigate = useNavigate();
     const onSubmit = (product) => {
         
@@ -25,8 +25,11 @@ function Checkout(product){
         cost: ""
       };
       return (
-        <div className="checkoutPage" class="btn-group">
-          <Formik
+        
+        
+        <div /*className="checkoutPage" class="btn-group"*/>
+          <h1>test TEST TESTA</h1>
+          {/* <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}>
             <Form className="formContainer">
@@ -38,9 +41,9 @@ function Checkout(product){
                 placeholder="Checkout page..."
               />
             </Form>
-          </Formik>
+          </Formik> */}
         </div>
       )
 }
 
-export default Checkout
+export default Transaction

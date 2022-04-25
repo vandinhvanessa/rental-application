@@ -29,7 +29,7 @@ function CreatePost() {
     }).then((response) => {
       //setListOfPosts(response.data);
       // redirect to homepage
-      console.log(data)
+      console.log(response)
       history('/', { replace: true });
     });
 
