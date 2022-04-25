@@ -32,6 +32,18 @@ module.exports = (sequelize, DataTypes) => {
         image: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        subTotal:{
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false,
+        },
+        startDate: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        endDate: {
+            type: DataTypes.DATE,
+            allowNull: true
         }
     });
     Posts.associate = (models) => {

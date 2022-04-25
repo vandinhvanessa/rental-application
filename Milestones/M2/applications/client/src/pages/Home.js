@@ -80,7 +80,7 @@ function Home() {
               <div className="depositFee">Deposit Fee: {value.depositFee}</div>
               <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
               <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
-              <button className='buyButton' onClick={() => addToCart(value)} >Add To Cart</button>
+              {/* <button className='buyButton' onClick={() => addToCart(value)} >Add To Cart</button> */}
               
             </div>
             
