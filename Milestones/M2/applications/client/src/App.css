@@ -171,8 +171,9 @@ body {
   background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
   border-radius: 5px;
   color: white;
-
 }
+
+
 
 .formContainer button:hover {
   cursor: url('./helpers/blue-wrench.png'), auto;

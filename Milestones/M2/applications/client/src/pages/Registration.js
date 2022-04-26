@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { hostname } from '../App.js'
 
 function Registration() {
-  //let history = useNavigate(); TEMPORARY COMMENTOUT FOR TESTING
+  let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
   const initialValues = {
     username: "",
     password: "",
@@ -31,7 +31,7 @@ function Registration() {
   const onSubmit = (data) => {
     axios.post("http://" + hostname + "/auth", data).then(() => {
       console.log(data);
-      //history('/login', {replace: true}); TEMPORARY COMMENTOUT FOR TESTING
+      history('/login', {replace: true}); //TEMPORARY COMMENTOUT FOR TESTING
     })
   }
   return (

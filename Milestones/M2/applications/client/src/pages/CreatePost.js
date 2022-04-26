@@ -21,7 +21,7 @@ function CreatePost() {
     }
   }, []);
   const onSubmit = (data) => {
-
+    data.subTotal = 0;
     data.image = imageLink
     // console.log(data)
     axios.post("http://" + hostname + "/posts", data, {
@@ -42,7 +42,7 @@ function CreatePost() {
     shippingFee: "",
     pricePerDay: "",
     image: "",
-    subTotal: ""
+    subTotal: "",
   };
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(),
@@ -60,7 +60,6 @@ function CreatePost() {
     formData.append("file", imageSelected)
     // Passing the upload preset
     formData.append("upload_preset", "oqlvocmd")
-
 
     // Sending formData to route
     axios.post("https://api.cloudinary.com/v1_1/ditub0apw/image/upload"

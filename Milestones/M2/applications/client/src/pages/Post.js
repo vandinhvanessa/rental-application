@@ -73,9 +73,9 @@ function Post() {
         });
     };
 
-    // const calculateSubtotal = (postObject) => {
-    //     postObject.subTotal = postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)
-    // }
+     //const calculateSubtotal = (postObject) => {
+     //    postObject.subTotal = postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)
+     //}
     return (
         <div className='postPage'>
             <div className='leftSide'>
@@ -92,12 +92,9 @@ function Post() {
                             publicId={postObject.image}
                         />
                     </div>
-
-
                     <div className='footer'>
                         {postObject.username}
                     </div>
-
                 </div>
 
             </div>
@@ -139,7 +136,7 @@ function Post() {
                             $/Day: ${postObject.pricePerDay}
                         </div>
                         <div className='subTotal'>
-                            Subtotal: {postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)}
+                            Subtotal (Before Fees): ${postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)}
                         </div>
                     </div>
 
