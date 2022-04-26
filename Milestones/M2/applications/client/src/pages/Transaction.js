@@ -8,7 +8,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import SelectUSState from 'react-select-us-states';
 
 
-function Transaction(product){
+function Transaction(){
   
     let navigate = useNavigate();
     // const fillShipping = (f) =>  {
@@ -20,9 +20,12 @@ function Transaction(product){
     //   }
     // }
     
-    const onSubmit = (product) => {
-        navigate('/', { replace: true });
-        
+    const onSubmit = (transactionId) => {
+      axios.put("https://" + hostname +  "/transactions/:" + transactionId
+      , {active: 1}).then((response) => {
+      })
+        // navigate('/', { replace: true });
+        console.log(transactionId)
        
     
       };
@@ -74,7 +77,7 @@ function Transaction(product){
                 name="zipcode"
                 placeholder="92013"
               /> */}
-              <input type="checkbox" onclick="{fillShipping(this.form)}" name="shippingtoo"/>
+              <input type="checkbox" onClick="{fillShipping(this.form)}" name="shippingtoo"/>
               <em>Check this box if Billing Address and Shipping Address are the same.</em>
               <label>Shipping Address: </label>
               <ErrorMessage name="shipping" component="span" />

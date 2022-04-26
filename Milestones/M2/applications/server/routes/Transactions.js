@@ -3,7 +3,10 @@ const express = require('express');
 const router = express.Router();
 const { Transactions } = require("../models");
 const {validateToken} = require('../middlewares/AuthMiddleware');
-// const { Transaction } = require('sequelize/types');
+const db = require('../models');
+const { QueryTypes } = require('sequelize');
+const { Op } = require("sequelize");
+// const { Transaction } = require('sequelize');
 
 router.get('/:transactionId', async (req, res) => {
     const transactionId = req.params.transactionId;
@@ -11,6 +14,17 @@ router.get('/:transactionId', async (req, res) => {
         TransactionID: transactionId
     }});
     res.json(transactions);
+})
+
+router.put('/:transactionId', async (req, res) => {
+    console.log("helo")
+    Transactions.update(
+        {active: req.body.active}
+    )
+    .then(async (rowsUpdate, [updatedTransactions]) => {
+        res.json(updatedTransactions)
+        
+    })
 })
 // postID: "",
 //         itemDescription: "",
@@ -33,18 +47,34 @@ router.post("/", validateToken, async (req, res) => {
         cost: ""
     }
     // console.log(req)
-    console.log(req.body)
-    transaction.postID = req.body.id
+    // console.log(req.body)
+    
+    transaction.postID = await req.body.id
     transaction.itemDescription = req.body.postText
     transaction.lender = req.body.username
-    transaction.renter = "placeholder"
+    transaction.renter = req.user.username
     transaction.transactionBegin = req.body.startDate
     transaction.transactionEnd = req.body.endDate
     transaction.active = false
     transaction.cost = req.body.subTotal
-    console.log(transaction)
-    await Transactions.create(transaction);
-    res.json(transaction);
+    const duplicate = await Transactions.count({
+        where: {
+            postID: transaction.postID,
+            renter: transaction.renter
+        }
+    }).then(async (count) => {
+        if (count == 0){
+            await Transactions.create(transaction);
+        }
+    })
+    const transactionId = await Transactions.findAll({
+        attributes: ['id'],
+        where: {
+            postID: transaction.postID
+        }
+    })
+    // console.log(transactionId)
+    res.json(transactionId);
 })
 
 // router.delete("/:commentId", validateToken, async (req, res) => {
