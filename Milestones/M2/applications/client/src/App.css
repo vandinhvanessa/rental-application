@@ -5,18 +5,20 @@
   align-items: center;
   padding-top: 0px;
   flex-direction: column;
-  background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
+  background-image: url(./helpers/farm-tractor.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
+  
   height: 100%;
 }
 
 .App .SearchBar {
-  width: auto;
+  width: 19vw;
   height: 40px;
   font-size: large;
 }
@@ -24,17 +26,12 @@ body {
 
 /* Rent logo */
 .rentLogo {
-  font-size: 100px;
   width: 100%;
   align-self: center;
   color: white;
   font-family: "Courier New", monospace;
   text-align: center;
   justify-content: center;
-  background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-
-
 }
 
 .rentLogo a {
@@ -50,11 +47,13 @@ body {
   width: auto;
   height: 450px;
   border-radius: 10px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #f1f1f1;
 }
 
 
@@ -86,8 +85,10 @@ body {
   align-self: center;
   width: auto;
   height: auto;
-  max-width: 450px;
-  max-height: 320px;
+  max-width: 400px;
+  max-height: 300px;
+  
+  
 }
 
 .post .footer {
@@ -199,12 +200,11 @@ span {
 .navbar {
   display: flex;
   width: 100%;
-  margin-bottom: 20px;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   align-items: baseline;
   justify-content: flex-end;
+  
+  margin-bottom: 20px;
 }
 
 .navbar a {
@@ -323,7 +323,7 @@ button {
   border: 1px solid lightgray;
   border-radius: 10px;
   margin-top: 5px;
-  
+  background-color: #f1f1f1;
 }
 
 .listOfComments .comment button{
@@ -421,13 +421,13 @@ button {
 .profilePageContainer {
   display: grid;
   width: 95%;
-  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-columns: 1fr 2fr 2fr 2fr;
   grid-template-rows: max-content;
   grid-template-areas:
-    "header header header"
-    "filter post post"
-    "filter post post"
-    "filter post post";
+    "header header header header"
+    "filter post post post"
+    "filter post post post"
+    "filter post post post";
   grid-auto-rows: 1fr;
   grid-auto-columns: 1fr;
   gap: 10px;
@@ -501,6 +501,9 @@ button {
 .userPost .userPostImage {
   grid-area: image;
   justify-self: center;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
   border: 1px solid black;
 }
 
@@ -522,7 +525,7 @@ button {
 .dropdown .dropbtn {
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   color: white;
-  padding: 16px;
+  
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -532,6 +535,7 @@ button {
 .dropdown {
   position: relative;
   display: inline-block;
+  height: auto;
 }
 
 .dropdown-content {
@@ -541,6 +545,7 @@ button {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border: 1px solid black;
 }
 
 .dropdown-content a {
@@ -548,6 +553,7 @@ button {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  border: 1px solid black;
 }
 
 .dropdown-content a:hover {
@@ -563,10 +569,15 @@ button {
 }
 
 /* Hompage */
+.flex-container{
+  height: 100vh;
+  width: 100vw;
+}
 
 .homepage-grid {
   display: grid;
-  width: auto;
+  gap: 15px;
+  width: 100%;
   grid-template-columns: 1fr 2fr 2fr;
   grid-template-rows: max-content;
   grid-template-areas:
@@ -575,10 +586,9 @@ button {
     "filter post post";
   grid-auto-rows: 1fr;
   grid-auto-columns: 1fr;
-  gap: 10px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1300px) {
   .homepage-grid {
     display: grid;
     width: 95%;
@@ -593,52 +603,24 @@ button {
     gap: 10px;
   }
 }
+
+@media screen and (max-width: 868px) {
+  .homepage-grid {
+    display: grid;
+    width: 95%;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content;
+    grid-template-areas:
+      "filter "
+      "post"
+      "post";
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 10px;
+  }
+}
 /* cart*/
 
-h1,
-h2,
-h3 {
-  margin: 0.5rem 0;
-}
-
-h1 {
-  font-size: 1.5rem;
-}
-h2 {
-  font-size: 1.2rem;
-}
-
-h3 {
-  font-size: 1rem;
-}
-
-a {
-  text-decoration: none;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.col-1 {
-  flex: 1;
-}
-
-.col-2 {
-  flex: 2;
-}
-
-.block {
-  background-color: orange;
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 0.5rem;
-}
-
-.row.center {
-  align-items: center;
-}
 
 .listing{
   width: 100%;

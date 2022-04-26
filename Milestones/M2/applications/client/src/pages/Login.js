@@ -8,7 +8,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const { setAuthState } = useContext(AuthContext);
 
-  let history = useNavigate();
+  //let history = useNavigate(); TEMPORARY COMMENTOUT FOR TESTING
 
   const login = () => {
     const data = { username: username, password: password }
@@ -19,7 +19,7 @@ function Login() {
       else {
         localStorage.setItem("accessToken", response.data.token);
         setAuthState({ username: response.data.username, id: response.data.id, status: true });
-        history('/', { replace: true });
+        //history('/', { replace: true }); TEMPORARY COMMENTOUT FOR TESTING
       }
     })
   }

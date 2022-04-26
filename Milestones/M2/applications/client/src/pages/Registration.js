@@ -4,8 +4,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { hostname } from '../App.js'
+
 function Registration() {
-  let history = useNavigate();
+  //let history = useNavigate(); TEMPORARY COMMENTOUT FOR TESTING
   const initialValues = {
     username: "",
     password: "",
@@ -30,7 +31,7 @@ function Registration() {
   const onSubmit = (data) => {
     axios.post("http://" + hostname + "/auth", data).then(() => {
       console.log(data);
-      history('/login', {replace: true});
+      //history('/login', {replace: true}); TEMPORARY COMMENTOUT FOR TESTING
     })
   }
   return (
