@@ -1,13 +1,8 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": null,
     "database": "CSC648db",
-=======
-    "password": "soccer",
-    "database": "classdb",
->>>>>>> master
     "host": "localhost",
     "dialect": "mysql"
   },
