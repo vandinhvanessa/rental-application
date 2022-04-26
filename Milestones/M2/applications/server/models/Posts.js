@@ -17,6 +17,34 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        pricePerDay:{
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false,
+        },
+        depositFee:{
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false
+        },
+        shippingFee:{
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        subTotal:{
+            type: DataTypes.DECIMAL(10, 2),
+            allowNull: false,
+        },
+        startDate: {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        endDate: {
+            type: DataTypes.DATE,
+            allowNull: true
+        }
     });
     Posts.associate = (models) => {
         Posts.hasMany(models.Comments, {

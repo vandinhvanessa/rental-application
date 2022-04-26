@@ -1,46 +1,43 @@
 .App {
-  width: 100vw;
-  height: auto;
+  width: auto;
+  height: 100%;
   display: flex;
   align-items: center;
   padding-top: 0px;
   flex-direction: column;
-  background-image: linear-gradient( 109.6deg,  rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1% );
-  cursor: url('./helpers/blue-wrench.png'), auto;
+  background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
 }
 
 body {
   margin: 0;
   padding: 0;
+  background-image: linear-gradient(109.6deg, rgba(223, 234, 247, 1) 11.2%, rgba(244, 248, 252, 1) 91.1%);
+  height: 100%;
 }
 
-.App .SearchBar{
-  width: 24.5vw;
+.App .SearchBar {
+  width: auto;
   height: 40px;
   font-size: large;
-  cursor: url('./helpers/blue-wrench.png'), auto;
 }
 
-.App .Dropdown{
-  cursor: url('./helpers/blue-wrench.png'), auto;
-}
 
+/* Rent logo */
 .rentLogo {
   font-size: 100px;
   width: 100%;
-  padding: 10px;
   align-self: center;
   color: white;
-  font-family:  "Courier New", monospace;
+  font-family: "Courier New", monospace;
   text-align: center;
-  display: flex;
   justify-content: center;
-  background-color:#0093E9;
+  background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
 
 }
 
-.rentLogo .a{
+.rentLogo a {
   color: white;
 }
 
@@ -50,15 +47,13 @@ body {
 }
 
 .post {
-  width: 550px;
+  width: auto;
   height: 450px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-  
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -67,12 +62,14 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: url('./helpers/blue-wrench.png'), auto;
 }
+
 .post .title {
   flex: 25%;
   border-bottom: 1px solid lightgray;
+  border-radius: 10px;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-  
+  font-size: larger;
   display: grid;
   place-content: center;
   color: white;
@@ -85,20 +82,41 @@ body {
   background-color: white;
 }
 
+.post .postImage {
+  align-self: center;
+  width: auto;
+  height: auto;
+  max-width: 450px;
+  max-height: 320px;
+}
+
 .post .footer {
   flex: 20%;
   border-top: 1px solid lightgray;
   display: flex;
   align-items: center;
   padding-left: 15px;
-  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );
+
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.post .footer .buyButton{
-  margin-left: 255px;
+.post .footer .buyButton {
+  margin-left: 60px;
+}
+
+.post .footer .pricePerDay {
+  padding-left: 20px;
+}
+
+.post .footer .depositFee {
+  padding-left: 50px;
+}
+
+.post .footer .shippingFee {
+  padding-left: 20px;
 }
 
 .post .rentType {
@@ -109,25 +127,25 @@ body {
   background-color: white;
 }
 
-
 /* CREATE POST PAGE CSS */
 
 .createPostPage {
   font-family: Arial, Helvetica, sans-serif;
   width: 100vw;
-  height: 70vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .formContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 500px;
   height: auto;
-  padding: 50px;
- 
+  padding: 70px;
+
   border-radius: 5px;
 
   background-color: #0093E9;
@@ -152,7 +170,7 @@ body {
   background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
   border-radius: 5px;
   color: white;
-  
+
 }
 
 .formContainer button:hover {
@@ -163,43 +181,58 @@ body {
 span {
   color: red;
 }
+
 /* Post buy buttons */
 
-.postBuyButtons {
-  padding: 25px;
+.postBuyButtons button {
+  padding: 20px;
+  padding-bottom: 30px;
+  background-color: white;
+}
+
+.postBuyButtons button:hover {
+  background-color: #f1f1f1;
 }
 
 /* NAVBAR */
 
 .navbar {
-  width: 100%;
-  height: 50px;
   display: flex;
-  align-items: center;
-  padding-inline-start: 0cm;
-  padding: 10px;
-  align-items: baseline;
+  width: 100%;
+  margin-bottom: 20px;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-  
-
+  align-items: baseline;
+  justify-content: flex-end;
 }
 
 .navbar a {
+  font-size: 16px;
   border: 1px solid white;
-  padding: 14px;
-  align-items: center;
-  margin-left: 10px;
-  text-decoration: none;
+  padding: 15px;
+  margin: 5px;
   color: white;
-  cursor: url('./helpers/blue-wrench.png'), auto;
+  text-decoration: none;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.navbar a:hover {
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
 .navbar button {
-  width: 150px;
-  height: 40px;
-  cursor: url('./helpers/blue-wrench.png'), auto;
+  position: relative;
+  width: 100px;
+  color: white;
+  font-size: 16px;
+  border-radius: 0px;
+  border: 1px solid white;
+  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.navbar button:hover {
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
 /* INDIVIDUAL POST */
@@ -208,7 +241,6 @@ span {
   flex-direction: row;
   width: 100%;
   height: 100%;
-  
 }
 
 .leftSide {
@@ -216,6 +248,7 @@ span {
   height: calc(100vh - 70px);
   display: grid;
   place-items: center;
+  align-content: flex-start;
 }
 
 .rightSide {
@@ -225,6 +258,7 @@ span {
   place-items: center;
   display: flex;
   flex-direction: column;
+  
 }
 
 .rightSide .addCommentContainer {
@@ -244,8 +278,12 @@ button {
 }
 
 .addCommentContainer button {
-  background-color: dodgerblue;
+  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
   color: white;
+}
+
+.addCommentContainer button:hover {
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
 
 .addCommentContainer input {
@@ -260,22 +298,57 @@ button {
   align-items: center;
 }
 
-.listOfComments .comment {
-  width: 70%;
-  height: auto;
-  padding: 30px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  margin-top: 20px;
+.rightSide .postInfo {
+  place-items: left;
+  
+  padding-left: 50px;
+  padding-top: 1cm;
+  padding-bottom: 1cm;
+  font-size: larger;
+  background-image: linear-gradient(45deg, #0093E9 0%, #80D0C7 100%);
+  border: 2px solid black;
+  border-radius: 10px ;
 }
 
+.rightSide .postInfo .otherInfo {
+  padding-right: 12cm;
+  padding-bottom: 10px;
+}
+
+
+.listOfComments .comment {
+  width: 70%;
+  height: 35%;
+  padding-left: 15px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-top: 5px;
+  
+}
+
+.listOfComments .comment button{
+  width: 75px;
+  margin-left: 290px;
+}
+
+.commentBody{
+  width: 300px;
+  height: 50px;
+  
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 
 #individual {
   height: 500px;
   width: 600px;
 }
 
-#individual .title,
+#individual .title {
+  flex: 25%;
+  font-size: 30px;
+}
+
 #individual .footer {
   flex: 25%;
   font-size: 30px;
@@ -289,9 +362,17 @@ button {
   background-color: white;
 }
 
+#individual .body .postImage{
+  max-height: 350px;
+}
+
 #individual .rentType {
   font-size: 25px;
   background-color: white;
+}
+
+#individual .pricePerDay {
+  padding-left: 4cm;
 }
 
 /* LOGIN */
@@ -323,7 +404,7 @@ button {
   border: 2px solid dodgerblue;
 }
 
-.loginContainer button:hover{
+.loginContainer button:hover {
   cursor: url('./helpers/blue-wrench.png'), auto;
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }
@@ -331,6 +412,259 @@ button {
 /* Dropdown menu */
 
 .App .Dropdown {
-  width: 25vw;
+  width: 24vw;
+  font-size: large;
+}
+
+/* Profile Page */
+
+.profilePageContainer {
+  display: grid;
+  width: 95%;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: max-content;
+  grid-template-areas:
+    "header header header"
+    "filter post post"
+    "filter post post"
+    "filter post post";
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+  gap: 10px;
+
+}
+
+@media screen and (max-width: 1000px) {
+  .profilePageContainer {
+    display: grid;
+    width: 95%;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: max-content;
+    grid-template-areas:
+      "header header"
+      "filter post"
+      "filter post"
+      "filter post";
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.basicinfo {
+  grid-area: header;
+}
+
+.filters {
+  grid-area: filter;
+}
+
+.userPost {
+  display: grid;
+  border: 1px solid #0093E9;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "title title category"
+    "image image image"
+    "deposit ship perday"
+    "description description description"
+    "edit blank remove";
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
+  text-align: center;
+}
+
+.userPost .userTitle {
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #000000;
+  font-size: large;
+  font-weight: 600;
+  grid-area: title;
+  
+}
+
+.userPost .userRentType {
+  grid-area: category;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #000000;
+  
+}
+
+.userPost .userBody {
+  grid-area: description;
+  padding-top: 10px;
+  border-radius: 3px;
+  border: 1px solid #000000;
+}
+
+.userPost .userPostImage {
+  grid-area: image;
+  justify-self: center;
+  border: 1px solid black;
+}
+
+.userPost .userDepositFee {
+  grid-area: deposit;
+  padding: 10px;
+}
+
+.userPost .userShippingFee {
+  grid-area: ship;
+  padding: 10px;
+}
+
+.userPost .userPricePerDay {
+  grid-area: perday;
+  padding: 10px;
+}
+
+.dropdown .dropbtn {
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
+}
+
+/* Hompage */
+
+.homepage-grid {
+  display: grid;
+  width: auto;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: max-content;
+  grid-template-areas:
+    "filter post post"
+    "filter post post"
+    "filter post post";
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+  gap: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .homepage-grid {
+    display: grid;
+    width: 95%;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: max-content;
+    grid-template-areas:
+      "filter post"
+      "filter post"
+      "filter post";
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 10px;
+  }
+}
+/* cart*/
+
+h1,
+h2,
+h3 {
+  margin: 0.5rem 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-1 {
+  flex: 1;
+}
+
+.col-2 {
+  flex: 2;
+}
+
+.block {
+  background-color: orange;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.row.center {
+  align-items: center;
+}
+
+.listing{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  left: 0px;
+}
+
+.listing .listingLeft .postImage{
+  max-height: 280px;
+  max-width: 400px;
+  border: 2px solid gray;
+  
+}
+
+.listing .listingLeft{
+  flex: 50%;
+ 
+  display: grid;
+  place-items: center;
+  align-content: flex-start;
+}
+
+.listing .listingRight{
+  padding-left: 20px;
   font-size: large;
 }

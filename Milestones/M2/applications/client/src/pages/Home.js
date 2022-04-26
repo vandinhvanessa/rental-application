@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-//import { DropDownList } from "@progress/kendo-react-dropdowns";
-import '@progress/kendo-theme-default/dist/all.css';
 import { hostname } from '../App.js'
+import {Image} from 'cloudinary-react'
+import Select from 'react-select';
+import CartContext from './User/Cart';
 
 
-const categories = ["All", "Tools", "Hiking Gear", "Bicycle Gear", "Snow Gear", "Climbing Gear", "Silverware", "Other"];
+const categories = [{ value: "All", label: "All"}, {value: "Bicycle Gear", label: "Bicycle Gear"}, 
+{value: "Climbing Gear", label: "Climbing Gear"}, {value: "Electronics", label: "Electronics"}, {value: "Garden", label: "Garden"}, 
+{value: "Hiking Gear", label: "Hiking Gear"}, {value: "Home", label: "Home"}, {value: "Industrial", label: "Industrial"}, 
+{value: "Outdoors", label: "Outdoors"}, {value: "Pet Supplies", label: "Pet Supplies"}, {value: "Scientific", label: "Scientific"} , 
+{value: "Silverware", label: "Silverware"}, {value: "Snow Gear", label: "Snow Gear"}, {value: "Tools", label: "Tools"}, 
+{value: "Toys", label: "Toys"}, {value: "Other", label: "Other"}];
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryTerm, setCategory] = useState('');
+  const {cart, setCart} = useContext(CartContext)
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  }
   
   let navigate = useNavigate();
   useEffect(() => {
@@ -25,11 +35,14 @@ function Home() {
     });
   }
   }, []);
-  //console.log(listOfPosts);
+  
   return (
-    <div className="App">
-      <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
-      {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
+    <div className="homepage-grid">
+      <div className='filters'>
+        <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
+        {/*<DropDownList className="Dropdown" data={categories} onChange={event => setCategory(event.value)} />*/}
+        <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
+      </div>
 
       {listOfPosts.filter((value) => {
         if (searchTerm == "" && categoryTerm == "") {
@@ -51,19 +64,26 @@ function Home() {
             <div className="title" onClick={() => {
               navigate(`/post/${value.id}`, { replace: true })
             }}> {value.title} </div>
-            <div className="body" onClick={() => {
-              navigate(`/post/${value.id}`, { replace: true })
-            }}> 
-              {value.postText} 
-            </div>
-            <div className="rentType"> {value.category} </div>
-            <div className="footer"> 
-              <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
-              
-              <button className='buyButton' type='submit'>Buy Now</button>
-              
-            </div>
 
+            <Image
+              className="postImage"
+              style={{ width: 450 }}
+              cloudName="ditub0apw"
+              publicId={value.image}
+              onClick={() => {
+                navigate(`/post/${value.id}`, { replace: true })
+              }}
+            />
+
+            <div className="footer">
+              <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
+              <div className="depositFee">Deposit Fee: {value.depositFee}</div>
+              <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
+              <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
+              {/* <button className='buyButton' onClick={() => addToCart(value)} >Add To Cart</button> */}
+              
+            </div>
+            
           </div>
         );
       })}

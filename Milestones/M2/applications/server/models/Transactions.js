@@ -1,13 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
 
     const Transactions = sequelize.define("Transactions", {
-        itemDescription:{
+        postID:{
             type: DataTypes.STRING,
             allowNull: false
         },
+        itemDescription:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         lender: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         renter: {
             type: DataTypes.STRING,
@@ -15,21 +19,26 @@ module.exports = (sequelize, DataTypes) => {
         },
         transactionBegin: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
         },
         transactionEnd: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
         },
         active: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
+            allowNull: true,
         },
         cost: {
             type: DataTypes.FLOAT,
-            allowNull: false,
+            allowNull: true,
         }
         
     });
+    Transactions.associate = (models) => {
+        Transactions.hasMany(models.Comments, {
+            onDelete: "cascade", 
+        })
+    }
     return Transactions;
 }
