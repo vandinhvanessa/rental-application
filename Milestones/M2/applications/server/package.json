@@ -17,6 +17,7 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.15",
+    "react-select-us-states": "^0.1.2",
     "sequelize": "^6.16.0",
     "sequelize-cli": "^6.4.1"
   }

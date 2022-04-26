@@ -25,7 +25,7 @@ function Cart() {
             //setListOfPosts(response.data);
             // redirect to homepage
             // console.log(response)
-            navigate('/transations', { replace: true });
+            navigate('/transactions', { replace: true });
           });
         // after completing transaction remove item from cart
         // const newCart = cart.filter((product) => product.id !== productToPurchase.id);        

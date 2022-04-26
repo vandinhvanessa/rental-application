@@ -29,16 +29,18 @@ router.post("/", validateToken, async (req, res) => {
         renter: "",
         transactionBegin: "",
         transactionEnd: "",
-        active: "",
+        active: 0,
         cost: ""
     }
+    // console.log(req)
+    console.log(req.body)
     transaction.postID = req.body.id
     transaction.itemDescription = req.body.postText
     transaction.lender = req.body.username
     transaction.renter = "placeholder"
     transaction.transactionBegin = req.body.startDate
     transaction.transactionEnd = req.body.endDate
-    transaction.active = true
+    transaction.active = false
     transaction.cost = req.body.subTotal
     console.log(transaction)
     await Transactions.create(transaction);

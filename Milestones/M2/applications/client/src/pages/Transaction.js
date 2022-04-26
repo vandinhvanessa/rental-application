@@ -5,12 +5,24 @@ import { hostname } from '../App.js';
 import Select from 'react-select';
 import CartContext from './User/Cart';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import SelectUSState from 'react-select-us-states';
+
 
 function Transaction(product){
+  
     let navigate = useNavigate();
+    // const fillShipping = (f) =>  {
+    //   if (f.shippingtoo.checked === true) {
+    //     f.shipping.value = f.billing.value;
+    //   }
+    //   if (f.shippingtoo.checked === false) {
+    //     f.shipping.value = '';
+    //   }
+    // }
+    
     const onSubmit = (product) => {
+        navigate('/', { replace: true });
         
-        // console.log(data)
        
     
       };
@@ -27,21 +39,66 @@ function Transaction(product){
       return (
         
         
-        <div /*className="checkoutPage" class="btn-group"*/>
-          <h1>test TEST TESTA</h1>
-          {/* <Formik
+        <div className="checkoutPage" class="btn-group">
+          
+          <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}>
             <Form className="formContainer">
-              <label>Checkout: </label>
-              <ErrorMessage name="title" component="span" />
+              <label>Credit/Debit Card: </label>
+              <ErrorMessage name="payment" component="span" />
               <Field
                 id="inputCreatePost"
-                name="title"
-                placeholder="Checkout page..."
+                name="payment"
+                placeholder="####-###-####"
               />
+              <label>Billing Address: </label>
+              <ErrorMessage name="billing" component="span" />
+              <Field
+                id="inputCreatePost"
+                name="billing"
+                placeholder="123 E. Gatesford Lane"
+              />
+              <label>Zipcode: </label>
+              <ErrorMessage name="zipcode" component="span" />
+              <Field
+                id="inputCreatePost"
+                name="zipcode"
+                placeholder="92013"
+              />
+              <label>State: </label>
+              <ErrorMessage name="zipcode" component="span" />
+              <SelectUSState id="state" className="myClassName" onChange="{this.setNewValue}"/>
+              {/* <Field
+                id="inputCreatePost"
+                name="zipcode"
+                placeholder="92013"
+              /> */}
+              <input type="checkbox" onclick="{fillShipping(this.form)}" name="shippingtoo"/>
+              <em>Check this box if Billing Address and Shipping Address are the same.</em>
+              <label>Shipping Address: </label>
+              <ErrorMessage name="shipping" component="span" />
+              <Field
+                id="inputCreatePost"
+                name="shipping"
+                placeholder="123 E. Gatesford Lane"
+              />
+              <label>Zipcode: </label>
+              <ErrorMessage name="zipcode" component="span" />
+              <Field
+                id="inputCreatePost"
+                name="zipcode"
+                placeholder="92013"
+              />
+              <label>State: </label>
+              <ErrorMessage name="zipcode" component="span" />
+              <SelectUSState id="state" className="myClassName" onChange="{this.setNewValue}"/>
+              <button type="submit">
+                Purchase
+              </button>
             </Form>
-          </Formik> */}
+            
+          </Formik>
         </div>
       )
 }

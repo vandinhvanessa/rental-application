@@ -14,6 +14,7 @@ import axios from 'axios';
 import Profile from './pages/Profile';
 import CartContext from './pages/User/Cart';
 import rentLogo from './helpers/renttomelogo.png';
+import PurchaseHistory from './pages/PurchaseHistory';
 
 //export const hostname = "rentto.me:3001";
 export const hostname = "localhost:3001";
@@ -102,7 +103,8 @@ function App() {
                   <div className="dropdown-content">
                     <Link to={`/profile/${authState.id}`}>Profile</Link>
                     <p>Reviews</p>
-                    <p>Purchase History</p>
+                    {/* <p>Purchase History</p> */}
+                    <Link to={`/purchasehistory`}>Purchase History</Link>
                     <p>View History</p>
                     <p>Settings</p>
                   </div>
@@ -122,6 +124,7 @@ function App() {
               <Route path="/registration" element={<Registration />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/transactions" element={<Transaction />} />
+              <Route path="/purchasehistory" element={<PurchaseHistory />} />
             </Routes>
           </Router>
         </CartContext.Provider>
