@@ -5,11 +5,13 @@ import Select from 'react-select';
 import { hostname } from '../App.js';
 import { Image } from 'cloudinary-react'
 import CartContext from './User/Cart';
+import TransactionContext from './User/Cart';
 
 
 function Cart() {
     let navigate = useNavigate();
     const { cart, setCart } = useContext(CartContext)
+    const { transaction, setTransaction } = useContext(TransactionContext)
     // console.log(cart)
     const removeFromCart = (productToDelete) => {
         console.log("removed from cart")
@@ -22,9 +24,7 @@ function Cart() {
         axios.post("http://" + hostname + "/transactions", productToPurchase, {
             headers: { accessToken: localStorage.getItem("accessToken") },
           }).then((response) => {
-            //setListOfPosts(response.data);
             // redirect to homepage
-            // console.log(response)
             navigate('/transactions', { replace: true });
           });
         // after completing transaction remove item from cart

@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Profile from './pages/Profile';
 import CartContext from './pages/User/Cart';
+import TransactionContext from './pages/User/Transaction';
 import rentLogo from './helpers/renttomelogo.png';
 import PurchaseHistory from './pages/PurchaseHistory';
 
@@ -25,6 +26,7 @@ function App() {
 
 
   const [cart, setCart] = useState([]);
+  const [ transaction, setTransaction] = useState("");
 
   // const onAdd = (product) => {
   //   const exist = cartItems.find(x => x.id === product.id);
@@ -79,54 +81,56 @@ function App() {
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <CartContext.Provider value={{ cart, setCart }}>
-          <Router>
-            <div className="rentLogo">
-              <a href="/">
-                <img style={{ width: 250 }} src={rentLogo}></img>
-              </a>
-            </div>
-            {!authState.status ? (
-              <div className="navbar">
-                <Link to="/"> Home Page</Link>
-                <Link to="/cart">Cart</Link>
-                <Link to="/login"> Login</Link>
-                <Link to="/registration"> Registration</Link>
+           <TransactionContext.Provider value={{ transaction, setTransaction }}>
+            <Router>
+              <div className="rentLogo">
+                <a href="/">
+                  <img style={{ width: 250 }} src={rentLogo}></img>
+                </a>
               </div>
-            ) : (
-
-              <div className="navbar">
-                <Link to="/"> Home Page</Link>
-                <Link to="/createpost"> Create A Post</Link>
-                <Link to="/cart">Cart</Link>
-                <div className="dropdown">
-                  <button className="dropbtn">{authState.username}</button>
-                  <div className="dropdown-content">
-                    <Link to={`/profile/${authState.id}`}>Profile</Link>
-                    <p>Reviews</p>
-                    {/* <p>Purchase History</p> */}
-                    <Link to={`/purchasehistory`}>Purchase History</Link>
-                    <p>View History</p>
-                    <p>Settings</p>
-                  </div>
+              {!authState.status ? (
+                <div className="navbar">
+                  <Link to="/"> Home Page</Link>
+                  <Link to="/cart">Cart</Link>
+                  <Link to="/login"> Login</Link>
+                  <Link to="/registration"> Registration</Link>
                 </div>
+              ) : (
+
+                <div className="navbar">
+                  <Link to="/"> Home Page</Link>
+                  <Link to="/createpost"> Create A Post</Link>
+                  <Link to="/cart">Cart</Link>
+                  <div className="dropdown">
+                    <button className="dropbtn">{authState.username}</button>
+                    <div className="dropdown-content">
+                      <Link to={`/profile/${authState.id}`}>Profile</Link>
+                      <p>Reviews</p>
+                      {/* <p>Purchase History</p> */}
+                      <Link to={`/purchasehistory`}>Purchase History</Link>
+                      <p>View History</p>
+                      <p>Settings</p>
+                    </div>
+                  </div>
 
 
-                <button onClick={logout}> Logout</button>
-              </div>
-            )}
+                  <button onClick={logout}> Logout</button>
+                </div>
+              )}
 
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/createpost" element={<CreatePost />} />
-              <Route path="/post/:id" element={<Post />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/profile/:id" exact element={<Profile />} />
-              <Route path="/registration" element={<Registration />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/transactions" element={<Transaction />} />
-              <Route path="/purchasehistory" element={<PurchaseHistory />} />
-            </Routes>
-          </Router>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/createpost" element={<CreatePost />} />
+                <Route path="/post/:id" element={<Post />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/profile/:id" exact element={<Profile />} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/transactions" element={<Transaction />} />
+                <Route path="/purchasehistory" element={<PurchaseHistory />} />
+              </Routes>
+            </Router>
+          </TransactionContext.Provider>
         </CartContext.Provider>
       </AuthContext.Provider>
     </div>
