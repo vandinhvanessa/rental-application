@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Select from 'react-select';
 import { Image } from 'cloudinary-react';
-
 function Profile() {
   let { id } = useParams("");
   const [username, setUsername] = useState("");

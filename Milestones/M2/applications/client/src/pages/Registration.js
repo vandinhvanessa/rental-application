@@ -22,7 +22,7 @@ function Registration() {
     username: Yup.string().min(3).max(20).required(),
     password: Yup.string().min(4).max(20).required(),
     email: Yup.string().max(30).required(),
-    address: Yup.string().max(20).required(),
+    address: Yup.string().max(60).required(),
     city: Yup.string().max(20).required(),
     state: Yup.string().max(15).required(),
     zipCode: Yup.string().max(10).required(),

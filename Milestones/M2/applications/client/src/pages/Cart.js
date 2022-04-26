@@ -13,9 +13,23 @@ function Cart() {
     // console.log(cart)
     const removeFromCart = (productToDelete) => {
         console.log("removed from cart")
-        const newCart = cart.filter((product) => product.id !== productToDelete.id);
-
+        const newCart = cart.filter((product) => product.id !== productToDelete.id);        
         setCart(newCart);
+    }
+    const completeTransaction = (productToPurchase) => {
+        console.log("transaction started")
+        // console.log(productToPurchase)
+        axios.post("http://" + hostname + "/transactions", productToPurchase, {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          }).then((response) => {
+            //setListOfPosts(response.data);
+            // redirect to homepage
+            // console.log(response)
+            navigate('/transactions', { replace: true });
+          });
+        // after completing transaction remove item from cart
+        // const newCart = cart.filter((product) => product.id !== productToPurchase.id);        
+        // setCart(newCart);
     }
     return (
         <div>
@@ -62,6 +76,10 @@ function Cart() {
                             <div className="depositFee">Deposit Fee: {value.depositFee}</div>
                             <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
                             <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
+                            <div className="subTotal">Subtotal: {value.subTotal}</div>
+                            <div className="startDate">Start Date: {value.startDate.toLocaleDateString()}</div>
+                            <div className="endDate">End Date: {value.endDate.toLocaleDateString()}</div>
+                            <button className='buyButton' onClick={() => completeTransaction(value)} >Complete Transaction</button>
                             <button className='buyButton' onClick={() => removeFromCart(value)} >Remove from Cart</button>
                         </div>
                         

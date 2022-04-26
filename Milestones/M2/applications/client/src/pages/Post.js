@@ -4,12 +4,31 @@ import axios from "axios";
 import { AuthContext } from '../helpers/AuthContext';
 import { hostname } from '../App.js';
 import { Image } from 'cloudinary-react'
+import CartContext from './User/Cart';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
 function Post() {
     let { id } = useParams();
     const [postObject, setPostObject] = useState({});
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
+    const [subTotal, setSubtotal] = useState();
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
     const { authState } = useContext(AuthContext);
+    const {cart, setCart} = useContext(CartContext)
+    const addToCart = (product) => {
+        product.startDate = startDate;
+        product.endDate = endDate;
+        product.subTotal = postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24);
+        setSubtotal(product.subTotal)
+        setCart([...cart, product]);
+        console.log(startDate)
+        console.log(endDate)
+        console.log(product.subTotal)
+    }
     //let history = useNavigate();
 
     useEffect(() => {
@@ -20,7 +39,7 @@ function Post() {
             setComments(response.data);
         });
     }, []);
-
+    
     const addComment = (() => {
         axios
             .post("http://" + hostname + "/comments", { commentBody: newComment, PostId: id },
@@ -54,6 +73,9 @@ function Post() {
         });
     };
 
+    // const calculateSubtotal = (postObject) => {
+    //     postObject.subTotal = postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)
+    // }
     return (
         <div className='postPage'>
             <div className='leftSide'>
@@ -84,9 +106,25 @@ function Post() {
 
                 <div className="postInfo">
                     <div className='postBuyButtons'>
-                        <button>Add to Cart</button>
+                        <button className='buyButton' onClick={() => addToCart(postObject)} >Add To Cart</button>
                         <button>Buy Now</button>
                     </div>
+                    <DatePicker
+                        selected={startDate}
+                        selectsStart
+                        startDate = {startDate}
+                        endDate={endDate} // add the endDate to your startDate picker now that it is defined
+                        onChange={date=>setStartDate(date)}            
+                    />
+                    <DatePicker
+                        selected={endDate}
+                        selectsEnd
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                        onChange={date=>setEndDate(date)}
+                         // tells Datepicker that it is part of a range*
+                    />
                     <div className="otherInfo">
                         <div className="postCategory">
                             Category: {postObject.category}
@@ -99,6 +137,9 @@ function Post() {
                         </div>
                         <div className='pricePerDay'>
                             $/Day: ${postObject.pricePerDay}
+                        </div>
+                        <div className='subTotal'>
+                            Subtotal: {postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)}
                         </div>
                     </div>
 
