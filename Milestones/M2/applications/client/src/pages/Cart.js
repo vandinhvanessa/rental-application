@@ -82,6 +82,7 @@ function Cart() {
                             <button className='buyButton' onClick={() => completeTransaction(value)} >Complete Transaction</button>
                             <button className='buyButton' onClick={() => removeFromCart(value)} >Remove from Cart</button>
                         </div>
+                        
                     </div>
 
                 );
