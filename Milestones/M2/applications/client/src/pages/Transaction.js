@@ -40,10 +40,8 @@ function Transaction(){
         cost: ""
       };
       return (
-        
-        
         <div className="checkoutPage" class="btn-group">
-          
+          <h1>Checkout</h1>
           <Formik
             initialValues={initialValues}
             onSubmit={onSubmit}>

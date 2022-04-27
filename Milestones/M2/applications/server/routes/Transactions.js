@@ -17,7 +17,7 @@ router.get('/:transactionId', async (req, res) => {
 })
 
 router.put('/:transactionId', async (req, res) => {
-    console.log("helo")
+    console.log("hello")
     Transactions.update(
         {active: req.body.active}
     )
@@ -65,6 +65,8 @@ router.post("/", validateToken, async (req, res) => {
     }).then(async (count) => {
         if (count == 0){
             await Transactions.create(transaction);
+        }else{
+            console.log("Transaction with this user already exists")
         }
     })
     const transactionId = await Transactions.findAll({
