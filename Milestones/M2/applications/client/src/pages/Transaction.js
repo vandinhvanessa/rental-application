@@ -4,6 +4,7 @@ import axios from 'axios';
 import { hostname } from '../App.js';
 import Select from 'react-select';
 import CartContext from './User/Cart';
+import TransactionContext from './User/Transaction';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import SelectUSState from 'react-select-us-states';
 
@@ -19,15 +20,27 @@ function Transaction(){
     //     f.shipping.value = '';
     //   }
     // }
-    
-    const onSubmit = (transactionId) => {
-      axios.put("https://" + hostname +  "/transactions/:" + transactionId
-      , {active: 1}).then((response) => {
+
+
+    // need to access id value from transaction
+    const { transaction } = useContext(TransactionContext)
+    const onSubmit = () => {
+      const transactionID = transaction.data[0]
+      // If we can extract transactions id from transaction object this should pass
+      // transaction id to transaction/:transactionId route
+      console.log("transactionID: " + transactionID)
+      axios.post("http://" + hostname + `/transactions/byId/${transactionID}`,
+      transactionID,
+      {
+        headers: {
+            accessToken: localStorage.getItem("accessToken")
+        }
+      }
+      ).then((response) => {
+        console.log(response)
+        console.log("purchase completed")
+        
       })
-        // navigate('/', { replace: true });
-        console.log(transactionId)
-       
-    
       };
       const initialValues = {
         postID: "",

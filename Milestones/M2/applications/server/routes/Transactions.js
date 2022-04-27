@@ -8,23 +8,24 @@ const { QueryTypes } = require('sequelize');
 const { Op } = require("sequelize");
 // const { Transaction } = require('sequelize');
 
-router.get('/:transactionId', async (req, res) => {
+router.get('/:transactionId', validateToken, async (req, res) => {
     const transactionId = req.params.transactionId;
+
+   
     const transactions = await Transactions.findAll({where: {
         TransactionID: transactionId
     }});
     res.json(transactions);
 })
 
-router.put('/:transactionId', async (req, res) => {
-    console.log("helo")
+router.post('/byId/:transactionId', validateToken, async (req, res) => {
+    const transactionId = req.params.transactionId;
+    console.log(transactionId)
     Transactions.update(
-        {active: req.body.active}
+        {active: 1},
+        {where: {id: transactionId}}
     )
-    .then(async (rowsUpdate, [updatedTransactions]) => {
-        res.json(updatedTransactions)
-        
-    })
+    res.json(transactionId)
 })
 // postID: "",
 //         itemDescription: "",
@@ -67,14 +68,15 @@ router.post("/", validateToken, async (req, res) => {
             await Transactions.create(transaction);
         }
     })
-    const transactionId = await Transactions.findAll({
+    let transactionID = await Transactions.findAll({
         attributes: ['id'],
         where: {
             postID: transaction.postID
         }
     })
-    // console.log(transactionId)
-    res.json(transactionId);
+    // const obj = JSON.parse(transactionId)
+    transactionID = transactionID.map(({id}) => id)
+    res.json(transactionID);
 })
 
 // router.delete("/:commentId", validateToken, async (req, res) => {
