@@ -25,28 +25,48 @@ function Transaction(){
     // need to access id value from transaction
     const { transaction } = useContext(TransactionContext)
     const { cart, setCart } = useContext(CartContext)
+    const [ postID, setPostID ] = useState("")
     const removeFromCart = (productID) => {
       console.log("removed from cart")
-      const newCart = cart.filter((product) => product.id === productID.data[0].postID);        
+      const newCart = cart.filter((product) => product.id === productID.data[0].postID);       
       setCart(newCart);
     }
+    // const hidePost = (postIdObject) => {
+    //   const postID = postIdObject.data[0].postID
+    //   console.log("item hidden from homepage")
+    //   // console.log(postID)
+      
+    // }
     const onSubmit = () => {
       const transactionID = transaction.data[0]
       // If we can extract transactions id from transaction object this should pass
       // transaction id to transaction/:transactionId route
       console.log("transactionID: " + transactionID)
-      axios.post("http://" + hostname + `/transactions/byId/${transactionID}`,
+      
+      axios.post(`http://${hostname}/transactions/byId/${transactionID}`, 
       transactionID,
       {
         headers: {
             accessToken: localStorage.getItem("accessToken")
         }
-      }
+      }// response is postID
       ).then((response) => {
-        removeFromCart(response)
-        console.log("purchase completed")
-        navigate('/cart', { replace: true });
-      })
+        // console.log(response)
+        removeFromCart(response);
+        // let postID = response.data[0].postID
+      
+        setPostID(response.data[0].postID)
+        // need to update post showpost column to 0
+      }).then(
+      axios.post(`http://${hostname}/posts/byId/hide/${postID}`, {showPost: 0}, {
+          headers: {
+              accessToken: localStorage.getItem("accessToken")
+          }
+      }))
+      
+      
+      
+      
       };
       const initialValues = {
         postID: "",

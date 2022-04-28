@@ -42,7 +42,8 @@ function CreatePost() {
     shippingFee: "",
     pricePerDay: "",
     image: "",
-    subTotal: ""
+    subTotal: "",
+    showPost: "1"
   };
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(),
