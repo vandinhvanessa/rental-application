@@ -46,19 +46,22 @@ function Home() {
       </div>
 
       {listOfPosts.filter((value) => {
-        if (searchTerm == "" && categoryTerm == "") {
-          return value;
-        } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && categoryTerm == "") {
-          return value;
-        } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && value.category.toLowerCase().includes(categoryTerm.toLowerCase())) {
-          return value;
+        if(value.showPost == 1){
+          if (searchTerm == "" && categoryTerm == "") {
+            return value;
+          } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && categoryTerm == "") {
+            return value;
+          } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && value.category.toLowerCase().includes(categoryTerm.toLowerCase())) {
+            return value;
+          }
+          else if (searchTerm == "" && value.category.toLowerCase().includes(categoryTerm.toLowerCase())) {
+            return value;
+          }
+          else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && categoryTerm == "All") {
+            return value;
+          }
         }
-        else if (searchTerm == "" && value.category.toLowerCase().includes(categoryTerm.toLowerCase())) {
-          return value;
-        }
-        else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && categoryTerm == "All") {
-          return value;
-        }
+        
       }).map((value, key) => {
         return (
           <div className="post" >

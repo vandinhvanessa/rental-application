@@ -5,7 +5,7 @@ import Select from 'react-select';
 import { hostname } from '../App.js';
 import { Image } from 'cloudinary-react'
 import CartContext from './User/Cart';
-import TransactionContext from './User/Cart';
+import TransactionContext from './User/Transaction';
 
 
 function Cart() {
@@ -18,13 +18,15 @@ function Cart() {
         const newCart = cart.filter((product) => product.id !== productToDelete.id);        
         setCart(newCart);
     }
-    const completeTransaction = (productToPurchase) => {
+    const completeTransaction = (productPost) => {
         console.log("transaction started")
         // console.log(productToPurchase)
-        axios.post("http://" + hostname + "/transactions", productToPurchase, {
+        axios.post("http://" + hostname + "/transactions", productPost, {
             headers: { accessToken: localStorage.getItem("accessToken") },
           }).then((response) => {
             // redirect to homepage
+            setTransaction(response)
+            // console.log(response)
             navigate('/transactions', { replace: true });
           });
         // after completing transaction remove item from cart
@@ -35,30 +37,6 @@ function Cart() {
         <div>
             {cart.map((value, key) => {
                 return (
-                    /*<div className="post" >
-                        <div className="title" onClick={() => {
-                            navigate(`/post/${value.id}`, { replace: true })
-                        }}> {value.title} </div>
-
-                        <Image
-                            className="postImage"
-                            style={{ width: 450 }}
-                            cloudName="ditub0apw"
-                            publicId={value.image}
-                            onClick={() => {
-                                navigate(`/post/${value.id}`, { replace: true })
-                            }}
-                        />
-
-                        <div className="footer">
-                            <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
-                            <div className="depositFee">Deposit Fee: {value.depositFee}</div>
-                            <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
-                            <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
-                            <button className='buyButton' onClick={() => removeFromCart(value)} >Remove from Cart</button>
-                        </div>
-
-                    </div>*/
                     <div className="listing">
                         <div className="listingLeft">
                             <Image
