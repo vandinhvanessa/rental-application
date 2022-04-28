@@ -20,12 +20,18 @@ router.get('/:transactionId', validateToken, async (req, res) => {
 
 router.post('/byId/:transactionId', validateToken, async (req, res) => {
     const transactionId = req.params.transactionId;
-    console.log(transactionId)
+    // console.log(transactionId)
     Transactions.update(
         {active: 1},
         {where: {id: transactionId}}
     )
-    res.json(transactionId)
+    const postID = await Transactions.findAll({
+        attributes: ['postID'],
+        where: {id : transactionId}
+        }
+    )
+    // console.log(postID)
+    res.json(postID)
 })
 // postID: "",
 //         itemDescription: "",

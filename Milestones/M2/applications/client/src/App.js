@@ -29,12 +29,12 @@ function App() {
   const [ transaction, setTransaction] = useState("");
 
   // const onAdd = (product) => {
-  //   const exist = cartItems.find(x => x.id === product.id);
+  //   const exist = cart.find(x => x.id === product.id);
   //   if (exist) {
-  //     setCartItems(cartItems.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1} : x))
+  //     setCartItems(cart.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1} : x))
   //   }
   //   else {
-  //     setCartItems([...cartItems, {...products, qty: 1}])
+  //     setCartItems([...cart, {...product, qty: 1}])
   //   }
   // }
 

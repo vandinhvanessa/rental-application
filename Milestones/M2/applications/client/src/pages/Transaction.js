@@ -24,6 +24,12 @@ function Transaction(){
 
     // need to access id value from transaction
     const { transaction } = useContext(TransactionContext)
+    const { cart, setCart } = useContext(CartContext)
+    const removeFromCart = (productID) => {
+      console.log("removed from cart")
+      const newCart = cart.filter((product) => product.id === productID.data[0].postID);        
+      setCart(newCart);
+    }
     const onSubmit = () => {
       const transactionID = transaction.data[0]
       // If we can extract transactions id from transaction object this should pass
@@ -37,9 +43,9 @@ function Transaction(){
         }
       }
       ).then((response) => {
-        console.log(response)
+        removeFromCart(response)
         console.log("purchase completed")
-        
+        navigate('/cart', { replace: true });
       })
       };
       const initialValues = {
