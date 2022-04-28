@@ -9,6 +9,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import SelectUSState from 'react-select-us-states';
 
 
+
 function Transaction(){
   
     let navigate = useNavigate();
@@ -54,15 +55,16 @@ function Transaction(){
         // console.log(response)
         removeFromCart(response);
         // let postID = response.data[0].postID
-      
         setPostID(response.data[0].postID)
+        
         // need to update post showpost column to 0
-      }).then(
-      axios.post(`http://${hostname}/posts/byId/hide/${postID}`, {showPost: 0}, {
-          headers: {
-              accessToken: localStorage.getItem("accessToken")
-          }
-      }))
+      })
+      .then(
+        axios.post(`http://${hostname}/posts/byId/hide/${postID}`, {showPost: 0}, {
+            headers: {
+                accessToken: localStorage.getItem("accessToken")
+            }
+        }))
       
       
       
