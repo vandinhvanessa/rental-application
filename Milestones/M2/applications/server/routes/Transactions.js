@@ -55,7 +55,7 @@ router.post("/", validateToken, async (req, res) => {
     transaction.transactionBegin = req.body.startDate
     transaction.transactionEnd = req.body.endDate
     transaction.active = false
-    transaction.cost = req.body.subTotal
+    transaction.cost = Number(req.body.subTotal) + Number(req.body.depositFee) + Number(req.body.shippingFee)
     const duplicate = await Transactions.count({
         where: {
             postID: transaction.postID,

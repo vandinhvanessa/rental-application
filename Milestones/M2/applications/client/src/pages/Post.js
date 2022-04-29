@@ -22,8 +22,19 @@ function Post() {
     const addToCart = (product) => {
         product.startDate = startDate;
         product.endDate = endDate;
-        product.subTotal = postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24);
-        setSubtotal(product.subTotal)
+        product.subTotal = Math.round((postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*23.99999))*100)/100;
+        setSubtotal(product.subTotal);
+
+        /*axios.post(`http://` + hostname + `/cart`, product,{
+            headers: { accessToken: localStorage.getItem('accessToken') },
+        }).then((response) => {
+            if(response.data.error){
+                console.log(response.data.error);
+            } else{
+                setCart([...cart, response.data.postID]);
+                //navigate('/cart', { replace: true });
+            }
+        });*/
         setCart([...cart, product]);
         console.log(startDate)
         console.log(endDate)
@@ -136,7 +147,7 @@ function Post() {
                             $/Day: ${postObject.pricePerDay}
                         </div>
                         <div className='subTotal'>
-                            Subtotal (Before Fees): ${postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)}
+                            Subtotal (Before Fees): ${Math.round((postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*23.99999))*100)/100}
                         </div>
                     </div>
 
@@ -165,7 +176,6 @@ function Post() {
                     {comments.map((comment, key) => {
                         return (
                             <div key={key} className="comment">
-
                                 <label>
                                     Username: {comment.username}
                                     {authState.username === comment.username && <button className="commentDelete" onClick={() => { deleteComment(comment.id) }}> X </button>}
@@ -174,8 +184,6 @@ function Post() {
                                 <div className="commentBody">
                                     {comment.commentBody}
                                 </div>
-
-
                             </div>);
                     })}
                 </div>

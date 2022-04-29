@@ -33,6 +33,13 @@ function Cart() {
         // const newCart = cart.filter((product) => product.id !== productToPurchase.id);        
         // setCart(newCart);
     }
+    /*useEffect(() => {
+        axios.get("http://" + hostname + "/cart").then((response) => {
+            console.log("-----response.data in Cart.js: ", response.data)
+            setCart(response.data);
+        })
+    }, []);*/
+    
     return (
         <div>
             {cart.map((value, key) => {
@@ -51,10 +58,11 @@ function Cart() {
                         </div>
                         <div className="listingRight">
                             <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
-                            <div className="depositFee">Deposit Fee: {value.depositFee}</div>
-                            <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
-                            <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
-                            <div className="subTotal">Subtotal: {value.subTotal}</div>
+                            <div className="depositFee">Deposit Fee: ${value.depositFee}</div>
+                            <div className="shippingFee">Shipping Fee: ${value.shippingFee}</div>
+                            <div className="pricePerDay">$/Day: ${value.pricePerDay}</div>
+                            <div className="subTotal">Subtotal: ${value.subTotal}</div>
+                            <div className="totalPrice">Total: ${Number(value.subTotal)+Number(value.depositFee)+Number(value.shippingFee)}</div>
                             <div className="startDate">Start Date: {value.startDate.toLocaleDateString()}</div>
                             <div className="endDate">End Date: {value.endDate.toLocaleDateString()}</div>
                             <button className='buyButton' onClick={() => completeTransaction(value)} >Complete Transaction</button>
