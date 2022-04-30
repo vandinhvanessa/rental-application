@@ -64,8 +64,7 @@ function Transaction(){
           }
       }))
       
-      
-      
+
       
       };
       const initialValues = {

@@ -10,11 +10,10 @@ const { Op } = require("sequelize");
 
 router.get('/:transactionId', validateToken, async (req, res) => {
     const transactionId = req.params.transactionId;
-
-   
     const transactions = await Transactions.findAll({where: {
         TransactionID: transactionId
     }});
+
     res.json(transactions);
 })
 
@@ -33,14 +32,7 @@ router.post('/byId/:transactionId', validateToken, async (req, res) => {
     // console.log(postID)
     res.json(postID)
 })
-// postID: "",
-//         itemDescription: "",
-//         lender: "",
-//         renter: "",
-//         transactionBegin: "",
-//         transactionEnd: "",
-//         active: "",
-//         cost: ""
+
 router.post("/", validateToken, async (req, res) => {
     console.log("in post")
     const transaction = {
@@ -63,7 +55,7 @@ router.post("/", validateToken, async (req, res) => {
     transaction.transactionBegin = req.body.startDate
     transaction.transactionEnd = req.body.endDate
     transaction.active = false
-    transaction.cost = req.body.subTotal
+    transaction.cost = Number(req.body.subTotal) + Number(req.body.depositFee) + Number(req.body.shippingFee)
     const duplicate = await Transactions.count({
         where: {
             postID: transaction.postID,
@@ -72,6 +64,8 @@ router.post("/", validateToken, async (req, res) => {
     }).then(async (count) => {
         if (count == 0){
             await Transactions.create(transaction);
+        }else{
+            console.log("Transaction with this user already exists")
         }
     })
     let transactionID = await Transactions.findAll({
@@ -85,17 +79,5 @@ router.post("/", validateToken, async (req, res) => {
     res.json(transactionID);
 })
 
-// router.delete("/:commentId", validateToken, async (req, res) => {
-//     const commentId = req.params.commentId
-
-//     await Comments.destroy({
-//         where: 
-//             {
-//                 id: commentId
-//             }
-//     });
-
-//     res.json("DELETED SUCCESSFULLY")
-// });
 
 module.exports = router;

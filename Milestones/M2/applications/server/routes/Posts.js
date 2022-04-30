@@ -33,7 +33,8 @@ router.post("/byId/:id", validateToken, async (req, res) => {
 
 router.post('/byId/hide/:id', validateToken, async (req, res) => {
     const postID = req.params.id;
-    console.log(`postID: ${postID}`)
+    
+    console.log("---------postID is:", postID)
     Posts.update(
         {showPost: 0},
         {where: {id: postID}}

@@ -77,7 +77,7 @@ function App() {
 
 
   return (
-
+    
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <CartContext.Provider value={{ cart, setCart }}>
