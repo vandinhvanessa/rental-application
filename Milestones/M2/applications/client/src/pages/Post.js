@@ -24,10 +24,13 @@ function Post() {
         product.endDate = endDate;
         product.subTotal = postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24);
         setSubtotal(product.subTotal)
-        setCart([...cart, product]);
+        let newCart = [...cart, product]
+        setCart(newCart);
         console.log(startDate)
         console.log(endDate)
         console.log(product.subTotal)
+        let stringCart = JSON.stringify(newCart);
+        localStorage.setItem("cart", stringCart)
     }
     //let history = useNavigate();
 
