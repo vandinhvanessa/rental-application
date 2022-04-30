@@ -32,12 +32,13 @@ router.post("/byId/:id", validateToken, async (req, res) => {
 })
 
 router.post('/byId/hide/:id', validateToken, async (req, res) => {
-    const postID = req;
-    console.log(`postID: ${postID}`)
-    // Posts.update(
-    //     {showPost: 0},
-    //     {where: {id: postID}}
-    // )
+    const postID = req.params.id;
+    
+    console.log("---------postID is:", postID)
+    Posts.update(
+        {showPost: 0},
+        {where: {id: postID}}
+    )
     // const postID = await Transactions.findAll({
     //     attributes: ['postID'],
     //     where: {id : transactionId}

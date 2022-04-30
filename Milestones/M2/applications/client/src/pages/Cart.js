@@ -62,15 +62,17 @@ function Cart() {
                         </div>
                         <div className="listingRight">
                             <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
-                            <div className="depositFee">Deposit Fee: {value.depositFee}</div>
-                            <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
-                            <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
-                            <div className="subTotal">Subtotal: {value.subTotal}</div>
+                            <div className="depositFee">Deposit Fee: ${value.depositFee}</div>
+                            <div className="shippingFee">Shipping Fee: ${value.shippingFee}</div>
+                            <div className="pricePerDay">$/Day: ${value.pricePerDay}</div>
+                            <div className="subTotal">Subtotal: ${value.subTotal}</div>
+                            <div className="totalPrice">Total: ${Number(value.subTotal)+Number(value.depositFee)+Number(value.shippingFee)}</div>
                             <div className="startDate">Start Date: {new Date(value.startDate).toLocaleDateString()}</div>
                             <div className="endDate">End Date: {new Date(value.endDate).toLocaleDateString()}</div>
                             <button className='buyButton' onClick={() => completeTransaction(value)} >Complete Transaction</button>
                             <button className='buyButton' onClick={() => removeFromCart(value)} >Remove from Cart</button>
                         </div>
+                        
                     </div>
 
                 );
