@@ -1,12 +1,12 @@
-import React from 'react'
-import * as Yup from 'yup'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import React from "react";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-import { hostname } from '../App.js'
+// import { useNavigate } from "react-router-dom";
+import { hostname } from "../App.js";
 
 function Registration() {
-  let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
+  // let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
   const initialValues = {
     username: "",
     password: "",
@@ -31,15 +31,16 @@ function Registration() {
   const onSubmit = (data) => {
     axios.post("http://" + hostname + "/auth", data).then(() => {
       console.log(data);
-      history('/login', {replace: true}); //TEMPORARY COMMENTOUT FOR TESTING
-    })
-  }
+      // history("/login", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
+    });
+  };
   return (
     <div>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}>
+        validationSchema={validationSchema}
+      >
         <Form className="formContainer">
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
@@ -60,7 +61,6 @@ function Registration() {
           <ErrorMessage name="email" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="email"
             placeholder="Your Email..."
           />
@@ -68,23 +68,16 @@ function Registration() {
           <ErrorMessage name="address" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="address"
             placeholder="Your Street Address..."
           />
           <label>City: </label>
           <ErrorMessage name="city" component="span" />
-          <Field
-            id="inputCreatePost"
-            
-            name="city"
-            placeholder="Your City..."
-          />
+          <Field id="inputCreatePost" name="city" placeholder="Your City..." />
           <label>State: </label>
           <ErrorMessage name="state" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="state"
             placeholder="Your State..."
           />
@@ -92,7 +85,6 @@ function Registration() {
           <ErrorMessage name="zipCode" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="zipCode"
             placeholder="Your Zipcode..."
           />
@@ -100,17 +92,14 @@ function Registration() {
           <ErrorMessage name="country" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="country"
             placeholder="Your Country..."
           />
-          <button type="submit">
-            Register
-          </button>
+          <button type="submit">Register</button>
         </Form>
       </Formik>
     </div>
-  )
+  );
 }
 
-export default Registration
+export default Registration;
