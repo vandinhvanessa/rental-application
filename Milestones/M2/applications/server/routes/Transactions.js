@@ -4,24 +4,48 @@ const router = express.Router();
 const { Transactions } = require("../models");
 const {validateToken} = require('../middlewares/AuthMiddleware');
 const db = require('../models');
-const { QueryTypes } = require('sequelize');
+const { QueryTypes, Transaction } = require('sequelize');
 const { Op } = require("sequelize");
 // const { Transaction } = require('sequelize');
 
-router.get('/:transactionId', validateToken, async (req, res) => {
-    const transactionId = req.params.transactionId;
-    const transactions = await Transactions.findAll({where: {
-        TransactionID: transactionId
-    }});
 
-    res.json(transactions);
+
+// router.get('/byId/:id', async (req, res) => {
+//     const id = req.params.id;
+//     const post = await Posts.findByPk(id);
+//     res.json(post);
+// })
+
+// router.get('/byuserId/:id', async (req, res) => {
+//     const id = req.params.id;
+//     const listOfPosts = await Posts.findAll({ where: {UserId: id}});
+//     res.json(listOfPosts);
+// })
+
+// axios.get(`http://${hostname}/transactions/byUser/${username}`)
+//         .then((response) => {
+//             setPurchaseHistory(response)
+//         })
+router.get('/byUsername/:username',  async (req, res) => {
+    const username = req.params.username;
+    console.log("username in GET:", username);
+    const listOfTransactions = await Transactions.findAll({ 
+        where: {
+        renter: username,
+        paymentReceived: true
+        }
+    });
+    res.json(listOfTransactions);
 })
+
+
+
 
 router.post('/byId/:transactionId', validateToken, async (req, res) => {
     const transactionId = req.params.transactionId;
     // console.log(transactionId)
     Transactions.update(
-        {active: 1},
+        {paymentReceived: 1},
         {where: {id: transactionId}}
     )
     const postID = await Transactions.findAll({
@@ -42,8 +66,9 @@ router.post("/", validateToken, async (req, res) => {
         renter: "",
         transactionBegin: "",
         transactionEnd: "",
-        active: 0,
-        cost: ""
+        paymentReceived: false,
+        cost: "",
+        image: ""
     }
     // console.log(req)
     // console.log(req.body)
@@ -54,20 +79,21 @@ router.post("/", validateToken, async (req, res) => {
     transaction.renter = req.user.username
     transaction.transactionBegin = req.body.startDate
     transaction.transactionEnd = req.body.endDate
-    transaction.active = false
     transaction.cost = Number(req.body.subTotal) + Number(req.body.depositFee) + Number(req.body.shippingFee)
-    const duplicate = await Transactions.count({
-        where: {
-            postID: transaction.postID,
-            renter: transaction.renter
-        }
-    }).then(async (count) => {
-        if (count == 0){
-            await Transactions.create(transaction);
-        }else{
-            console.log("Transaction with this user already exists")
-        }
-    })
+    transaction.image = req.body.image
+    await Transactions.create(transaction);
+    // const duplicate = await Transactions.count({
+    //     where: {
+    //         postID: transaction.postID,
+    //         renter: transaction.renter
+    //     }
+    // }).then(async (count) => {
+    //     if (count == 0){
+    //         await Transactions.create(transaction);
+    //     }else{
+    //         console.log("Transaction with this user already exists")
+    //     }
+    // }).catch(console.log("Error finding duplicates"))
     let transactionID = await Transactions.findAll({
         attributes: ['id'],
         where: {

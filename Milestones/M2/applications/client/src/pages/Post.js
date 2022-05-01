@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 
+
 function Post() {
     let { id } = useParams();
     const [postObject, setPostObject] = useState({});
@@ -49,11 +50,11 @@ function Post() {
     useEffect(() => {
         axios.get(`http://` + hostname + `/posts/byId/${id}`).then((response) => {
             setPostObject(response.data);
-        });
+        }).then(
         axios.get(`http://` + hostname + `/comments/${id}`).then((response) => {
             setComments(response.data);
-        });
-    }, []);
+        }))
+    },[]);
     
     const addComment = (() => {
         axios
@@ -118,7 +119,12 @@ function Post() {
 
                 <div className="postInfo">
                     <div className='postBuyButtons'>
-                        <button className='buyButton' onClick={() => {console.log("postobject username: ", postObject.username);addToCart(postObject)}} >Add To Cart</button>
+                        <button className='buyButton' onClick={() => {
+                            if (postObject.username !== authState.username){
+                                addToCart(postObject)
+                            }
+                            
+                            }} >Add To Cart</button>
                         <button>Buy Now</button>
                     </div>
                     <DatePicker

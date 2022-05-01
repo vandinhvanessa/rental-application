@@ -25,13 +25,17 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: true,
         },
-        active: {
+        paymentReceived: {
             type: DataTypes.BOOLEAN,
-            allowNull: true,
+            allowNull: false,
         },
         cost: {
             type: DataTypes.FLOAT,
             allowNull: true,
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
         
     });
@@ -39,6 +43,6 @@ module.exports = (sequelize, DataTypes) => {
         Transactions.hasMany(models.Comments, {
             onDelete: "cascade", 
         })
-    }
+    } 
     return Transactions;
 }
