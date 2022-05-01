@@ -31,7 +31,7 @@ function Post() {
             if(response.data.error){
                 console.log(response.data.error);
             } else{
-                setCart([...cart, response.data.postID]);
+                setCart([...cart, product]);
                 //navigate('/cart', { replace: true });
             }
         });*/

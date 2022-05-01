@@ -34,7 +34,9 @@ function Cart() {
         // setCart(newCart);
     }
     /*useEffect(() => {
-        axios.get("http://" + hostname + "/cart").then((response) => {
+        axios.get("http://" + hostname + "/cart", {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          }).then((response) => {
             console.log("-----response.data in Cart.js: ", response.data)
             setCart(response.data);
         })
