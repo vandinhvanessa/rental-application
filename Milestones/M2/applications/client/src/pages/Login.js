@@ -23,7 +23,7 @@ function Login() {
           id: response.data.id,
           status: true,
         });
-        //history("/", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
+        // history("/", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
       }
     });
   };

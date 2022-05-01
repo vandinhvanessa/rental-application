@@ -5,14 +5,16 @@ import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { hostname } from "../App.js";
 
+// TEMPORARY COMMENT IN FOR TESTING
 function handleSubmit(data) {
   axios.post("http://" + hostname + "/auth", data).then(() => {
     console.log(data);
-    // history("/login", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
+    //history("/login", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
   });
 }
 
-function Registration({ onSubmit = handleSubmit }) {
+function Registration({ onSubmit = handleSubmit }) { 
+//  function Registration() { //TEMPORARY COMMENTOUT FOR TESTING
   // let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
   const initialValues = {
     username: "",
@@ -36,6 +38,14 @@ function Registration({ onSubmit = handleSubmit }) {
     country: Yup.string().max(15).required(),
   });
 
+  //TEMPORARY COMMENTOUT FOR TESTING
+  /* const onSubmit = (data) => {
+     axios.post("http://" + hostname + "/auth", data).then(() => {
+       console.log(data);
+       history('/login', {replace: true}); 
+     })
+  } */
+
   return (
     <div>
       <Formik
@@ -43,6 +53,7 @@ function Registration({ onSubmit = handleSubmit }) {
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
+        {/* TEMPORARY COMMENTED OUT FOR TESTING <Form data-testid="form" className="formContainer" > */} 
         <Form data-testid="form" className="formContainer" onSubmit={onSubmit}>
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
