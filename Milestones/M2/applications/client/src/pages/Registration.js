@@ -2,20 +2,20 @@ import React from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { hostname } from "../App.js";
 
 // TEMPORARY COMMENT IN FOR TESTING
-function handleSubmit(data) {
-  axios.post("http://" + hostname + "/auth", data).then(() => {
-    console.log(data);
-    //history("/login", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
-  });
-}
+// function handleSubmit(data) {
+//   axios.post("http://" + hostname + "/auth", data).then(() => {
+//     console.log(data);
+//     history("/login", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
+//   });
+// }
 
-function Registration({ onSubmit = handleSubmit }) { 
-//  function Registration() { //TEMPORARY COMMENTOUT FOR TESTING
-  // let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
+{/* function Registration({ onSubmit = handleSubmit }) {*/} //TEMPORARY COMMENT OUT FOR WORKING REGISTRATION 
+  function Registration() { //TEMPORARY COMMENTOUT FOR TESTING
+  let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
   const initialValues = {
     username: "",
     password: "",
@@ -39,12 +39,12 @@ function Registration({ onSubmit = handleSubmit }) {
   });
 
   //TEMPORARY COMMENTOUT FOR TESTING
-  /* const onSubmit = (data) => {
+  const onSubmit = (data) => {
      axios.post("http://" + hostname + "/auth", data).then(() => {
        console.log(data);
        history('/login', {replace: true}); 
      })
-  } */
+  } 
 
   return (
     <div>
@@ -53,8 +53,8 @@ function Registration({ onSubmit = handleSubmit }) {
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        {/* TEMPORARY COMMENTED OUT FOR TESTING <Form data-testid="form" className="formContainer" > */} 
-        <Form data-testid="form" className="formContainer" onSubmit={onSubmit}>
+        {/* TEMPORARY COMMENT OUT FOR WORKING REGISTRATION <Form data-testid="form" className="formContainer" onSubmit={onSubmit}>*/}
+          <Form data-testid="form" className="formContainer" >
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
           <Field

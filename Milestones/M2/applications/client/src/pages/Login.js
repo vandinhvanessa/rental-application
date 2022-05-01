@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 import { hostname } from "../App.js";
 
@@ -9,7 +9,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const { setAuthState } = useContext(AuthContext);
 
-  // let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
+  let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
 
   const login = () => {
     const data = { username: username, password: password };
@@ -23,7 +23,7 @@ function Login() {
           id: response.data.id,
           status: true,
         });
-        // history("/", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
+        history("/", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
       }
     });
   };
