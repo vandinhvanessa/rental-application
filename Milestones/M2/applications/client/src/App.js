@@ -61,6 +61,7 @@ function App() {
               id: response.data.id,
               status: true,
             });
+          localStorage.setItem("username", response.data.username)
         }
       });
 

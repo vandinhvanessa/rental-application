@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 
+
 function Post() {
     let { id } = useParams();
     const [postObject, setPostObject] = useState({});
@@ -49,11 +50,13 @@ function Post() {
     useEffect(() => {
         axios.get(`http://` + hostname + `/posts/byId/${id}`).then((response) => {
             setPostObject(response.data);
-        });
+            let stringPost = JSON.stringify(postObject);
+            localStorage.setItem("postUsername", response.data.username)
+        }).then(
         axios.get(`http://` + hostname + `/comments/${id}`).then((response) => {
             setComments(response.data);
-        });
-    }, []);
+        }))
+    },[]);
     
     const addComment = (() => {
         axios
@@ -118,7 +121,16 @@ function Post() {
 
                 <div className="postInfo">
                     <div className='postBuyButtons'>
-                        <button className='buyButton' onClick={() => addToCart(postObject)} >Add To Cart</button>
+                        <button className='buyButton' onClick={(postObject) => {
+                            // console.log("authState.username: " + authState.username)
+                            // console.log("postlocal storage:" + localStorage.getItem("post"))
+                            // console.log("postObject.username: " + postObject.username)
+                            // console.log("(postObject.username !== authState.username): " + (postObject.username !== authState.username))
+                            if (localStorage.getItem("postUsername") !== authState.username){
+                                addToCart(postObject)
+                            }
+                            
+                            }} >Add To Cart</button>
                         <button>Buy Now</button>
                     </div>
                     <DatePicker

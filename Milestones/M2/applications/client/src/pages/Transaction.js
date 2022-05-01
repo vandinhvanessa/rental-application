@@ -27,10 +27,17 @@ function Transaction(){
     const { transaction } = useContext(TransactionContext)
     const { cart, setCart } = useContext(CartContext)
     const [ postID, setPostID ] = useState("")
-    const removeFromCart = (productID) => {
+    let transactionPost = localStorage.getItem("transactionPost");
+    let localCart = localStorage.getItem("cart")
+
+    const removeFromCart = (postID) => {
+ 
       console.log("removed from cart")
-      const newCart = cart.filter((product) => product.id === productID.data[0].postID);       
+      let newCart = cart.filter((post) => post.id !== postID);       
+      console.log(newCart)
       setCart(newCart);
+      let stringCart = JSON.stringify(newCart);
+      localStorage.setItem("cart", stringCart)
     }
     // const hidePost = (postIdObject) => {
     //   const postID = postIdObject.data[0].postID
@@ -38,6 +45,13 @@ function Transaction(){
     //   // console.log(postID)
       
     // }
+    useEffect(() => {
+      // console.log(typeof JSON.parse(localCart))
+      localCart = JSON.parse(localCart);
+      if (localCart) setCart( localCart)
+
+    }, [])
+
     const onSubmit = () => {
       const transactionID = transaction.data[0]
       // If we can extract transactions id from transaction object this should pass
@@ -51,22 +65,25 @@ function Transaction(){
             accessToken: localStorage.getItem("accessToken")
         }
       }// response is postID
-      ).then((response) => {
+      ).then(() => {
         // console.log(response)
-        removeFromCart(response);
+        removeFromCart(JSON.parse(transactionPost).id);
+        
         // let postID = response.data[0].postID
-        setPostID(response.data[0].postID)
+        // setPostID(response.data[0].postID)
         
         // need to update post showpost column to 0
       })
       .then(
-        axios.post(`http://${hostname}/posts/byId/hide/${postID}`, {showPost: 0}, {
+        
+        axios.post(`http://${hostname}/posts/byId/hide/${JSON.parse(transactionPost).id}`, {showPost: 0}, {
             headers: {
                 accessToken: localStorage.getItem("accessToken")
             }
-        }))
-      
-
+        })
+        )
+      navigate('/', {replace: true})
+      window.location.reload(true);
       
       };
       const initialValues = {
@@ -76,8 +93,9 @@ function Transaction(){
         renter: "",
         transactionBegin: "",
         transactionEnd: "",
-        active: "",
-        cost: ""
+        paymentReceived: false,
+        cost: "",
+        image: ""
       };
       return (
         

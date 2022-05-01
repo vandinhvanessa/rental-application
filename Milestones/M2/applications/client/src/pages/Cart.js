@@ -23,18 +23,24 @@ function Cart() {
         localStorage.setItem("cart", stringCart)
     }
     const completeTransaction = (productPost) => {
+        let stringPost = JSON.stringify(productPost)
+        localStorage.setItem("transactionPost", stringPost)
         console.log("transaction started")
+        console.log("Testing response")
         // console.log(productToPurchase)
         axios.post("http://" + hostname + "/transactions", productPost, {
             headers: { accessToken: localStorage.getItem("accessToken") },
           }).then((response) => {
             // redirect to homepage
             setTransaction(response)
-            // console.log(response)
+            
             navigate('/transactions', { replace: true });
+          }).catch((err)=> {
+              console.log("error: " + err)
           });
+          
         // after completing transaction remove item from cart
-        // const newCart = cart.filter((product) => product.id !== productToPurchase.id);        
+        // const newCart = cart.filter((product) => product.id !== stringPost.id);        
         // setCart(newCart);
     }
 
