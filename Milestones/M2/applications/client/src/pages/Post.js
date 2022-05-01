@@ -22,6 +22,8 @@ function Post() {
     const addToCart = (product) => {
         product.startDate = startDate;
         product.endDate = endDate;
+        let newCart = [...cart, product]
+        setCart(newCart);
         product.subTotal = Math.round((postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*23.99999))*100)/100;
         setSubtotal(product.subTotal);
 
@@ -39,6 +41,8 @@ function Post() {
         console.log(startDate)
         console.log(endDate)
         console.log(product.subTotal)
+        let stringCart = JSON.stringify(newCart);
+        localStorage.setItem("cart", stringCart)
     }
     //let history = useNavigate();
 
@@ -114,7 +118,7 @@ function Post() {
 
                 <div className="postInfo">
                     <div className='postBuyButtons'>
-                        <button className='buyButton' onClick={() => addToCart(postObject)} >Add To Cart</button>
+                        <button className='buyButton' onClick={() => {console.log("postobject username: ", postObject.username);addToCart(postObject)}} >Add To Cart</button>
                         <button>Buy Now</button>
                     </div>
                     <DatePicker
