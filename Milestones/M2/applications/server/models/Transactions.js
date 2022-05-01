@@ -25,17 +25,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: true,
         },
-        paymentReceived: {
+        active: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
+            allowNull: true,
         },
         cost: {
             type: DataTypes.FLOAT,
             allowNull: true,
-        },
-        image: {
-            type: DataTypes.STRING,
-            allowNull: true
         }
         
     });

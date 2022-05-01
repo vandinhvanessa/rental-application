@@ -1,14 +1,14 @@
-import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-import Home from './Home';
+import { useNavigate } from "react-router-dom";
+import Home from "./Home";
 // import { DropDownList } from "@progress/kendo-react-dropdowns";
-// import '@progress/kendo-theme-default/dist/all.css';  
-import { useState, useEffect } from 'react';
-import { hostname } from '../App.js';
-import { Image } from 'cloudinary-react'
+// import '@progress/kendo-theme-default/dist/all.css';
+import { useState, useEffect } from "react";
+import { hostname } from "../App.js";
+import { Image } from "cloudinary-react";
 
 // const categories = ["all", "recipe", "video", "article"];
 function CreatePost() {
@@ -22,17 +22,18 @@ function CreatePost() {
   }, []);
   const onSubmit = (data) => {
     data.subTotal = 0;
-    data.image = imageLink
+    data.image = imageLink;
     // console.log(data)
-    axios.post("http://" + hostname + "/posts", data, {
-      headers: { accessToken: localStorage.getItem("accessToken") },
-    }).then((response) => {
-      //setListOfPosts(response.data);
-      // redirect to homepage
-      console.log(response)
-      history('/', { replace: true });
-    });
-
+    axios
+      .post("http://" + hostname + "/posts", data, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then((response) => {
+        //setListOfPosts(response.data);
+        // redirect to homepage
+        console.log(response);
+        history("/", { replace: true });
+      });
   };
   const initialValues = {
     title: "",
@@ -43,7 +44,6 @@ function CreatePost() {
     pricePerDay: "",
     image: "",
     subTotal: "",
-    showPost: "1"
   };
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(),
@@ -57,26 +57,31 @@ function CreatePost() {
 
   const uploadImage = () => {
     // Constructing the formData that we are passing to cloudinary
-    const formData = new FormData()
-    formData.append("file", imageSelected)
+    const formData = new FormData();
+    formData.append("file", imageSelected);
     // Passing the upload preset
-    formData.append("upload_preset", "oqlvocmd")
+    formData.append("upload_preset", "oqlvocmd");
 
     // Sending formData to route
-    axios.post("https://api.cloudinary.com/v1_1/ditub0apw/image/upload"
-      , formData).then((response) => {
+    axios
+      .post("https://api.cloudinary.com/v1_1/ditub0apw/image/upload", formData)
+      .then((response) => {
         // console.log(response)
-        console.log(response.data.public_id)
-        setImageLink("https://res.cloudinary.com/ditub0apw/image/upload/v1649281497/" + response.data.public_id)
+        console.log(response.data.public_id);
+        setImageLink(
+          "https://res.cloudinary.com/ditub0apw/image/upload/v1649281497/" +
+            response.data.public_id
+        );
         // console.log(imageLink)
-      })
+      });
   };
   return (
     <div className="createPostPage" class="btn-group">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}>
+        validationSchema={validationSchema}
+      >
         <Form className="formContainer">
           <label>Title: </label>
           <ErrorMessage name="title" component="span" />
@@ -96,12 +101,10 @@ function CreatePost() {
           <label>Category: </label>
           <ErrorMessage name="category" component="span" />
 
-          <Field
-            id="inputCreatePost"
-            name="category"
-            as="Select"
-          >
-            <option value="" selected disabled>Please Select</option>
+          <Field id="inputCreatePost" name="category" as="Select">
+            <option value="" selected disabled>
+              Please Select
+            </option>
             <option value="All">All</option>
             <option value="Bicycle Gear">Bicycle Gear</option>
             <option value="Climbing Gear">Climbing Gear</option>
@@ -122,25 +125,13 @@ function CreatePost() {
 
           <label>Deposit Fee: $ </label>
           <ErrorMessage name="depositFee" component="span" />
-          <Field
-            id="inputCreatePost"
-            name="depositFee"
-            placeholder="$2..."
-          />
+          <Field id="inputCreatePost" name="depositFee" placeholder="$2..." />
           <label>Shipping Fee: $ </label>
           <ErrorMessage name="shippingFee" component="span" />
-          <Field
-            id="inputCreatePost"
-            name="shippingFee"
-            placeholder="$10..."
-          />
+          <Field id="inputCreatePost" name="shippingFee" placeholder="$10..." />
           <label>Price Per Day: $/Day </label>
           <ErrorMessage name="pricePerDay" component="span" />
-          <Field
-            id="inputCreatePost"
-            name="pricePerDay"
-            placeholder="$2/day"
-          />
+          <Field id="inputCreatePost" name="pricePerDay" placeholder="$2/day" />
 
           <input
             type="file"
@@ -152,9 +143,7 @@ function CreatePost() {
           <button type="button" onClick={uploadImage}>
             Upload Image
           </button>
-          <button type="submit">
-            Create A Post
-          </button>
+          <button type="submit">Create A Post</button>
           {/* <Image cloudName="ditub0apw"
             style={width: 200;}
             publicId = ""
@@ -162,7 +151,7 @@ function CreatePost() {
         </Form>
       </Formik>
     </div>
-  )
+  );
 }
 
-export default CreatePost
+export default CreatePost;

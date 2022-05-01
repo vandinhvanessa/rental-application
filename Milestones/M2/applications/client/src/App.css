@@ -8,7 +8,6 @@
   background-image: url(./helpers/farm-tractor.jpeg);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
 }
 
 body {
@@ -298,7 +297,6 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
 }
 
 .rightSide .postInfo {
@@ -321,12 +319,12 @@ button {
 
 .listOfComments .comment {
   width: 70%;
-  height: 40%;
+  height: 35%;
   padding-left: 15px;
   border: 1px solid lightgray;
   border-radius: 10px;
   margin-top: 5px;
-  background-color: #f9f9f9;
+  background-color: #f1f1f1;
 }
 
 .listOfComments .comment button{
@@ -632,11 +630,6 @@ button {
   flex-direction: row;
   padding-top: 15px;
   left: 0px;
-  background-color: #f1f1f1;
-  border-radius: 10px;
-  border: 2px solid gray;
-  margin: 10px;
-  
 }
 
 .listing .listingLeft .postImage{
@@ -657,12 +650,4 @@ button {
 .listing .listingRight{
   padding-left: 20px;
   font-size: large;
-}
-
-.listing button{
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-}
-
-.listing button:hover{
-  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
 }

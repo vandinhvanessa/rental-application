@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './pages/Home';
-import listOfPosts from './pages/Home'
+// import listOfPosts from './pages/Home'
 import CreatePost from './pages/CreatePost';
 import Post from './pages/Post';
 import Login from './pages/Login';
@@ -29,12 +29,12 @@ function App() {
   const [ transaction, setTransaction] = useState("");
 
   // const onAdd = (product) => {
-  //   const exist = cart.find(x => x.id === product.id);
+  //   const exist = cartItems.find(x => x.id === product.id);
   //   if (exist) {
-  //     setCartItems(cart.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1} : x))
+  //     setCartItems(cartItems.map(x => x.id === product.id ? {...exist, qty: exist.qty + 1} : x))
   //   }
   //   else {
-  //     setCartItems([...cart, {...product, qty: 1}])
+  //     setCartItems([...cartItems, {...products, qty: 1}])
   //   }
   // }
 
@@ -61,7 +61,6 @@ function App() {
               id: response.data.id,
               status: true,
             });
-          localStorage.setItem("username", response.data.username)
         }
       });
 

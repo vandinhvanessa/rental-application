@@ -44,10 +44,6 @@ module.exports = (sequelize, DataTypes) => {
         endDate: {
             type: DataTypes.DATE,
             allowNull: true
-        },
-        showPost: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
         }
     });
     Posts.associate = (models) => {
