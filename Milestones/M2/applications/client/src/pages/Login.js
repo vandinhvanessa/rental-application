@@ -29,7 +29,7 @@ function Login() {
   };
   return (
     <div className="loginContainer">
-      <label for="username">Username:</label>
+      <label htmlFor="username">Username:</label>
       <input
         type="text"
         placeholder="Enter username"
@@ -39,7 +39,7 @@ function Login() {
           setUsername(event.target.value);
         }}
       />
-      <label for="password">Password:</label>
+      <label htmlFor="password">Password:</label>
       <input
         type="password"
         placeholder="Enter password"

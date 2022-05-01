@@ -5,7 +5,14 @@ import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { hostname } from "../App.js";
 
-function Registration() {
+function handleSubmit (data) {
+  axios.post("http://" + hostname + "/auth", data).then(() => {
+    console.log(data);
+  // history("/login", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
+  });
+};
+
+function Registration({onSubmit = handleSubmit}) {
   // let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
   const initialValues = {
     username: "",
@@ -28,12 +35,7 @@ function Registration() {
     zipCode: Yup.string().max(10).required(),
     country: Yup.string().max(15).required(),
   });
-  const onSubmit = (data) => {
-    axios.post("http://" + hostname + "/auth", data).then(() => {
-      console.log(data);
-      // history("/login", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
-    });
-  };
+
   return (
     <div>
       <Formik
@@ -41,7 +43,7 @@ function Registration() {
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        <Form className="formContainer">
+        <Form data-testid="form" className="formContainer" onSubmit={onSubmit}>
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
           <Field
@@ -95,7 +97,9 @@ function Registration() {
             name="country"
             placeholder="Your Country..."
           />
-          <button type="submit">Register</button>
+          <button type="submit" data-testid="register-button">
+            Register
+          </button>
         </Form>
       </Formik>
     </div>

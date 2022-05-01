@@ -1,13 +1,25 @@
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import {
+  render,
+  screen,
+  waitFor,
+  fireEvent,
+  userEvent,
+  cleanup,
+} from "@testing-library/react";
 import Registration from "../pages/Registration";
 import ReactDOM from "react-dom";
+import { act } from "react-dom/test-utils";
 
-test("Registration Renders", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<Registration />, div);
+afterEach(() => {
+  cleanup();
 });
 
-describe("Input tests", () => {
+test("Registration Renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<Registration></Registration>, div);
+});
+
+describe("Registration components", () => {
   test("Username input", async () => {
     const { container } = render(<Registration />);
     const username = container.querySelector('input[name="username"]');
@@ -23,6 +35,7 @@ describe("Input tests", () => {
       expect(username.value).toBe("testusername");
     });
   });
+
   test("Address input ", async () => {
     const { container } = render(<Registration />);
     const address = container.querySelector('input[name="address"]');
@@ -102,5 +115,14 @@ describe("Input tests", () => {
     await waitFor(() => {
       expect(country.value).toBe("USA");
     });
+  });
+  test("should be able to submit form", async () => {
+    const onSubmit = jest.fn();
+    const {getByTestId} = render(<Registration onSubmit ={onSubmit} />);
+
+    await act(async () => {
+      fireEvent.submit(getByTestId("register-button"));
+    });
+    expect(onSubmit).toBeCalled();
   });
 });

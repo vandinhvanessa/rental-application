@@ -74,17 +74,10 @@ describe("Login component", () => {
 
   it("password input should accept text", () => {
     const { getByLabelText } = render(<Login />);
-    const password = getByLabelText('Password:');
+    const password = getByLabelText("Password:");
     expect(password.value).toMatch("");
     fireEvent.change(password, { target: { value: "1234" } });
     expect(password.value).toMatch("1234");
   });
 
-  // it("should be able to submit form", () => {
-  //   const mockFn = jest.fn();
-  //   const {getByRole} = render(<Login onclick={mockFn} />)
-  //   const button = getByRole("button");
-  //   fireEvent.submit(button);
-  //   expect(mockFn).toHaveBeenCalledTimes(1);
-  // })
 });
