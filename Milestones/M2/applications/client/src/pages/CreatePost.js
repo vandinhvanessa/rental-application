@@ -12,12 +12,12 @@ import { Image } from 'cloudinary-react'
 
 // const categories = ["all", "recipe", "video", "article"];
 function CreatePost() {
-  let history = useNavigate();
+  //let history = useNavigate(); TEMPORARY COMMENT OUT FOR TESTING
   const [imageSelected, setImageSelected] = useState("");
   const [imageLink, setImageLink] = useState("");
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      history("/login", { replace: true });
+      //history("/login", { replace: true }); TEMPORARY COMMENT OUT FOR TESTING
     }
   }, []);
   const onSubmit = (data) => {
@@ -30,7 +30,7 @@ function CreatePost() {
       //setListOfPosts(response.data);
       // redirect to homepage
       console.log(response)
-      history('/', { replace: true });
+      //history('/', { replace: true }); TEMPORARY COMMENT OUT FOR TESTING
     });
 
   };
@@ -72,12 +72,13 @@ function CreatePost() {
       })
   };
   return (
-    <div className="createPostPage" class="btn-group">
+    <div className="createPostPage" class="btn-group" data-testid="create-post">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}>
-        <Form className="formContainer">
+        validationSchema={validationSchema}
+        >
+        <Form className="formContainer" >
           <label>Title: </label>
           <ErrorMessage name="title" component="span" />
           <Field
@@ -95,11 +96,11 @@ function CreatePost() {
 
           <label>Category: </label>
           <ErrorMessage name="category" component="span" />
-
           <Field
             id="inputCreatePost"
             name="category"
-            as="Select"
+            as="Select" 
+            data-testid="select"
           >
             <option value="" selected disabled>Please Select</option>
             <option value="All">All</option>
@@ -107,7 +108,7 @@ function CreatePost() {
             <option value="Climbing Gear">Climbing Gear</option>
             <option value="Electronics">Electronics</option>
             <option value="Garden">Garden</option>
-            <option value="Hiking Gear">Hiking Gear</option>
+            <option data-testid="hiking" value="Hiking Gear">Hiking Gear</option>
             <option value="Home">Home</option>
             <option value="Industrial">Industrial</option>
             <option value="Outdoors">Outdoors</option>
