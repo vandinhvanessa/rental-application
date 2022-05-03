@@ -1,11 +1,20 @@
-import React from 'react'
-import * as Yup from 'yup'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import React from "react";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-import { hostname } from '../App.js'
+import { useNavigate } from "react-router-dom";
+import { hostname } from "../App.js";
 
-function Registration() {
+// TEMPORARY COMMENT IN FOR TESTING
+// function handleSubmit(data) {
+//   axios.post("http://" + hostname + "/auth", data).then(() => {
+//     console.log(data);
+//     history("/login", { replace: true }); //TEMPORARY COMMENTOUT FOR TESTING
+//   });
+// }
+
+{/* function Registration({ onSubmit = handleSubmit }) {*/} //TEMPORARY COMMENT OUT FOR WORKING REGISTRATION 
+  function Registration() { //TEMPORARY COMMENTOUT FOR TESTING
   let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
   const initialValues = {
     username: "",
@@ -28,19 +37,24 @@ function Registration() {
     zipCode: Yup.string().max(10).required(),
     country: Yup.string().max(15).required(),
   });
+
+  //TEMPORARY COMMENTOUT FOR TESTING
   const onSubmit = (data) => {
-    axios.post("http://" + hostname + "/auth", data).then(() => {
-      console.log(data);
-      history('/login', {replace: true}); //TEMPORARY COMMENTOUT FOR TESTING
-    })
-  }
+     axios.post("http://" + hostname + "/auth", data).then(() => {
+       console.log(data);
+       history('/login', {replace: true}); 
+     })
+  } 
+
   return (
     <div>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-        validationSchema={validationSchema}>
-        <Form className="formContainer">
+        validationSchema={validationSchema}
+      >
+        {/* TEMPORARY COMMENT OUT FOR WORKING REGISTRATION <Form data-testid="form" className="formContainer" onSubmit={onSubmit}>*/}
+          <Form data-testid="form" className="formContainer" >
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
           <Field
@@ -60,7 +74,6 @@ function Registration() {
           <ErrorMessage name="email" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="email"
             placeholder="Your Email..."
           />
@@ -68,23 +81,16 @@ function Registration() {
           <ErrorMessage name="address" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="address"
             placeholder="Your Street Address..."
           />
           <label>City: </label>
           <ErrorMessage name="city" component="span" />
-          <Field
-            id="inputCreatePost"
-            
-            name="city"
-            placeholder="Your City..."
-          />
+          <Field id="inputCreatePost" name="city" placeholder="Your City..." />
           <label>State: </label>
           <ErrorMessage name="state" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="state"
             placeholder="Your State..."
           />
@@ -92,7 +98,6 @@ function Registration() {
           <ErrorMessage name="zipCode" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="zipCode"
             placeholder="Your Zipcode..."
           />
@@ -100,17 +105,16 @@ function Registration() {
           <ErrorMessage name="country" component="span" />
           <Field
             id="inputCreatePost"
-            
             name="country"
             placeholder="Your Country..."
           />
-          <button type="submit">
+          <button type="submit" data-testid="register-button">
             Register
           </button>
         </Form>
       </Formik>
     </div>
-  )
+  );
 }
 
-export default Registration
+export default Registration;
