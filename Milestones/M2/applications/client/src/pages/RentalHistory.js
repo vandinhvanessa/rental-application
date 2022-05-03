@@ -13,27 +13,41 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const listParams = [{ value: "All", label: "All" }, { value: "Completed", label: "Completed" },
 { value: "In Progress", label: "In Progress" }]
-function PurchaseHistory() {
+function RentalHistory() {
     // const calculateSubtotal = (postObject) => {
     //     postObject.subTotal = postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)
     // }
-    const [purchaseHistory, setPurchaseHistory] = useState([]);
+    const [rentalHistory, setRentalHistory] = useState([]);
     const {authState} = useContext(AuthContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [listParam, setListParam] = useState('');
-    let username = localStorage.getItem("username")
     useEffect(() => {
-        // get purchase history
-        console.log(username)
-        axios.get(`http://${hostname}/transactions/byRenter/${username}`)
+        // get purchase histor
+        console.log(authState.username)
+        axios.get(`http://${hostname}/transactions/byLender/${authState.username}`)
         .then(async (response) => {
             // console.log(response)
-            setPurchaseHistory(response.data)
+            setRentalHistory(response.data)
             setListParam("All")
         })
         
         
     }, [])
+    const returnItem = (transactionID) => {
+        // let stringProduct = JSON.stringify(productPostID)
+        // localStorage.setItem("transactionPost", stringPost)
+        console.log("Returning Item started")
+        console.log(transactionID)
+        // console.log(productToPurchase)
+        axios.post(`http://${hostname}/transactions/itemReturn/byID/${transactionID}`, transactionID, {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          })
+          
+        // after completing transaction remove item from cart
+        // const newCart = cart.filter((product) => product.id !== stringPost.id);        
+        // setCart(newCart);
+    }
+    
     return (
         <div className='postPage'>
             <div className='filters'>
@@ -43,9 +57,9 @@ function PurchaseHistory() {
                         }} value={listParam} defaultValue={"All"} />
         
             </div>
-            {purchaseHistory.filter((value) => {
-                console.log(listParam)
-                if (value.renter === authState.username){
+            {rentalHistory.filter((value) => {
+                // console.log(listParam)
+                if (value.lender === authState.username){
                     if (searchTerm === "" && listParam === "All" ) {
                         console.log("1")
                         return value;
@@ -88,8 +102,9 @@ function PurchaseHistory() {
                             <div className="totalPrice">Total: ${Number(value.cost)}</div>
                             <div className="startDate">Start Date: {new Date(value.transactionBegin).toLocaleDateString()}</div>
                             <div className="endDate">End Date: {new Date(value.transactionEnd).toLocaleDateString()}</div>
-                            
-                            
+                            {!value.itemReturned &&
+                                <button className='buyButton' onClick={() => returnItem(value.id)} >Item Returned</button>
+                            }
                         </div>
                         
                     </div>
@@ -101,4 +116,4 @@ function PurchaseHistory() {
     )
 }
 
-export default PurchaseHistory
+export default RentalHistory

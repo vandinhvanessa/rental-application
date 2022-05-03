@@ -28,7 +28,7 @@ function Cart() {
         console.log("transaction started")
         console.log("Testing response")
         // console.log(productToPurchase)
-        axios.post("http://" + hostname + "/transactions", productPost, {
+        axios.post(`http://${hostname}/transactions`, productPost, {
             headers: { accessToken: localStorage.getItem("accessToken") },
           }).then((response) => {
             // redirect to homepage

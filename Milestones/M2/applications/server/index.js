@@ -18,6 +18,7 @@ app.use("/auth", usersRouter);
 const transactionRouter = require("./routes/Transactions");
 app.use("/transactions", transactionRouter);
 
+
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {
         console.log("Server running on Port 3001");
