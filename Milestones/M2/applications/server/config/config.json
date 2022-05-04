@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "CSC648db",
+    "password": "soccer",
+    "database": "classdb",
     "host": "localhost",
     "dialect": "mysql"
   },

@@ -33,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
+        itemLeftRenter: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
         cost: {
             type: DataTypes.FLOAT,
             allowNull: true,
