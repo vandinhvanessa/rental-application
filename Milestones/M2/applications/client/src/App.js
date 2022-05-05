@@ -18,6 +18,7 @@ import rentLogo from './helpers/renttomelogo.png';
 import PurchaseHistory from './pages/PurchaseHistory';
 import RentalHistory from './pages/RentalHistory'
 import AddToInventory from './pages/AddToInventory';
+import Inventory from './pages/Inventory';
 
 //export const hostname = "rentto.me:3001";
 export const hostname = "localhost:3001";
@@ -112,7 +113,8 @@ function App() {
                       {/* <p>Purchase History</p> */}
                       <Link to={`/purchasehistory`}>Purchase History</Link>
                       <Link to={`/rentalhistory`}>Rental History</Link>
-                      <Link to={`/inventory`}>Add to Inventory</Link>
+                      <Link to={`/inventory/add`}>Add to Inventory</Link>
+                      <Link to={`/inventory`}>Inventory</Link>
                       <p>View History</p>
                       <p>Settings</p>
                     </div>
@@ -134,7 +136,8 @@ function App() {
                 <Route path="/transactions" element={<Transaction />} />
                 <Route path="/purchasehistory" element={<PurchaseHistory />} />
                 <Route path="/rentalhistory" element={<RentalHistory />} />
-                <Route path="/inventory" element={<AddToInventory />} />
+                <Route path="/inventory/add" element={<AddToInventory />} />n
+                <Route path="/inventory" element={<Inventory />} />
               </Routes>
             </Router>
           </TransactionContext.Provider>

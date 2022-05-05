@@ -22,7 +22,7 @@ router.post("/", validateToken, async (req, res) => {
     inventoryListing.itemName = req.body.itemName
     inventoryListing.username = req.user.username
     inventoryListing.category = req.body.category
-    inventoryListing.image = req.user.username
+    inventoryListing.image = req.body.image
     // make sure item names are unique
     const newListingawait = Inventory.create(inventoryListing)
 
@@ -31,4 +31,14 @@ router.post("/", validateToken, async (req, res) => {
     res.json(newListingawait);
 })
 
+
+router.get('/byLender/:username',  async (req, res) => {
+    const username = req.params.username;
+    const inventory = await Inventory.findAll({ 
+        where: {
+        username: username
+    }
+});
+    res.json(inventory);
+})
 module.exports = router;

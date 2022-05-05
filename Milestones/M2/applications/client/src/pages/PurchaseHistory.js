@@ -22,6 +22,10 @@ function PurchaseHistory() {
     const [searchTerm, setSearchTerm] = useState('');
     const [listParam, setListParam] = useState('');
     let username = localStorage.getItem("username")
+
+    const writeReview = (postID) => {
+
+    }
     useEffect(() => {
         // get purchase history
         console.log(username)
@@ -88,7 +92,9 @@ function PurchaseHistory() {
                             <div className="totalPrice">Total: ${Number(value.cost)}</div>
                             <div className="startDate">Start Date: {new Date(value.transactionBegin).toLocaleDateString()}</div>
                             <div className="endDate">End Date: {new Date(value.transactionEnd).toLocaleDateString()}</div>
-                            
+                            {!value.itemLeftRenter &&
+                                <button className='buyButton' onClick={() => writeReview(value.id)} >Write Review</button>
+                            }
                             
                         </div>
                         
