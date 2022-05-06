@@ -16,6 +16,7 @@ import CartContext from './pages/User/Cart';
 import TransactionContext from './pages/User/Transaction';
 import rentLogo from './helpers/renttomelogo.png';
 import PurchaseHistory from './pages/PurchaseHistory';
+import RentalHistory from './pages/RentalHistory'
 
 //export const hostname = "rentto.me:3001";
 export const hostname = "localhost:3001";
@@ -109,6 +110,7 @@ function App() {
                       <p>Reviews</p>
                       {/* <p>Purchase History</p> */}
                       <Link to={`/purchasehistory`}>Purchase History</Link>
+                      <Link to={`/rentalhistory`}>Rental History</Link>
                       <p>View History</p>
                       <p>Settings</p>
                     </div>
@@ -129,6 +131,7 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/transactions" element={<Transaction />} />
                 <Route path="/purchasehistory" element={<PurchaseHistory />} />
+                <Route path="/rentalhistory" element={<RentalHistory />} />
               </Routes>
             </Router>
           </TransactionContext.Provider>

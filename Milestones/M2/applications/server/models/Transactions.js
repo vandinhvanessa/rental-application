@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
+        itemReturned: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
         cost: {
             type: DataTypes.FLOAT,
             allowNull: true,

@@ -18,8 +18,6 @@ app.use("/auth", usersRouter);
 const transactionRouter = require("./routes/Transactions");
 app.use("/transactions", transactionRouter);
 
-const cartRouter = require("./routes/Cart");
-app.use("/cart", cartRouter);
 
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {

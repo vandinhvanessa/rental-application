@@ -26,7 +26,7 @@ const { Op } = require("sequelize");
 //         .then((response) => {
 //             setPurchaseHistory(response)
 //         })
-router.get('/byUsername/:username',  async (req, res) => {
+router.get('/byRenter/:username',  async (req, res) => {
     const username = req.params.username;
     console.log("username in GET:", username);
     const listOfTransactions = await Transactions.findAll({ 
@@ -38,8 +38,37 @@ router.get('/byUsername/:username',  async (req, res) => {
     res.json(listOfTransactions);
 })
 
+router.get('/byLender/:username',  async (req, res) => {
+    const username = req.params.username;
+    const listOfTransactions = await Transactions.findAll({ 
+        where: {
+        lender: username,
+        paymentReceived: true
+    }
+});
+    res.json(listOfTransactions);
+})
 
-
+router.post('/itemReturn/byID/:transactionId', validateToken, async (req, res) => {
+    const transactionId = req.params.transactionId;
+    console.log(transactionId)
+    Transactions.update(
+        {paymentReceived: 1,
+        itemReturned: 1},
+        {where: {id: transactionId}}
+    )
+    // Transactions.update(
+    //     {itemReturned: 1},
+    //     {where: {id: transactionId}}
+    // )
+    const postID = await Transactions.findAll({
+        attributes: ['postID'],
+        where: {id : transactionId}
+        }
+    )
+    // console.log(postID)
+    res.json(postID)
+})
 
 router.post('/byId/:transactionId', validateToken, async (req, res) => {
     const transactionId = req.params.transactionId;
@@ -67,6 +96,7 @@ router.post("/", validateToken, async (req, res) => {
         transactionBegin: "",
         transactionEnd: "",
         paymentReceived: false,
+        itemReturned: false,
         cost: "",
         image: ""
     }

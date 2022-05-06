@@ -24,8 +24,8 @@ function PurchaseHistory() {
     let username = localStorage.getItem("username")
     useEffect(() => {
         // get purchase history
-        console.log("username in UseEffect Purchase History:", username)
-        axios.get(`http://${hostname}/transactions/byUsername/${username}`)
+        console.log(username)
+        axios.get(`http://${hostname}/transactions/byRenter/${username}`)
         .then(async (response) => {
             // console.log(response)
             setPurchaseHistory(response.data)
