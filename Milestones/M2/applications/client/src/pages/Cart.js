@@ -8,43 +8,41 @@ import CartContext from "./User/Cart";
 import TransactionContext from "./User/Transaction";
 
 function Cart() {
-  let navigate = useNavigate();
-  const { cart, setCart } = useContext(CartContext);
-  const { transaction, setTransaction } = useContext(TransactionContext);
-  let localCart = localStorage.getItem("cart");
-  // console.log(cart)
+    let navigate = useNavigate();
+    const { cart, setCart } = useContext(CartContext)
+    const { transaction, setTransaction } = useContext(TransactionContext)
+    let localCart = localStorage.getItem("cart");
+    // console.log(cart)
 
-  const removeFromCart = (productToDelete) => {
-    console.log("removed from cart");
-    const newCart = cart.filter((product) => product.id !== productToDelete.id);
-    setCart(newCart);
-    let stringCart = JSON.stringify(newCart);
-    localStorage.setItem("cart", stringCart);
-  };
-  const completeTransaction = (productPost) => {
-    let stringPost = JSON.stringify(productPost);
-    localStorage.setItem("transactionPost", stringPost);
-    console.log("transaction started");
-    console.log("Testing response");
-    // console.log(productToPurchase)
-    axios
-      .post("http://" + hostname + "/transactions", productPost, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
-      .then((response) => {
-        // redirect to homepage
-        setTransaction(response);
+    const removeFromCart = (productToDelete) => {
+        console.log("removed from cart")
+        const newCart = cart.filter((product) => product.id !== productToDelete.id);        
+        setCart(newCart);
+        let stringCart = JSON.stringify(newCart);
+        localStorage.setItem("cart", stringCart)
+    }
+    const completeTransaction = (productPost) => {
+        let stringPost = JSON.stringify(productPost)
+        localStorage.setItem("transactionPost", stringPost)
+        console.log("transaction started")
+        console.log("Testing response")
+        // console.log(productToPurchase)
+        axios.post(`http://${hostname}/transactions`, productPost, {
+            headers: { accessToken: localStorage.getItem("accessToken") },
+          }).then((response) => {
+            // redirect to homepage
+            setTransaction(response)
+            
+            navigate('/transactions', { replace: true });
+          }).catch((err)=> {
+              console.log("error: " + err)
+          });
+          
+        // after completing transaction remove item from cart
+        // const newCart = cart.filter((product) => product.id !== stringPost.id);        
+        // setCart(newCart);
+    }
 
-        navigate("/transactions", { replace: true });
-      })
-      .catch((err) => {
-        console.log("error: " + err);
-      });
-
-    // after completing transaction remove item from cart
-    // const newCart = cart.filter((product) => product.id !== stringPost.id);
-    // setCart(newCart);
-  };
 
   useEffect(() => {
     // console.log(typeof JSON.parse(localCart))

@@ -12,17 +12,18 @@ import { Image } from 'cloudinary-react'
 
 // const categories = ["all", "recipe", "video", "article"];
 function CreatePost() {
-  //let history = useNavigate(); TEMPORARY COMMENT OUT FOR TESTING
+  let history = useNavigate(); //TEMPORARY COMMENT OUT FOR TESTING
   const [imageSelected, setImageSelected] = useState("");
   const [imageLink, setImageLink] = useState("");
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      //history("/login", { replace: true }); TEMPORARY COMMENT OUT FOR TESTING
+      history("/login", { replace: true }); //TEMPORARY COMMENT OUT FOR TESTING
     }
   }, []);
   const onSubmit = (data) => {
     data.subTotal = 0;
     data.image = imageLink
+    data.itemID = ""
     // console.log(data)
     axios.post("http://" + hostname + "/posts", data, {
       headers: { accessToken: localStorage.getItem("accessToken") },
@@ -30,7 +31,7 @@ function CreatePost() {
       //setListOfPosts(response.data);
       // redirect to homepage
       console.log(response)
-      //history('/', { replace: true }); TEMPORARY COMMENT OUT FOR TESTING
+      history('/', { replace: true });// TEMPORARY COMMENT OUT FOR TESTING
     });
 
   };

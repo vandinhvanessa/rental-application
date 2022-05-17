@@ -18,6 +18,9 @@ app.use("/auth", usersRouter);
 const transactionRouter = require("./routes/Transactions");
 app.use("/transactions", transactionRouter);
 
+const inventoryRouter = require("./routes/Inventory");
+app.use("/inventory", inventoryRouter);
+
 
 db.sequelize.sync().then(() => {
     app.listen(3001, () => {
