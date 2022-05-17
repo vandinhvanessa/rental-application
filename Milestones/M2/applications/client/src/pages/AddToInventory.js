@@ -5,15 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import Home from './Home';
 // import { DropDownList } from "@progress/kendo-react-dropdowns";
 // import '@progress/kendo-theme-default/dist/all.css';  
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { hostname } from '../App.js';
 import { Image } from 'cloudinary-react'
+import { AuthContext } from '../helpers/AuthContext';
 
 function AddToInventory() {
     let navigate = useNavigate();
     const [imageSelected, setImageSelected] = useState("");
     const [imageLink, setImageLink] = useState("");
-
+    const [inventory, setInventory] = useState([])
+    const {authState} = useContext(AuthContext)
+    let localInventory = localStorage.getItem("inventory")
     const uploadImage = () => {
         // Constructing the formData that we are passing to cloudinary
         const formData = new FormData()
@@ -41,19 +44,44 @@ function AddToInventory() {
     //     category: Yup.string().required(),
     //     image: Yup.image().required(),
     //   });
-
-
+      useEffect(() => {
+        if (localInventory){
+          console.log(typeof localInventory)
+          setInventory(JSON.parse(localInventory))
+        } else{
+          axios.get(`http://${hostname}/inventory/byLender/${authState.username}`)
+            .then(async (response) => {
+                console.log(response)
+                setInventory(response.data)
+                
+                localStorage.setItem("inventory",JSON.stringify(response.data));
+                // setListParam("All")
+            }).then(console.log(inventory))
+          }
+        }
+      ,[]);
+      
       const onSubmit = (data) => {
         data.image = imageLink
         // console.log(data)
         axios.post(`http://${hostname}/inventory`, data, {
           headers: { accessToken: localStorage.getItem("accessToken") },
-        }).then((response) => {
+        }).then(() => {
           //setListOfPosts(response.data);
           // redirect to homepage
-          console.log(response)
+          axios.get(`http://${hostname}/inventory/byLender/${authState.username}`)
+          .then(async (response) => {
+            
+            setInventory(response.data)
+            
+            localStorage.setItem("inventory",JSON.stringify(response.data));
+            // setListParam("All")
+          })
+          .then(console.log("After adding",inventory))
           navigate('/', { replace: true });
-        });
+        })
+        
+        
     
       };
   return (

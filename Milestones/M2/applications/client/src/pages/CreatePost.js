@@ -6,24 +6,43 @@ import { useNavigate } from 'react-router-dom';
 import Home from './Home';
 // import { DropDownList } from "@progress/kendo-react-dropdowns";
 // import '@progress/kendo-theme-default/dist/all.css';  
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { hostname } from '../App.js';
 import { Image } from 'cloudinary-react'
+import { AuthContext } from '../helpers/AuthContext';
 
 // const categories = ["all", "recipe", "video", "article"];
 function CreatePost() {
   let history = useNavigate(); //TEMPORARY COMMENT OUT FOR TESTING
   const [imageSelected, setImageSelected] = useState("");
   const [imageLink, setImageLink] = useState("");
+  const [inventory, setInventory] = useState([])
+  const {authState} = useContext(AuthContext)
+  const [itemID, setItemID] = useState("")
+  let localInventory = localStorage.getItem("inventory")
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       history("/login", { replace: true }); //TEMPORARY COMMENT OUT FOR TESTING
     }
-  }, []);
+    if (localInventory){
+      console.log(typeof localInventory)
+      setInventory(JSON.parse(localInventory))
+    } else{
+      axios.get(`http://${hostname}/inventory/byLender/${authState.username}`)
+        .then(async (response) => {
+            console.log(response)
+            setInventory(response.data)
+            
+            localStorage.setItem("inventory",JSON.stringify(response.data));
+            // setListParam("All")
+        }).then(console.log(inventory))
+      }
+    }
+  ,[]);
   const onSubmit = (data) => {
     data.subTotal = 0;
     data.image = imageLink
-    data.itemID = ""
+    data.itemID = itemID
     // console.log(data)
     axios.post("http://" + hostname + "/posts", data, {
       headers: { accessToken: localStorage.getItem("accessToken") },
@@ -44,7 +63,8 @@ function CreatePost() {
     pricePerDay: "",
     image: "",
     subTotal: "",
-    showPost: "1"
+    showPost: "1",
+    itemID: ""
   };
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(),
@@ -143,7 +163,28 @@ function CreatePost() {
             name="pricePerDay"
             placeholder="$2/day"
           />
-
+          <ErrorMessage name="inventory" component="span" />
+          <Field
+            id="inputCreatePost"
+            name="inventory"
+            placeholder="My best hammer"
+          />
+          {inventory.map((value, key) => {
+            return (
+              <div className="listing">
+                <div className="listingLeft">
+                  <Image
+                    className="postImage"
+                    style={{ width: 450 }}
+                    cloudName="ditub0apw"
+                    publicId={value.image}
+                    onClick={() => {setItemID(value.id)
+                    setImageLink(value.image)}}
+                  />
+                </div>
+              </div>
+            );
+          })}
           <input
             type="file"
             name="image"
