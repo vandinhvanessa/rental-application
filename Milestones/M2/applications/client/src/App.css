@@ -1,6 +1,7 @@
 .App {
   width: auto;
   height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: 0px;
@@ -37,11 +38,6 @@ body {
 
 .rentLogo a {
   color: white;
-}
-
-.usernameLogin {
-  font-size: 20px;
-  align-self: right;
 }
 
 .post {
