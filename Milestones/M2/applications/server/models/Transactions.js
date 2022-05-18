@@ -25,15 +25,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: true,
         },
-        paymentReceived: {
+        paymentReceived: {//when transaction is complete
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        itemReturned: {
+        itemReturned: {//initial set to zero, once returned will be 1 for reviews
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        itemLeftRenter: {
+        itemLeftRenter: {//flag for renter to say that they shipped to return item
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },

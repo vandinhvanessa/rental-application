@@ -29,7 +29,7 @@ function Transaction(){
     const [ postID, setPostID ] = useState("")
     let transactionPost = localStorage.getItem("transactionPost");
     let localCart = localStorage.getItem("cart")
-
+    //resets cart list to not include the specified product
     const removeFromCart = (postID) => {
  
       console.log("removed from cart")
@@ -45,19 +45,21 @@ function Transaction(){
     //   // console.log(postID)
       
     // }
+
+    //gets the cart list
     useEffect(() => {
       // console.log(typeof JSON.parse(localCart))
       localCart = JSON.parse(localCart);
       if (localCart) setCart( localCart)
 
     }, [])
-
+    
     const onSubmit = () => {
       const transactionID = transaction.data[0]
       // If we can extract transactions id from transaction object this should pass
       // transaction id to transaction/:transactionId route
       console.log("transactionID: " + transactionID)
-      
+      //sends transaction data to route to set complete transaction flag
       axios.post(`http://${hostname}/transactions/byId/${transactionID}`, 
       transactionID,
       {
@@ -66,7 +68,7 @@ function Transaction(){
         }
       }// response is postID
       ).then(() => {
-        // console.log(response)
+        //removes the product from the cart
         removeFromCart(JSON.parse(transactionPost).id);
         
         // let postID = response.data[0].postID
@@ -75,14 +77,14 @@ function Transaction(){
         // need to update post showpost column to 0
       })
       .then(
-        
+        //sends transaction data to route, to hide that post to no longer able to buy
         axios.post(`http://${hostname}/posts/byId/hide/${JSON.parse(transactionPost).id}`, {showPost: 0}, {
             headers: {
                 accessToken: localStorage.getItem("accessToken")
             }
         })
         )
-      navigate('/', {replace: true})
+      navigate('/', {replace: true})//redirects to home page
       window.location.reload(true);
       
       };

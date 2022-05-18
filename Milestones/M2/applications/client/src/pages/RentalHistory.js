@@ -17,22 +17,24 @@ function RentalHistory() {
     // const calculateSubtotal = (postObject) => {
     //     postObject.subTotal = postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)
     // }
-    const [rentalHistory, setRentalHistory] = useState([]);
+    const [rentalHistory, setRentalHistory] = useState([]);//sets empty rental history list, lender is the user
     const {authState} = useContext(AuthContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [listParam, setListParam] = useState('');
     useEffect(() => {
         // get purchase histor
         console.log(authState.username)
+        //retrieves rental history list by given username
         axios.get(`http://${hostname}/transactions/byLender/${authState.username}`)
         .then(async (response) => {
             // console.log(response)
-            setRentalHistory(response.data)
+            setRentalHistory(response.data) //sets rental history list
             setListParam("All")
         })
         
-        
     }, [])
+    //passes in transaction id for its return flag to be set
+    //meaning that the lender has received the returned item
     const returnItem = (transactionID) => {
         // let stringProduct = JSON.stringify(productPostID)
         // localStorage.setItem("transactionPost", stringPost)
@@ -47,7 +49,7 @@ function RentalHistory() {
         // const newCart = cart.filter((product) => product.id !== stringPost.id);        
         // setCart(newCart);
     }
-    
+    //lists out rental history based on selected complete or in-progress category
     return (
         <div className='postPage'>
             <div className='filters'>

@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        itemID:{
+        itemID:{//refers to the item, can have many reviews and posts
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: true
         },
-        showPost: {
+        showPost: { //flag for when a transaction is complete, remove post from view
             type: DataTypes.BOOLEAN,
             allowNull: true,
         }

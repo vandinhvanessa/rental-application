@@ -26,7 +26,7 @@ import { hostname } from "../App.js";
     zipCode: "",
     country: "",
   };
-
+  //input requirements for registering an account 
   const validationSchema = Yup.object().shape({
     username: Yup.string().min(3).max(20).required(),
     password: Yup.string().min(4).max(20).required(),
@@ -37,7 +37,8 @@ import { hostname } from "../App.js";
     zipCode: Yup.string().max(10).required(),
     country: Yup.string().max(15).required(),
   });
-
+  //once click Submit, sends inputted data from user to route and create a user account
+  //redirects to login page
   //TEMPORARY COMMENTOUT FOR TESTING
   const onSubmit = (data) => {
      axios.post("http://" + hostname + "/auth", data).then(() => {
@@ -45,7 +46,7 @@ import { hostname } from "../App.js";
        history('/login', {replace: true}); 
      })
   } 
-
+  //for fields for creating a user account 
   return (
     <div>
       <Formik

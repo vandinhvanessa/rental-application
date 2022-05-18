@@ -7,10 +7,13 @@ import { hostname } from "../App.js";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { setAuthState } = useContext(AuthContext);
+  const { setAuthState } = useContext(AuthContext);//sets login variable for user
 
   let history = useNavigate(); //TEMPORARY COMMENTOUT FOR TESTING
-
+  //sends username and password to route to be check for validity
+  //returned reponse confirms if it is valid or not
+  //if valid, localStorage is set so user is continuosly logged in unless logged out
+  //redirects page to home page
   const login = () => {
     const data = { username: username, password: password };
     axios.post("http://" + hostname + "/auth/login", data).then((response) => {
@@ -36,7 +39,7 @@ function Login() {
         data-testid="username"
         id="username"
         onChange={(event) => {
-          setUsername(event.target.value);
+          setUsername(event.target.value);//sets username to be sent
         }}
       />
       <label htmlFor="password">Password:</label>
@@ -47,7 +50,7 @@ function Login() {
         name="password"
         id="password"
         onChange={(event) => {
-          setPassword(event.target.value);
+          setPassword(event.target.value);//sets password to be sent
         }}
       />
       <button role="button" onClick={login} data-testid="button" type="submit"> Login

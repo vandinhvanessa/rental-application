@@ -12,21 +12,23 @@ function Cart() {
     const { cart, setCart } = useContext(CartContext)
     const { transaction, setTransaction } = useContext(TransactionContext)
     let localCart = localStorage.getItem("cart");
-    // console.log(cart)
-
+    
+    //resets cart list to not have the specified product
     const removeFromCart = (productToDelete) => {
         console.log("removed from cart")
         const newCart = cart.filter((product) => product.id !== productToDelete.id);        
         setCart(newCart);
-        let stringCart = JSON.stringify(newCart);
-        localStorage.setItem("cart", stringCart)
+        let stringCart = JSON.stringify(newCart);//turns cart into string list
+        localStorage.setItem("cart", stringCart)//resets localStorage cart to not have the specified product
     }
+    //sends data to route to create a transaction
     const completeTransaction = (productPost) => {
         let stringPost = JSON.stringify(productPost)
         localStorage.setItem("transactionPost", stringPost)
         console.log("transaction started")
         console.log("Testing response")
         // console.log(productToPurchase)
+        //sends post to route to create a transaction
         axios.post(`http://${hostname}/transactions`, productPost, {
             headers: { accessToken: localStorage.getItem("accessToken") },
           }).then((response) => {
@@ -47,11 +49,11 @@ function Cart() {
   useEffect(() => {
     // console.log(typeof JSON.parse(localCart))
     localCart = JSON.parse(localCart);
-    if (localCart) setCart(localCart);
+    if (localCart) setCart(localCart);//gets cart list
   }, []); // empty array ensure useEffect only runs once
   return (
     <div>
-      {cart.map((value, key) => {
+      {cart.map((value, key) => {//displays cart list with its data for renting
         return (
           <div className="listing">
             <div className="listingLeft">

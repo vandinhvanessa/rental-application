@@ -12,19 +12,20 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function Post() {
     let { id } = useParams();
-    const [postObject, setPostObject] = useState({});
-    const [comments, setComments] = useState([]);
+    const [postObject, setPostObject] = useState({});//sets empty post
+    const [comments, setComments] = useState([]);//sets empty list of comments
     const [newComment, setNewComment] = useState("");
     const [subTotal, setSubtotal] = useState();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
-    const { authState } = useContext(AuthContext);
-    const {cart, setCart} = useContext(CartContext)
+    const { authState } = useContext(AuthContext);//refers to accessToken
+    const {cart, setCart} = useContext(CartContext)//sets cart object, not into database
     const addToCart = (product) => {
         product.startDate = startDate;
         product.endDate = endDate;
-        let newCart = [...cart, product]
-        setCart(newCart);
+        let newCart = [...cart, product] //appends the post into the cart list
+        setCart(newCart);//resets the cart
+        //calculates the subtotal from start and end date and the cost per day
         product.subTotal = Math.round((postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*23.99999))*100)/100;
         setSubtotal(product.subTotal);
 
@@ -38,7 +39,7 @@ function Post() {
                 //navigate('/cart', { replace: true });
             }
         });*/
-        setCart([...cart, product]);
+        setCart([...cart, product]);//appends post to cart list
         console.log(startDate)
         console.log(endDate)
         console.log(product.subTotal)
@@ -47,20 +48,20 @@ function Post() {
     }
     //let history = useNavigate();
 
-    useEffect(() => {
+    useEffect(() => {//retrieves post data by its id
         axios.get(`http://` + hostname + `/posts/byId/${id}`).then((response) => {
             setPostObject(response.data);
         }).then(
-        axios.get(`http://` + hostname + `/comments/${id}`).then((response) => {
+        axios.get(`http://` + hostname + `/comments/${id}`).then((response) => {//retrieves comments by its post id
             setComments(response.data);
         }))
     },[]);
-    
+    //sends new comment to route to insert comment into database table
     const addComment = (() => {
         axios
             .post("http://" + hostname + "/comments", { commentBody: newComment, PostId: id },
                 {
-                    headers: {
+                    headers: {//gets the username
                         accessToken: localStorage.getItem("accessToken")
                     }
                 }
@@ -68,15 +69,15 @@ function Post() {
             .then((response) => {
                 if (response.data.error) {
                     console.log(response.data.error);
-                } else {
+                } else {//sets new comment into the list of comments
                     const commentToAdd = { commentBody: newComment, username: response.data.username }
                     setComments([...comments, commentToAdd]);
-                    setNewComment("");
+                    setNewComment("");//resets the comment box to nothing after adding to list
                 }
 
             })
     });
-
+    //deletes comment at that post id
     const deleteComment = (id) => {
         axios.delete(`http://` + hostname + `/comments/${id}`, {
             headers: { accessToken: localStorage.getItem('accessToken') },
@@ -183,7 +184,7 @@ function Post() {
                     </button>
                 </div>
                 <div className="listOfComments">
-                    {comments.map((comment, key) => {
+                    {comments.map((comment, key) => {//displays list of comments at that post id
                         return (
                             <div key={key} className="comment">
                                 <label>

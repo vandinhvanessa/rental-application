@@ -26,6 +26,8 @@ const { Op } = require("sequelize");
 //         .then((response) => {
 //             setPurchaseHistory(response)
 //         })
+
+//retrieves list of transactions where the render is the user and payment has already been received
 router.get('/byRenter/:username',  async (req, res) => {
     const username = req.params.username;
     console.log("username in GET:", username);
@@ -37,7 +39,7 @@ router.get('/byRenter/:username',  async (req, res) => {
     });
     res.json(listOfTransactions);
 })
-
+//retrieves list of transactions where the lender is the user and payment has already been received
 router.get('/byLender/:username',  async (req, res) => {
     const username = req.params.username;
     const listOfTransactions = await Transactions.findAll({ 
@@ -48,7 +50,7 @@ router.get('/byLender/:username',  async (req, res) => {
 });
     res.json(listOfTransactions);
 })
-
+//sets return flag to 1 at given transaction id and received payment in table 
 router.post('/itemReturn/byID/:transactionId', validateToken, async (req, res) => {
     const transactionId = req.params.transactionId;
     console.log(transactionId)
@@ -61,6 +63,7 @@ router.post('/itemReturn/byID/:transactionId', validateToken, async (req, res) =
     //     {itemReturned: 1},
     //     {where: {id: transactionId}}
     // )
+    
     const postID = await Transactions.findAll({
         attributes: ['postID'],
         where: {id : transactionId}
@@ -69,7 +72,8 @@ router.post('/itemReturn/byID/:transactionId', validateToken, async (req, res) =
     // console.log(postID)
     res.json(postID)
 })
-
+//completes a transaction by setting payment to received
+//sets transaction for that given postID
 router.post('/byId/:transactionId', validateToken, async (req, res) => {
     const transactionId = req.params.transactionId;
     // console.log(transactionId)
@@ -85,7 +89,8 @@ router.post('/byId/:transactionId', validateToken, async (req, res) => {
     // console.log(postID)
     res.json(postID)
 })
-
+//creates an initial incomplete transaction, in cart page
+//complete when checkout is processed
 router.post("/", validateToken, async (req, res) => {
     console.log("in post")
     const transaction = {
@@ -102,7 +107,7 @@ router.post("/", validateToken, async (req, res) => {
     }
     // console.log(req)
     // console.log(req.body)
-    
+    //sets transaction columns to corresponding data
     transaction.postID = await req.body.id
     transaction.itemDescription = req.body.postText
     transaction.lender = req.body.username

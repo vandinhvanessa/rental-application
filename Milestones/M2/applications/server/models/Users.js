@@ -38,6 +38,6 @@ module.exports = (sequelize, DataTypes) => {
         Users.hasMany(models.Posts, {
             onDelete: "cascade", 
         })
-    }
+    }//users are allowed to have many posts, post will have a userID
     return Users;
 }

@@ -14,20 +14,21 @@ import { AuthContext } from '../helpers/AuthContext';
 // const categories = ["all", "recipe", "video", "article"];
 function CreatePost() {
   let history = useNavigate(); //TEMPORARY COMMENT OUT FOR TESTING
-  const [imageSelected, setImageSelected] = useState("");
+  const [imageSelected, setImageSelected] = useState("");//sets empty variable
   const [imageLink, setImageLink] = useState("");
-  const [inventory, setInventory] = useState([])
-  const {authState} = useContext(AuthContext)
+  const [inventory, setInventory] = useState([])//sets empty list
+  const {authState} = useContext(AuthContext)//login reference 
   const [itemID, setItemID] = useState("")
   let localInventory = localStorage.getItem("inventory")
   useEffect(() => {
+    //if not logged in (accessToken), then redirects to login page
     if (!localStorage.getItem("accessToken")) {
       history("/login", { replace: true }); //TEMPORARY COMMENT OUT FOR TESTING
     }
-    if (localInventory){
+    if (localInventory){//if inventory in localStorage exists then set inventory
       console.log(typeof localInventory)
       setInventory(JSON.parse(localInventory))
-    } else{
+    } else{//sends a get request to retrieve data from inventory
       axios.get(`http://${hostname}/inventory/byLender/${authState.username}`)
         .then(async (response) => {
             console.log(response)
@@ -39,8 +40,10 @@ function CreatePost() {
       }
     }
   ,[]);
+  //once click Submit, sents input data to route to create a rental post
+  //redirects to home page
   const onSubmit = (data) => {
-    data.subTotal = 0;
+    data.subTotal = 0;//subTotal is zero first because needs start and end date from user to calculate
     data.image = imageLink
     data.itemID = itemID
     // console.log(data)
@@ -66,6 +69,7 @@ function CreatePost() {
     showPost: "1",
     itemID: ""
   };
+  //input requirements to create a rental post
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(),
     postText: Yup.string().required(),

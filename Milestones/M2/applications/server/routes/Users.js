@@ -4,8 +4,9 @@ const router = express.Router();
 const { Users } = require("../models");
 
 const {sign} = require("jsonwebtoken");
-const { validateToken } = require('../middlewares/AuthMiddleware');
-
+const { validateToken } = require('../middlewares/AuthMiddleware');//token to check if login is valid
+//gets the body from page, assigns to corresponding variables
+//creates a User account and encrypts the password
 router.post("/", async (req, res) => {
     const {username, password, email, address, city, state, zipCode, country} = req.body;
     bcrypt.hash(password, 10).then((hash) => {
@@ -22,7 +23,9 @@ router.post("/", async (req, res) => {
         res.json("SUCCESS");
     });
 });
-
+//gets body from page and set it to username and password
+//searches User database if username exists
+//if database password is correct with input, then set accessToken to be used
 router.post("/login", async (req, res) => {
     const {username, password} = req.body;
     const user = await Users.findOne({ where: {username: username} });
@@ -41,7 +44,7 @@ router.post("/login", async (req, res) => {
 router.get('/auth', validateToken, (req, res) => {
     res.json(req.user);
 })
-
+//retrieves data from specified user id
 router.get('/basicinfo/:id', async (req, res) => {
     const id = req.params.id;
     const basicInfo = await Users.findByPk(id, {

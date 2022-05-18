@@ -17,7 +17,7 @@ function PurchaseHistory() {
     // const calculateSubtotal = (postObject) => {
     //     postObject.subTotal = postObject.pricePerDay * Math.abs(endDate - startDate)/(1000*60*60*24)
     // }
-    const [purchaseHistory, setPurchaseHistory] = useState([]);
+    const [purchaseHistory, setPurchaseHistory] = useState([]);//sets empty list of purchase history, renter is user
     const {authState} = useContext(AuthContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [listParam, setListParam] = useState('');
@@ -27,17 +27,19 @@ function PurchaseHistory() {
 
     }
     useEffect(() => {
-        // get purchase history
+        // gets purchase history list by username
         console.log(username)
         axios.get(`http://${hostname}/transactions/byRenter/${username}`)
         .then(async (response) => {
             // console.log(response)
-            setPurchaseHistory(response.data)
+            setPurchaseHistory(response.data)//sets the purchase history
             setListParam("All")
         })
         
         
     }, []);
+    //returns list of purchase history based on selected complete or in-progress transactions
+    //can write a review on that transaction/item
     return (
         <div className='postPage'>
             <div className='filters'>
