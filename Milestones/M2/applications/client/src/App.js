@@ -24,9 +24,7 @@ import Inventory from './pages/Inventory';
 export const hostname = "localhost:3001";
 
 function App() {
-
   // const {products} = listOfPosts;
-
 
   const [cart, setCart] = useState([]);
   const [ transaction, setTransaction] = useState("");
@@ -77,6 +75,7 @@ function App() {
       id: 0,
       status: false,
     });
+   
   };
 
 
@@ -119,9 +118,9 @@ function App() {
                       <p>Settings</p>
                     </div>
                   </div>
-
-
-                  <button onClick={logout}> Logout</button>
+                  
+                  <Link to="/login" onClick={logout}> Logout</Link>
+                  
                 </div>
               )}
 

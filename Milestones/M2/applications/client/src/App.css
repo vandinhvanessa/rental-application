@@ -1,6 +1,8 @@
+
 .App {
   width: auto;
   height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: 0px;
@@ -665,4 +667,40 @@ button {
 
 .listing button:hover{
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
+}
+
+/*Rental and purchase history*/
+.postHistoryContainer{
+  width: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  left: 0px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  border: 2px solid gray;
+  margin: 10px;
+}
+.postHistoryLeft .postImage{
+  max-height: 300px;
+  max-width: 400px;
+  padding-left: 25px;
+  padding-bottom: 15px;
+  padding-right: 20px;
+}
+.postHistoryRight{
+  padding-top:10px;
+}
+.postHistoryRight button{
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.postHistoryRight button:hover{
+  background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
+}
+
+.postHistoryRight .itemReturned{
+  font-size: large;
+  font-weight: bold;
 }

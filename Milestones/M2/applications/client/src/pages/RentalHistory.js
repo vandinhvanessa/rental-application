@@ -89,8 +89,8 @@ function RentalHistory() {
             
         }).map((value, key) => {
                 return (
-                    <div className="listing">
-                        <div className="listingLeft">
+                    <div className="postHistoryContainer">
+                        <div className="postHistoryLeft">
                             <Image
                                 className="postImage"
                                 style={{ width: 450 }}
@@ -98,8 +98,11 @@ function RentalHistory() {
                                 publicId={value.image}
                             />
                         </div>
-                        <div className="listingRight">
+                        <div className="postHistoryRight">
                             {/* <Link to={`/profile/${value.UserId}`}>{value.username}</Link> */}
+                            {value.itemReturned &&
+                                <p1 className="itemReturned">Item has been confirmed to have been returned</p1>
+                            }
                             <div className="Description">Item Description: {(value.itemDescription)}</div>
                             <div className="totalPrice">Total: ${Number(value.cost)}</div>
                             <div className="startDate">Start Date: {new Date(value.transactionBegin).toLocaleDateString()}</div>
@@ -107,6 +110,7 @@ function RentalHistory() {
                             {!value.itemReturned &&
                                 <button className='buyButton' onClick={() => returnItem(value.id)} >Item Returned</button>
                             }
+                            
                         </div>
                         
                     </div>
