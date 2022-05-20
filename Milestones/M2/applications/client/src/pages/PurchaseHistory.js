@@ -41,7 +41,7 @@ function PurchaseHistory() {
     //returns list of purchase history based on selected complete or in-progress transactions
     //can write a review on that transaction/item
     return (
-        <div className='postPage'>
+        <div className='postHistory'>
             <div className='filters'>
                 <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
                     <Select options={listParams} onChange={async (event) => {
@@ -49,6 +49,7 @@ function PurchaseHistory() {
                         }} value={listParam} defaultValue={listParams[0]} placeholder="Select a category" />
         
             </div>
+            <div className="innerPostGrid">
             {purchaseHistory.filter((value) => {
                 console.log("-------listParam is:", listParam)
                 if (value.renter === authState.username){
@@ -104,7 +105,7 @@ function PurchaseHistory() {
 
                 );
             })}
-            
+            </div>
         </div>
     )
 }

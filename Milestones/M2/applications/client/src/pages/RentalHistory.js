@@ -51,7 +51,7 @@ function RentalHistory() {
     }
     //lists out rental history based on selected complete or in-progress category
     return (
-        <div className='postPage'>
+        <div className='postHistory'>
             <div className='filters'>
                 <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
                     <Select options={listParams} onChange={async (event) => {
@@ -59,6 +59,7 @@ function RentalHistory() {
                         }} value={listParam} defaultValue={"All"} />
         
             </div>
+            <div className="innerPostGrid">
             {rentalHistory.filter((value) => {
                 // console.log(listParam)
                 if (value.lender === authState.username){
@@ -117,7 +118,7 @@ function RentalHistory() {
 
                 );
             })}
-            
+            </div>
         </div>
     )
 }

@@ -101,7 +101,6 @@ function Post() {
                         {postObject.title}
                     </div>
                     <div className='body'>
-
                         <Image
                             className="postImage"
                             style={{ width: 500 }}
@@ -163,11 +162,9 @@ function Post() {
                     </div>
 
                     <div className="postDescription">
-                        Description:
+                        Description:<br/>{postObject.postText}
                     </div>
-                    <div className="postDescription">
-                        {postObject.postText}
-                    </div>
+                    
                 </div>
 
 
