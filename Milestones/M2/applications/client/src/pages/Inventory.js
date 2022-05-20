@@ -15,17 +15,28 @@ function Inventory() {
     let navigate = useNavigate();
     const {authState} = useContext(AuthContext)
     const [inventory, setInventory] = useState([])
-  
+    let localInventory = localStorage.getItem("inventory")
 
     useEffect(() => {
         // get inventory
-        console.log(authState.username)
-        axios.get(`http://${hostname}/inventory/byLender/${authState.username}`)
-        .then(async (response) => {
-            console.log(response)
-            setInventory(response.data)
-            // setListParam("All")
-        })
+      
+        console.log(authState.username)        
+          axios.get(`http://${hostname}/inventory/byLender/${authState.username}`)
+          .then(async (response) => {
+              console.log(response)
+              
+              localStorage.setItem("inventory",JSON.stringify(response.data))
+              setInventory(response.data)
+              console.log("data: " +JSON.stringify(response.data))
+              
+
+              // setListParam("All")
+          })
+        
+        // else {
+        //   localInventory = localStorage.getItem("inventory")
+        //   setInventory(JSON.parse(localInventory))
+        // }
         
         
     }, [])

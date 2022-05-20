@@ -47,6 +47,24 @@ function CreatePost() {
     data.image = imageLink
     data.itemID = itemID
     // console.log(data)
+    if (imageSelected) {
+      axios.post(`http://${hostname}/inventory`, data, {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }).then(() => {
+          //setListOfPosts(response.data);
+          // redirect to homepage
+          axios.get(`http://${hostname}/inventory/byLender/${authState.username}`)
+          .then(async (response) => {
+            
+            setInventory(response.data)
+            
+            localStorage.setItem("inventory",JSON.stringify(response.data));
+            // setListParam("All")
+          })
+          .then(console.log("After adding",inventory))
+          history('/', { replace: true });
+        })
+    }
     axios.post("http://" + hostname + "/posts", data, {
       headers: { accessToken: localStorage.getItem("accessToken") },
     }).then((response) => {
@@ -111,7 +129,7 @@ function CreatePost() {
             name="title"
             placeholder="(Ex....Title)"
           />
-          <label>Post: </label>
+          <label>Item Description: </label>
           <ErrorMessage name="postText" component="span" />
           <Field
             id="inputCreatePost"
@@ -183,7 +201,9 @@ function CreatePost() {
                     cloudName="ditub0apw"
                     publicId={value.image}
                     onClick={() => {setItemID(value.id)
-                    setImageLink(value.image)}}
+                    setImageLink(value.image)
+                  console.log(itemID)
+                console.log(imageLink)}}
                   />
                 </div>
               </div>
@@ -199,6 +219,13 @@ function CreatePost() {
           <button type="button" onClick={uploadImage}>
             Upload Image
           </button>
+          {/* {imageSelected &&
+            <Field
+            id="inputCreatePost"
+            name="itemName"
+            placeholder="Honada lawnmower"
+            />
+          } */}
           <button type="submit">
             Create A Post
           </button>
