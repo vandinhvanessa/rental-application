@@ -71,11 +71,15 @@ function RentalHistory() {
                         console.log("2")
                         return value;
                     }
-                    else if (value.paymentReceived  && (new Date(value.transactionEnd) > Date.now()) && listParam === "In Progress") {
+                    else if (value.paymentReceived  && (new Date(value.transactionEnd) > Date.now()) && listParam === "In Progress" && !value.itemReturned) {
                         console.log("3")
                         return value;
                     }
-                    else if (value.paymentReceived  && (new Date(value.transactionEnd) < Date.now()) && listParam === "Completed") {
+                    else if (value.paymentReceived  && (new Date(value.transactionEnd) < Date.now()) && listParam === "Completed" && value.itemReturned) {
+                        console.log("5")
+                        return value;
+                    }
+                    else if (listParam === "Completed" && value.itemReturned) {
                         console.log("5")
                         return value;
                     }
@@ -109,7 +113,10 @@ function RentalHistory() {
                             <div className="startDate">Start Date: {new Date(value.transactionBegin).toLocaleDateString()}</div>
                             <div className="endDate">End Date: {new Date(value.transactionEnd).toLocaleDateString()}</div>
                             {!value.itemReturned &&
-                                <button className='buyButton' onClick={() => returnItem(value.id)} >Item Returned</button>
+                                <button className='buyButton' onClick={() => returnItem(value.id)} >
+                                <Link to="/"> Item Returned</Link>
+                                </button>
+                                
                             }
                             
                         </div>
