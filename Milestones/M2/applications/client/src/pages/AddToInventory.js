@@ -16,6 +16,7 @@ function AddToInventory() {
     const [imageLink, setImageLink] = useState("");
     const [inventory, setInventory] = useState([])
     const {authState} = useContext(AuthContext)
+    const [imageUploaded, setImageUploaded] = useState("")
     let localInventory = localStorage.getItem("inventory")
     const uploadImage = () => {
         // Constructing the formData that we are passing to cloudinary
@@ -30,7 +31,7 @@ function AddToInventory() {
             // console.log(response)
             console.log(response.data.public_id)
             setImageLink("https://res.cloudinary.com/ditub0apw/image/upload/v1649281497/" + response.data.public_id)
-            // console.log(imageLink)
+            setImageUploaded(1)
           })
       };
     const initialValues = {
@@ -45,6 +46,7 @@ function AddToInventory() {
     //     image: Yup.image().required(),
     //   });
       useEffect(() => {
+        setImageUploaded(0)
         if (localInventory){
           console.log(typeof localInventory)
           setInventory(JSON.parse(localInventory))
@@ -137,9 +139,13 @@ function AddToInventory() {
           <button type="button" onClick={uploadImage}>
             Upload Image
           </button>
-          <button type="submit">
+          
+          {imageUploaded > 0 &&
+            <button type="submit">
             Add Item to Inventory
-          </button>
+            </button>
+          }
+          
           {/* <Image cloudName="ditub0apw"
             style={width: 200;}
             publicId = ""
