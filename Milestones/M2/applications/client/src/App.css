@@ -706,8 +706,8 @@ button {
   grid-template-areas: 
   "filter post";
 }
+
 .postHistoryContainer{
-  width: 70%;
   height: auto;
   display: flex;
   flex-direction: row;
