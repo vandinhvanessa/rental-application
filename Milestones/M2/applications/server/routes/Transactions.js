@@ -102,7 +102,7 @@ router.post("/", validateToken, async (req, res) => {
         transactionEnd: "",
         paymentReceived: false,
         itemReturned: false,
-        itemLeftRenter:false,
+        itemLeftRenter: false,
         cost: "",
         image: ""
     }

@@ -79,8 +79,8 @@ function PurchaseHistory() {
             
         }).map((value, key) => {
                 return (
-                    <div className="listing">
-                        <div className="listingLeft">
+                    <div className="postHistoryContainer">
+                        <div className="postHistoryLeft">
                             <Image
                                 className="postImage"
                                 style={{ width: 450 }}
@@ -88,7 +88,7 @@ function PurchaseHistory() {
                                 publicId={value.image}
                             />
                         </div>
-                        <div className="listingRight">
+                        <div className="postHistoryRight">
                             {/* <Link to={`/profile/${value.UserId}`}>{value.username}</Link> */}
                             <div className="Description">Item Description: {(value.itemDescription)}</div>
                             <div className="totalPrice">Total: ${Number(value.cost)}</div>
