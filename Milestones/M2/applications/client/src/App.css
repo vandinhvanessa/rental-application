@@ -6,7 +6,7 @@
   align-items: center;
   padding-top: 0px;
   flex-direction: column;
-  background-image: url(./helpers/farm-tractor.jpeg);
+  background-image: url(./helpers/1880053.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -15,17 +15,15 @@
 body {
   margin: 0;
   padding: 0;
-  
   height: 100%;
 }
 
 .App .SearchBar {
-  width: 19vw;
+  width: 20.5rem;
   height: 40px;
   font-size: large;
+  margin-bottom: .5rem;
 }
-
-
 /* Rent logo */
 .rentLogo {
   width: 100%;
@@ -40,19 +38,26 @@ body {
   color: white;
 }
 
+.posts{
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: auto;
+}
+
 .post {
   width: auto;
   height: 450px;
   border-radius: 10px;
-  max-width: 500px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  background-color: #f1f1f1;
+  background-color: #e2e2e2;
+  
 }
-
 
 .post:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -63,8 +68,9 @@ body {
   flex: 25%;
   border-bottom: 1px solid lightgray;
   border-radius: 10px;
-  background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  max-height: 5rem;
+  background-color: rgb(65, 64, 64);
+  /* background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
   font-size: larger;
   display: grid;
   place-content: center;
@@ -81,24 +87,29 @@ body {
 .post .postImage {
   align-self: center;
   width: auto;
-  height: auto;
-  max-width: 400px;
-  max-height: 300px;
-  
-  
+
+  min-height: 300px;
+  max-height: fit-content;
+  max-width: fit-content;
 }
 
 .post .footer {
   flex: 20%;
   border-top: 1px solid lightgray;
   display: flex;
+  justify-self: flex-end;
   align-items: center;
   padding-left: 15px;
-
-  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
+  max-height: auto;
+  background-color: rgb(65, 64, 64);
+  /* background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%); */
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.footuser{
+  color: white;
 }
 
 .post .footer .buyButton {
@@ -134,21 +145,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .formContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: white;
   width: 500px;
   height: auto;
   padding: 70px;
-
   border-radius: 5px;
-
   background-color: #0093E9;
-  background-image: linear-gradient(152deg, #0093E9 0%, #80D0C7 56%, #ffffff 100%);
-
+  background-image: linear-gradient( 76.3deg,  rgba(44,62,78,1) 12.6%, rgba(69,103,131,1) 82.8% );
 }
 
 .formContainer #inputCreatePost {
@@ -201,7 +211,7 @@ span {
   font-family: Arial, Helvetica, sans-serif;
   align-items: baseline;
   justify-content: flex-end;
-  
+  background-color: rgba(0,0,0,0.5);
   margin-bottom: 20px;
 }
 
@@ -333,7 +343,7 @@ button {
 .commentBody{
   width: 300px;
   height: 50px;
-  
+
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -420,17 +430,14 @@ button {
 .profilePageContainer {
   display: grid;
   width: 95%;
-  grid-template-columns: 1fr 2fr 2fr 2fr;
-  grid-template-rows: max-content;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: auto;
   grid-template-areas:
-    "header header header header"
-    "filter post post post"
-    "filter post post post"
-    "filter post post post";
+    "header header header "
+    "filter post post ";
   grid-auto-rows: 1fr;
   grid-auto-columns: 1fr;
   gap: 10px;
-
 }
 
 @media screen and (max-width: 1000px) {
@@ -441,8 +448,6 @@ button {
     grid-template-rows: max-content;
     grid-template-areas:
       "header header"
-      "filter post"
-      "filter post"
       "filter post";
     grid-auto-rows: 1fr;
     grid-auto-columns: 1fr;
@@ -458,6 +463,12 @@ button {
   grid-area: filter;
 }
 
+.filters{
+  width: 21rem;
+  height: 40px;
+  font-size: large;
+}
+
 .userPost {
   display: grid;
   border: 1px solid #0093E9;
@@ -466,23 +477,23 @@ button {
     "title title category"
     "image image image"
     "deposit ship perday"
-    "description description description"
     "edit blank remove";
   background-image: linear-gradient(160deg, #0093E9 0%, #45b3a6 100%);
   text-align: center;
 }
 
 .userPost .userTitle {
+  max-height: 25px;
   padding: 10px;
   border-radius: 3px;
   border: 1px solid #000000;
   font-size: large;
   font-weight: 600;
   grid-area: title;
-  
 }
 
 .userPost .userRentType {
+  max-height: 25px;
   grid-area: category;
   padding: 10px;
   border-radius: 3px;
@@ -492,6 +503,7 @@ button {
 
 .userPost .userBody {
   grid-area: description;
+  max-height: 100px;
   padding-top: 10px;
   border-radius: 3px;
   border: 1px solid #000000;
@@ -576,27 +588,25 @@ button {
 .homepage-grid {
   display: grid;
   gap: 15px;
-  width: 100%;
-  grid-template-columns: 1fr 2fr 2fr;
-  grid-template-rows: max-content;
+  width: 97%;
+  
   grid-template-areas:
+    " filter post post"
     "filter post post"
     "filter post post"
-    "filter post post";
-  grid-auto-rows: 1fr;
-  grid-auto-columns: 1fr;
+    ;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1599px) {
   .homepage-grid {
     display: grid;
     width: 95%;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr 2fr;
     grid-template-rows: max-content;
     grid-template-areas:
-      "filter post"
-      "filter post"
-      "filter post";
+      "filter post post"
+      "filter post post"
+      "filter post post";
     grid-auto-rows: 1fr;
     grid-auto-columns: 1fr;
     gap: 10px;
@@ -617,6 +627,7 @@ button {
     grid-auto-columns: 1fr;
     gap: 10px;
   }
+
 }
 /* cart*/
 

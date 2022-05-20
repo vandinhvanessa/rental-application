@@ -40,56 +40,55 @@ function Home() {
     <div className="homepage-grid">
       <div className='filters'>
         <input className="SearchBar" type="text" placeholder="Search..." onChange={event => { setSearchTerm(event.target.value) }} />
-        <Select options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
-        
+        <Select className="filter" options={categories} onChange={event => setCategory(event.value)} value={categoryTerm} placeholder="Select a category" />
       </div>
+      <div className='posts'>
+        {listOfPosts.filter((value) => {
+          if (value.showPost == 1) {
+            if (searchTerm == "" && categoryTerm == "") {
+              return value;
+            } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && categoryTerm == "") {
+              return value;
+            } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && value.category.toLowerCase().includes(categoryTerm.toLowerCase())) {
+              return value;
+            }
+            else if (searchTerm == "" && value.category.toLowerCase().includes(categoryTerm.toLowerCase())) {
+              return value;
+            }
+            else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && categoryTerm == "All") {
+              return value;
+            }
+          }
 
-      {listOfPosts.filter((value) => {
-        if(value.showPost == 1){
-          if (searchTerm == "" && categoryTerm == "") {
-            return value;
-          } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && categoryTerm == "") {
-            return value;
-          } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && value.category.toLowerCase().includes(categoryTerm.toLowerCase())) {
-            return value;
-          }
-          else if (searchTerm == "" && value.category.toLowerCase().includes(categoryTerm.toLowerCase())) {
-            return value;
-          }
-          else if (value.title.toLowerCase().includes(searchTerm.toLowerCase()) && categoryTerm == "All") {
-            return value;
-          }
-        }
-        
-      }).map((value, key) => {
-        return (
-          <div className="post" >
-            <div className="title" onClick={() => {
-              navigate(`/post/${value.id}`, { replace: true })
-            }}> {value.title} </div>
-
-            <Image
-              className="postImage"
-              style={{ width: 450 }}
-              cloudName="ditub0apw"
-              publicId={value.image}
-              onClick={() => {
+        }).map((value, key) => {
+          return (
+            <div className="post" >
+              <div className="title" onClick={() => {
                 navigate(`/post/${value.id}`, { replace: true })
-              }}
-            />
+              }}> {value.title} </div>
 
-            <div className="footer">
-              <Link to={`/profile/${value.UserId}`}>{value.username}</Link>
-              <div className="depositFee">Deposit Fee: {value.depositFee}</div>
-              <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
-              <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
-              {/* <button className='buyButton' onClick={() => addToCart(value)} >Add To Cart</button> */}
-              
+              <Image
+                className="postImage"
+                style={{ width: 450 }}
+                cloudName="ditub0apw"
+                publicId={value.image}
+                onClick={() => {
+                  navigate(`/post/${value.id}`, { replace: true })
+                }}
+              />
+
+              <div className="footer">
+                <Link className='footuser' to={`/profile/${value.UserId}`}>{value.username}</Link>
+                <div className="depositFee">Deposit Fee: {value.depositFee}</div>
+                <div className="shippingFee">Shipping Fee: {value.shippingFee}</div>
+                <div className="pricePerDay">$/Day: {value.pricePerDay}</div>
+                {/* <button className='buyButton' onClick={() => addToCart(value)} >Add To Cart</button> */}
+
+              </div>
             </div>
-            
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   )
 }
