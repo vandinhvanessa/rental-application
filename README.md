@@ -1,4 +1,4 @@
-# CSC648-spring22-04-Team06 Repository
+# Rentto.me Repository
 
 ## Application URL: 
 https://rentto.me
